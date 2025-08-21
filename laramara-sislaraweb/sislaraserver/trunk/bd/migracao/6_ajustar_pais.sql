@@ -1,1 +1,0 @@
-﻿update endereco set id_pais = 33 where id >= 20168;

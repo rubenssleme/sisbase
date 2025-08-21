@@ -1,2 +1,0 @@
-﻿update espera set justificativa_cancelamento = '19/02/2015 - Não fará o curso pois está buscando trabalho e pretende voltar a estudar. Pediu para retirar nome da lista. (Cecília)' where id in(4189);
-update espera set id_descricao_tipo_atendimento = 61, id_modulo = 25 where id_descricao_tipo_atendimento = 16 and id_modulo = 108;

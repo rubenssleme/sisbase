@@ -1,1 +1,0 @@
-sc stop postgresql-9.0

@@ -1,1 +1,0 @@
-﻿insert into profissional(nome, habilitado, voluntario, profissional)values('ROZINEIDE LOURENÇO DOS SANTOS', true, true, true); 

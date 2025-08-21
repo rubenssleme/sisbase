@@ -1,1 +1,0 @@
-﻿ALTER TABLE usuario_recurso RENAME TO XXXXXXXXXXX_DESATIVADO_usuario_recurso;

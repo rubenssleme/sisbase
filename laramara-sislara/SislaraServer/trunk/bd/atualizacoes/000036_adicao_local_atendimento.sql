@@ -1,1 +1,0 @@
-﻿insert into local_atendimento (nome)values('Relações Instituicionais');

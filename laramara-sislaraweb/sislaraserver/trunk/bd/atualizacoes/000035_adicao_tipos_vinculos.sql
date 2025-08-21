@@ -1,1 +1,0 @@
-﻿insert into tipo_vinculo (id, descricao)values(16, 'Estudante');

@@ -1,1 +1,0 @@
-﻿insert into profissional(nome, habilitado, voluntario, profissional)values('Amanda Bulbarelli Martinez Lourenço', true, false, true);	

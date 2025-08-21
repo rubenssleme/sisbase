@@ -1,1 +1,0 @@
-﻿update historico_status_demanda set status = 'RESERVADO' where id in (6, 7); 

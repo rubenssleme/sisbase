@@ -1,9 +1,0 @@
-<dataset>
-	<contato id="499999" ramal="2323" nome_contato="Josep Meaza" email="paulo@yahoo.com.br" />
-	<telefone id_contato="499999" tipo="RESIDENCIAL" ddd="11" telefone="23232323"/>
-	<telefone id_contato="499999" tipo="CELULAR" ddd="11" telefone="11112222"/>
-	<telefone id_contato="499999" tipo="CONTATO" ddd="11" telefone="22221111"/>
-	<informacao_essencial id="9999" nome="Usuario com instituições" id_contato="499999" data_nascimento="1982-07-27"/> 
-	<historico_rg id="11111" data_inicial_vigencia="0001-01-01" rg="123456" />
-	<informacao_essencial_historico_rg id_informacao_essencial="9999" id_historico_rg="11111"/>
-</dataset>

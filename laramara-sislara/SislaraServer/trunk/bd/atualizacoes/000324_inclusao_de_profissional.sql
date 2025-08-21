@@ -1,2 +1,0 @@
-﻿insert into profissional(nome, habilitado, voluntario, profissional)values('Andrea Paula Fernandes Borba', true, true, true);	
-insert into profissional(nome, habilitado, voluntario, profissional)values('Ana Claudia Greco', true, true, true);	

@@ -1,1 +1,0 @@
-﻿update informacao_atendimento set frequencia = 'FU' where id = 194402;

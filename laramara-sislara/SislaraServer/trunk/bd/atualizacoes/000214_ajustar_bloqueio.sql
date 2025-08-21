@@ -1,5 +1,0 @@
-﻿ALTER TABLE bloqueio ALTER COLUMN area TYPE varchar(200);
-
-insert into bloqueio(id_descricao_tipo_atendimento, id_modulo, area)values(1, 1, 'LIBERACAO_INCLUSAO_NA_ESPERA_POR_EXCESSO_DE_FALTA_POR_DUPLICACAO_FALTA_NAO_JUSTIFICACA_NO_ATENDIMENTO_AEE_E_PSICOSSOCIAL');
-insert into bloqueio(id_descricao_tipo_atendimento, id_modulo, area)values(1, 90, 'LIBERACAO_INCLUSAO_NA_ESPERA_POR_EXCESSO_DE_FALTA_POR_DUPLICACAO_FALTA_NAO_JUSTIFICACA_NO_ATENDIMENTO_AEE_E_PSICOSSOCIAL');
-

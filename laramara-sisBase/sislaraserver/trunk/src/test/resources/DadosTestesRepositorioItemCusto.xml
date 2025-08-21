@@ -1,5 +1,0 @@
-<dataset>
-	<item_custo id="1" descricao="Terapia" doenca="true" deficiencia="false"/>
-	<item_custo id="2" descricao="Medicamentos" doenca="false" deficiencia="true"/>
-	<item_custo id="3" descricao="Transporte" doenca="true" deficiencia="true"/>
-</dataset>

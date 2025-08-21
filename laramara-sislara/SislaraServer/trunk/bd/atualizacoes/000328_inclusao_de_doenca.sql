@@ -1,1 +1,0 @@
-﻿insert into doenca(descricao)values('Doenças autoimunes');

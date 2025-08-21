@@ -1,1 +1,0 @@
-﻿insert into contato(id)values(0);

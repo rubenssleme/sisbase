@@ -1,1 +1,0 @@
-﻿update profissional set nome = 'Mara Lúcia de Melo Oliveira' where id  = 89; 

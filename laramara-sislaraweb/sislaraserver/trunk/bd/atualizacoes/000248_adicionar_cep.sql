@@ -1,1 +1,0 @@
-﻿insert into tend_endereco(cep, endereco, id_cidade, id_bairro)values('70680368', 'CCSW 3 Lote 2 Bloco 2', 1778, 1236);

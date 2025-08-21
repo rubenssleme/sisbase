@@ -1,6 +1,0 @@
-<dataset>
-		<municipio id="4850" nome="São Paulo" uf="SP"/>
-		<endereco id="55555" data_inicial_vigencia ="0001-01-01" uf="SP" id_municipio="4850" bairro="Barra Funda" endereco="Rua das Andradas" numero="348"/>
-	
-		<usuario_externo id="1111" email="carloskafka7@gmail.com" nome_completo="Carlos Henrique da Silva Kafka" ddd="11" cpf="86890477006" outro_telefone="11953442968" telefone_celular="981847597" senha="81dc9bdb52d04dc20036dbd8313ed055" bloqueado="false" token="1234" autorizo_recebimento_informativo="true" data_nascimento="1993-09-27" rg_rne="333474685" id_endereco_residencial="55555" e_pessoa_com_deficiencia="true" possui_cegueira="false" possui_baixa_visao="true"/>
-</dataset>

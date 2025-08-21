@@ -1,1 +1,0 @@
-﻿insert into local_trabalho(nome)values('Universidade Mackenzie');

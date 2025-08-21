@@ -1,4 +1,0 @@
-﻿update perfil_permissoes set permissao = 'USUARIO_TELA_EDICAO_VISUALIZAR_SERVICO_SOCIAL' where permissao = 'USUARIO_TELA_EDICAO_VISUALIZAR_OUTRAS';
-update perfil_permissoes set permissao = 'USUARIO_TELA_EDICAO_VISUALIZAR_DESCRICAO_PSICOSSOCIAL' where permissao = 'USUARIO_TELA_EDICAO_VISUALIZAR_DESCRICAO';
-update conta_acesso_permissoes set permissao = 'USUARIO_TELA_EDICAO_VISUALIZAR_SERVICO_SOCIAL' where permissao = 'USUARIO_TELA_EDICAO_VISUALIZAR_OUTRAS';
-update conta_acesso_permissoes set permissao = 'USUARIO_TELA_EDICAO_VISUALIZAR_DESCRICAO_PSICOSSOCIAL' where permissao = 'USUARIO_TELA_EDICAO_VISUALIZAR_DESCRICAO';

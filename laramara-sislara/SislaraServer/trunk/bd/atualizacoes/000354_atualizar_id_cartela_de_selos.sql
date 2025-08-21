@@ -1,1 +1,0 @@
-﻿ALTER SEQUENCE demanda_id_seq RESTART WITH 760;

@@ -1,1 +1,0 @@
-﻿delete from perfil_permissoes where permissao = 'GRUPO_GERACAO_ATENDIMENTO';

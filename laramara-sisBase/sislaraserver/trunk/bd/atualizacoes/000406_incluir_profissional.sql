@@ -1,1 +1,0 @@
-﻿insert into profissional(nome, habilitado, voluntario, profissional)values('Yvens Giacomini da Silva', true, false, true);	

@@ -1,6 +1,0 @@
-<dataset>
-	<profissional id="1000" nome="Paulo Augusto Bandeira dos Santos" habilitado="true" profissional="true" voluntario="false"/>
-	<profissional id="2000" nome="Victor Vitalino" habilitado="true" profissional="true" voluntario="false"/>
-	<profissional id="3000" nome="Josep Meaza" habilitado="false" profissional="true" voluntario="false"/>
-	<profissional id="4000" nome="Voluntario" habilitado="true" profissional="false" voluntario="true"/>
-</dataset>

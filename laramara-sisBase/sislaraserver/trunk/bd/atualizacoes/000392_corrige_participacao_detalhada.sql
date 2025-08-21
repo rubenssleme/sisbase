@@ -1,2 +1,0 @@
-﻿update participacao_detalhada set participacao = 'APENAS_FAMILIA' where participacao = '	APENAS_FAMILIA	';
-update participacao_detalhada set participacao = 'COM_FAMILIA' where participacao = '	COM_FAMILIA	';

@@ -1,1 +1,0 @@
-﻿insert into instituicao(id, nome, id_endereco, id_contato, tipo, classificacao) values (0, 'NENHUM', 0, 0, 'NENHUM', 'NENHUMA');

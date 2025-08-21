@@ -1,7 +1,0 @@
-<dataset>
-	<tipo_atendimento id="11111" nome="Atendimento Educacional Especializado"/>
-	<descricao_tipo_atendimento id="12222" id_tipo_atendimento="11111" nome="Curso de Informatica" sigla="INFO" descricao="Texto de descrição." inativo="false"/>
-	<modulo id="1" nome="Informática" bloqueado_lista_espera="false"/>
-
-	<bloqueio id_descricao_tipo_atendimento = "12222" id_modulo = "1" area="LISTA_ESPERA"/>
-</dataset>

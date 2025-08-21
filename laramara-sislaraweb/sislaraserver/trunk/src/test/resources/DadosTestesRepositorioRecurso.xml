@@ -1,8 +1,0 @@
-<dataset>
-	<recurso id="13" descricao="Bengala" cartela_de_selos="false" disponivel_para_demanda="true"/>
-	<recurso id="12" descricao="Maquina Braille" cartela_de_selos="false" disponivel_para_demanda="true"/>
-	<descricao_recurso id="13333" descricao="Descrição A"/>
-	<descricao_recurso id="12222" descricao="Descrição B"/>
-	<recurso_descricao_recurso id_recurso="12" id_descricao_recurso="12222"/>
-	<recurso_descricao_recurso id_recurso="12" id_descricao_recurso="13333"/>
-</dataset>

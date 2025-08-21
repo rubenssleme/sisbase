@@ -1,1 +1,0 @@
-﻿insert into profissional(nome, habilitado, voluntario, profissional)values('Carlos Henrique da Silva Kafka', true, true, true);

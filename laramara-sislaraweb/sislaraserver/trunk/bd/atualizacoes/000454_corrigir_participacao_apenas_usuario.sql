@@ -1,1 +1,0 @@
-﻿update participacao_detalhada set quantidade = 1 where participacao = 'APENAS_USUARIO' and quantidade > 1;

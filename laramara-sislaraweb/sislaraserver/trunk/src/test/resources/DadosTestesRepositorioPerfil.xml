@@ -1,5 +1,0 @@
-<dataset>
-	<perfil id="1111" descricao="Administrador"/>
-	<perfil id="2222" descricao="Operador"/>
- 	<perfil_permissoes id_perfil="1111" permissao="USUARIO_EDICAO" />
-</dataset>

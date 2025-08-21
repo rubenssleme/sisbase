@@ -1,1 +1,0 @@
-﻿update espera set justificativa_cancelamento = '11/02/2015 - Está trabalhando e fazendo um curso de capacitação. Em breve irá assumir na empresa. Quando tiver disponbilidade, vai ligar para colocar o nome na lista de espera. (Cecília)' where id in(4301, 6636, 4299);

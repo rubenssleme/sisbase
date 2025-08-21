@@ -1,1 +1,0 @@
-﻿insert into beneficio(descricao)values('Ambulância');

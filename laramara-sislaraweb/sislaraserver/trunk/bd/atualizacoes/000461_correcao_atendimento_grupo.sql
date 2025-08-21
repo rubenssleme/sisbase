@@ -1,1 +1,0 @@
-﻿update atendimento_grupo set data = '25-04-2018' where id = 26181;

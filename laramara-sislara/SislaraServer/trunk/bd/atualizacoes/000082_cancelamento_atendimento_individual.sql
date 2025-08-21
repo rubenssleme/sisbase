@@ -1,1 +1,0 @@
-﻿update atendimento_individual set status = 'CANCELADO' where id in (257, 897, 241, 1469, 887, 890, 898, 2102, 2101, 1167, 900, 290, 2239);

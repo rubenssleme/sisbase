@@ -1,1 +1,0 @@
-﻿update profissional set nome = 'Fátima Regina Cardoso Leite', voluntario = false where id = 66;

@@ -1,1 +1,0 @@
-﻿update atendimento_grupo set hora_inicio = '08:30:00', hora_termino='10:00:00' where id = 25644;

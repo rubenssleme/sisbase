@@ -1,1 +1,0 @@
-﻿update atendimento_grupo set status = 'CANCELADO' where id = 1;

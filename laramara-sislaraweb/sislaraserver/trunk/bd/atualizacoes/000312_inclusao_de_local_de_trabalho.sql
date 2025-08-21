@@ -1,1 +1,0 @@
-insert into local_trabalho(nome)values('Unify - soluções em tecnologia da informação ltda');

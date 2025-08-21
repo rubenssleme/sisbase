@@ -1,1 +1,0 @@
-﻿select 'INSERT INTO RECURSO_RELACIONAMENTO(id_recurso, relacao_recurso)values('||id_recurso||',''POSSUI''); INSERT INTO USUARIO_RECURSO_RELACIONAMENTO(id_recurso_relacionamento, id_usuario)values(currval(''recurso_relacionamento_id_seq''),'||id_usuario||');'  from usuario_recurso;

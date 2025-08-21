@@ -1,5 +1,0 @@
-package br.laramara.ti.sislaraserver.dominio.seguranca;
-
-public enum Area {
-	LISTA_ESPERA, AGENDA, LIBERACAO_ATENDIMENTO_INDIVIDUAL_SIMULTANEO, LIBERACAO_INCLUSAO_NA_ESPERA_POR_EXCESSO_DE_FALTA
-}

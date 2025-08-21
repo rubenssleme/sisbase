@@ -1,1 +1,0 @@
-﻿ALTER TABLE usuario_vulnerabilidade_familia RENAME TO XXXXXXXXXXX_DESATIVADO_usuario_vulnerabilidade_familia;

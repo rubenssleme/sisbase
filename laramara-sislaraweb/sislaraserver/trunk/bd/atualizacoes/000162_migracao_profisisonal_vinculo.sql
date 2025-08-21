@@ -1,1 +1,0 @@
-﻿select 'insert into profissional_vinculo(id_profissional)values(',modperpro.id_profissional,');', 'insert into modulo_periodo_profissional_vinculo(id_modulo_periodo, id_profissional_vinculo)values(', modperpro.id_modulo_periodo, ',', 'currval(''profissional_vinculo_id_seq'')', ');' from modulo_periodo_profissional modperpro
