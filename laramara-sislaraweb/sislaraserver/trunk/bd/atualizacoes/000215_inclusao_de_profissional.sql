@@ -1,0 +1,1 @@
+﻿insert into profissional(id, nome, habilitado, voluntario, profissional)values(145, 'VANDERLEI LARA', true, true, true);

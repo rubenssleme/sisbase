@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d657bbd-caae-452c-999a-d7d4b5dc3719">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select aux.*, pro.nome as nome_profissinal, dia.dia_semana, dia.hora_inicio, dia.hora_termino from (
+	select nomgru.nome ||'-'|| gru.turma as nome_grupo, mod.nome as modulo, modper.vagas as vagas_grupo, modper.id as id_modper, (modper.vagas - count(usu.id)) as vagas_disponiveis
+		from grupo gru
+		inner join grupo_modulo_periodo grumodper
+			on gru.id = grumodper.id_grupo
+		inner join nome_grupo nomgru
+			on nomgru.id = gru.id_nome_grupo
+		inner join modulo_periodo modper
+			on modper.id = grumodper.id_modulo_periodo
+		inner join modulo mod
+			on mod.id = modper.id_modulo
+		inner join modulo_periodo_modulo_usuario modpermodusu
+			on modper.id = modpermodusu.id_modulo_periodo
+		inner join modulo_usuario modusu
+			on modusu.id = modpermodusu.id_modulo_usuario
+		inner join usuario usu
+			on usu.id = modusu.id_usuario
+		inner join informacao_essencial inf
+			on inf.id = usu.id_informacao_essencial
+	where gru.ativo = true and modusu.status = 'INTEGRADO'
+	group by 1, 2, 3, 4
+	order by 1)aux
+	inner join modulo_periodo_profissional_vinculo modperprovin
+		on modperprovin.id_modulo_periodo = aux.id_modper
+	inner join profissional_vinculo provin
+		on provin.id = modperprovin.id_profissional_vinculo
+	inner join profissional pro
+		on pro.id = provin.id_profissional
+	inner join modulo_periodo_dia_semana_e_horario modperdia
+		on modperdia.id_modulo_periodo = aux.id_modper
+	inner join dia_semana_e_horario dia
+		on dia.id = modperdia.id_dia_semana_e_horario
+where provin.participante = false]]>
+	</queryString>
+	<field name="nome_grupo" class="java.lang.String"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="vagas_grupo" class="java.lang.Integer"/>
+	<field name="id_modper" class="java.lang.Long"/>
+	<field name="vagas_disponiveis" class="java.lang.Long"/>
+	<field name="nome_profissinal" class="java.lang.String"/>
+	<field name="dia_semana" class="java.lang.String"/>
+	<field name="hora_inicio" class="java.sql.Time"/>
+	<field name="hora_termino" class="java.sql.Time"/>
+	<group name="nome_grupo">
+		<groupExpression><![CDATA[$F{nome_grupo}]]></groupExpression>
+		<groupHeader>
+			<band height="10">
+				<line>
+					<reportElement uuid="e29bcba1-eb24-406c-acdc-dd88f6b263f0" x="-20" y="0" width="595" height="1" forecolor="#666666"/>
+				</line>
+				<textField>
+					<reportElement uuid="940f9421-1ab7-4b4c-a833-8d8fd12c8d26" mode="Transparent" x="0" y="0" width="71" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="Verdana" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome_grupo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="modulo">
+		<groupExpression><![CDATA[$F{modulo}]]></groupExpression>
+		<groupHeader>
+			<band height="10">
+				<textField>
+					<reportElement uuid="22ec1a67-8ff3-422d-b81a-95fff4a32ae1" x="36" y="0" width="139" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="Verdana" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="f7e9ba4e-57a8-4ce7-82ff-281c4c38cf72" x="175" y="0" width="60" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="Verdana" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vagas_disponiveis} + " vaga(s)"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="dia">
+		<groupExpression><![CDATA[$F{dia_semana}]]></groupExpression>
+		<groupHeader>
+			<band height="10">
+				<textField pattern="HH:mm">
+					<reportElement uuid="5207b42b-2329-4b97-9566-39e14a5c1e08" x="71" y="0" width="29" height="10"/>
+					<textElement>
+						<font fontName="Verdana" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{hora_inicio}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="b515fcc0-72aa-4ad4-ad17-d6a3facfacd6" x="36" y="0" width="35" height="10"/>
+					<textElement>
+						<font fontName="Verdana" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dia_semana}]]></textFieldExpression>
+				</textField>
+				<textField pattern="HH:mm">
+					<reportElement uuid="bf38e7d3-a90a-452f-895d-b1f51a0d59f0" x="100" y="0" width="31" height="10"/>
+					<textElement>
+						<font fontName="Verdana" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{hora_termino}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="prof">
+		<groupExpression><![CDATA[$F{nome_profissinal}]]></groupExpression>
+		<groupHeader>
+			<band height="10">
+				<textField>
+					<reportElement uuid="b267c90a-30d5-4fa6-8d39-8d53bf05bd7c" x="71" y="0" width="181" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="Verdana" size="6" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome_profissinal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="75">
+			<staticText>
+				<reportElement uuid="b6fb13af-3349-413c-8906-e9a9157a2533" x="100" y="10" width="455" height="55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RELAÇÃO DE VAGAS EM GRUPOS ATIVOS]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="a7878cdb-035a-4a90-b899-b26e5dd413dc" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20"/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField evaluationTime="Report">
+				<reportElement uuid="37fd0ec2-a9fe-4121-bb11-1f7915f9c12b" mode="Opaque" x="515" y="4" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="349768ba-dd7a-4411-8f78-d0193e7a1cd0" mode="Transparent" x="0" y="4" width="515" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

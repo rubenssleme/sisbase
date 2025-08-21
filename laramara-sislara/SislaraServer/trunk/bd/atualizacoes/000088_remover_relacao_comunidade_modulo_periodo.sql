@@ -1,0 +1,1 @@
+﻿delete from modulo_periodo_modulo_pre_cadastro where id_modulo_pre_cadastro in (472, 509);

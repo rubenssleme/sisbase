@@ -1,0 +1,1 @@
+﻿update profissional set nome = 'Veronica Maria Gomes Barbosa' where id = 69;

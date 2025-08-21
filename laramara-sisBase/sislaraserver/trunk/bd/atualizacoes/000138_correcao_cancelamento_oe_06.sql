@@ -1,0 +1,1 @@
+﻿update atendimento_grupo set data = '06/02/2013', status = 'NORMAL' where id = 2159;

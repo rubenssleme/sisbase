@@ -1,0 +1,28 @@
+<dataset>
+	<pais id="1" nome="Brasil"/>
+	
+	<municipio id="4850" nome="São Paulo" uf="SP"/>
+	
+	<endereco id="55555" data_inicial_vigencia ="0001-01-01" uf="SP" id_municipio="4850" bairro="Barra Funda" endereco="Rua das Andradas" numero="348" zona="LESTE" id_pais="1"/>
+	
+	<contato id="599999" ramal="2323" nome_contato="Josep Meaza" email="paulo@yahoo.com.br" />
+	<contato id="88888" ramal="2323" nome_contato="Josep Meaza" email="paulo2@yahoo.com.br"/>
+	
+	<telefone id_contato="599999" tipo="RESIDENCIAL" ddd="11" telefone="23232323"/>
+	<telefone id_contato="599999" tipo="CELULAR" ddd="11" telefone="11112222"/>
+	<telefone id_contato="599999" tipo="CONTATO" ddd="11" telefone="22221111"/>
+	<telefone id_contato="88888" tipo="RESIDENCIAL" ddd="11" telefone="11111111"/>
+	<telefone id_contato="88888" tipo="CELULAR" ddd="11" telefone="11112222"/>
+	<telefone id_contato="88888" tipo="CONTATO" ddd="11" telefone="22221111"/>
+	
+	<instituicao id="122222" id_endereco="55555" id_contato="599999" tipo="EE" nome="EE Ministro de Godoi" nome_coordenador_responsavel="Paulo Augusto" classificacao="ESTADUAL" OBS="Texto de obs." tipo_apoio="SRMs"/>
+	<instituicao id="133333" id_endereco="55555" id_contato="88888" tipo="FACULDADE" nome="Faculdade Ministro de Godoi" nome_coordenador_responsavel="Paulo Augusto" classificacao="ESTADUAL" OBS="Texto de obs." tipo_apoio="SRMs"/>
+	<instituicao id="177777" id_endereco="55555" id_contato="88888" tipo="FACULDADE" nome="Escola Amadeus" nome_coordenador_responsavel="Paulo Augusto" classificacao="ESTADUAL" OBS="Texto de obs." tipo_apoio="OUTROS_AEE"/>
+	<instituicao id="188888" id_endereco="55555" id_contato="88888" tipo="FACULDADE" nome="Escola Amadeus Senios" nome_coordenador_responsavel="Paulo Augusto" classificacao="ESTADUAL" OBS="Texto de obs." tipo_apoio="SALA_DE_RECURSO_DO_ESTADO"/>
+	
+	<escolaridade id="1" descricao="SUPERIOR"/>
+		
+	<instituicao_escolaridade/>
+
+	<instituicao_tipo_especialidade id_instituicao="177777" tipo_especialidade="DV"/>
+</dataset>  

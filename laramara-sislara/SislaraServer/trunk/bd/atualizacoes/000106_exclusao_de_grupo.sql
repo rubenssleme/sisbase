@@ -1,0 +1,1 @@
+﻿update grupo set ativo = false, excluido = true where id in (160,111);

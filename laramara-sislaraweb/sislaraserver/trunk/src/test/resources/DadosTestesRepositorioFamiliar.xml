@@ -1,0 +1,20 @@
+<dataset>
+	<parentesco id="1" descricao="Pai"/>
+	
+	<estado_civil id="1" descricao="Casado"/>
+	<estado_civil id="2" descricao="Solteiro"/>
+	
+	<informacao_trabalho id="22222" empresa="CTIS" funcao="Analista de Sistemas"/>
+	
+	<contato id="299999" ramal="2323" nome_contato="Josep Meaza" email="paulo@yahoo.com.br" />
+	
+	<informacao_essencial id="44444" nome="Usuario com instituições" id_contato="299999" data_nascimento="1982-07-27"/> 
+	
+	<historico_rg id="11111" data_inicial_vigencia="0001-01-01" rg="123456" />
+	
+	<informacao_essencial_historico_rg id_informacao_essencial="44444" id_historico_rg="11111"/>
+		
+	<familiar id="44444" id_parentesco="1" id_estado_civil="2" id_informacao_trabalho="22222" id_informacao_essencial="44444" principal_responsavel="true"/>
+	
+	<familiar_vulnerabilidade/>
+</dataset>

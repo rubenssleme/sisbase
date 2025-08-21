@@ -1,0 +1,13 @@
+﻿insert into dre_cefai(nome)values('CEFAI – Butantã');
+insert into dre_cefai(nome)values('CEFAI – Campo Limpo');
+insert into dre_cefai(nome)values('CEFAI – Capela do Socorro');
+insert into dre_cefai(nome)values('CEFAI – Freguesia / Brasilândia');
+insert into dre_cefai(nome)values('CEFAI – Guaianases');
+insert into dre_cefai(nome)values('CEFAI – Ipiranga');
+insert into dre_cefai(nome)values('CEFAI – Itaquera');
+insert into dre_cefai(nome)values('CEFAI – Jaçanã / Tremembé');
+insert into dre_cefai(nome)values('CEFAI – Penha');
+insert into dre_cefai(nome)values('CEFAI – Pirituba/Lapa');
+insert into dre_cefai(nome)values('CEFAI – Santo Amaro');
+insert into dre_cefai(nome)values('CEFAI – São Mateus'); 
+insert into dre_cefai(nome)values('CEFAI – São Miguel'); 

@@ -1,0 +1,1 @@
+﻿insert into profissional(nome, habilitado, voluntario, profissional)values('LEONARDO GLEISON FERREIRA', true, false, true);

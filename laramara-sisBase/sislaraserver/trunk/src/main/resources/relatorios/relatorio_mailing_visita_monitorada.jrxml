@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_mailing_visita_monitorada" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="10da5d63-bd20-43fb-ac8c-6ea165cdb9d7">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_ids_categorias" class="java.lang.String"/>
+	<parameter name="param_data_inicio" class="java.util.Date"/>
+	<parameter name="param_data_termino" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select distinct infess.nome, lower(con.email), tipvin.id, tipvin.descricao from grupo gru
+			inner join nome_grupo nom
+				on nom.id = gru.id_nome_grupo
+			inner join grupo_modulo_periodo grumodper
+				on gru.id = grumodper.id_grupo
+			inner JOIN modulo_periodo modper
+				ON grumodper.id_modulo_periodo = modper.id
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = gru.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner JOIN modulo mod
+				ON modper.id_modulo = mod.id
+			inner JOIN modulo_periodo_atendimento_grupo modperaten
+				ON modper.id = modperaten.id_modulo_periodo
+			inner join modulo_periodo_modulo_pre_cadastro modpermodprecad
+				on modpermodprecad.id_modulo_periodo = modper.id
+			inner join modulo_pre_cadastro modprecad
+				on modprecad.id = modpermodprecad.id_modulo_pre_cadastro
+			inner join tipo_vinculo tipvin
+				on tipvin.id = modprecad.id_tipo_vinculo
+			inner JOIN atendimento_grupo ate
+				ON ate.id = modperaten.id_atendimento_grupo
+			inner join atendimento_grupo_atendimento_pre_cadastro ategruatepre
+				on ate.id = ategruatepre.id_atendimento_grupo
+			inner join atendimento_pre_cadastro atepre
+				on atepre.id = ategruatepre.id_atendimento_pre_cadastro and modprecad.id_pre_cadastro = atepre.id_pre_cadastro
+			inner join informacao_atendimento infate
+				on infate.id = atepre.id_informacao_atendimento
+			inner join pre_cadastro pre
+				on pre.id = atepre.id_pre_cadastro
+			inner join informacao_essencial infess
+				on infess.id = pre.id_informacao_essencial
+			inner join contato con
+				on con.id = infess.id_contato
+		WHERE ate.status = 'NORMAL' and destipate.id_tipo_atendimento = 10 and mod.id = 70 and infate.frequencia = 'AT' and con.email != '' and ate.data between $P{param_data_inicio} and $P{param_data_termino} and tipvin.id in $P!{param_ids_categorias}
+order by infess.nome]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="lower" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="descricao" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="87">
+			<staticText>
+				<reportElement uuid="d919abfe-5435-4da6-9e98-03e68a0b49dc" x="100" y="0" width="458" height="76"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph firstLineIndent="30" rightIndent="40"/>
+				</textElement>
+				<text><![CDATA[MAILING DE VISITA MONITORADA, RELAÇÕES INSTITUCIONAIS]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="57e025ff-9775-49ef-a5be-c48726399922" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="11">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="531fbf16-19d1-4dcb-8eb3-bc76401c2c6c" x="302" y="1" width="253" height="10"/>
+				<textElement>
+					<font fontName="Verdana" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lower} + ";"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9cebd867-2ffc-4c16-ad8c-a314374644f2" x="0" y="1" width="226" height="10"/>
+				<textElement>
+					<font fontName="Verdana" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

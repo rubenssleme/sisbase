@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_porcentagem_frequencias_por_grupo_subreport1" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="61bff70f-ef21-4757-a253-31a07ad0da48">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_id_grupo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_id_modulo_periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_id_usuario" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select aux.* from grupo gru
+	inner join nome_grupo nomgru
+		on nomgru.id = gru.id_nome_grupo
+	inner join descricao_tipo_atendimento destipate
+		on destipate.id = gru.id_descricao_tipo_atendimento
+	inner join tipo_atendimento tip
+		on destipate.id_tipo_atendimento = tip.id
+	inner join grupo_modulo_periodo grumodper
+		on grumodper.id_grupo = gru.id
+	inner join modulo_periodo modper
+		on modper.id = grumodper.id_modulo_periodo
+	inner join modulo mod
+		on modper.id_modulo = mod.id
+	inner join modulo_periodo_atendimento_grupo modperategru
+		on modperategru.id_modulo_periodo = modper.id
+	inner join atendimento_grupo ategru
+		on ategru.id = modperategru.id_atendimento_grupo
+	inner join atendimento_grupo_atendimento_usuario ategruateusu
+		on ategruateusu.id_atendimento_grupo = ategru.id
+	inner join atendimento_usuario ateusu
+		on ateusu.id = ategruateusu.id_atendimento_usuario
+	inner join informacao_atendimento infate
+		on ateusu.id_informacao_atendimento = infate.id
+	inner join usuario usu
+		on usu.id = ateusu.id_usuario
+	inner join informacao_essencial infess
+		on infess.id = usu.id_informacao_essencial
+	inner join (
+		select gru.id as id_grupo, modper.id as id_modulo_periodo, nomgru.nome||'-'||gru.turma as nome_grupo, ategru.data as data_atendimento, ategru.hora_inicio, ategru.hora_termino, infate.frequencia, tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, usu.id as id_usuario, infess.nome as nome_usuario from grupo gru
+		inner join nome_grupo nomgru
+			on nomgru.id = gru.id_nome_grupo
+		inner join descricao_tipo_atendimento destipate
+			on destipate.id = gru.id_descricao_tipo_atendimento
+		inner join tipo_atendimento tip
+			on destipate.id_tipo_atendimento = tip.id
+		inner join grupo_modulo_periodo grumodper
+			on grumodper.id_grupo = gru.id
+		inner join modulo_periodo modper
+			on modper.id = grumodper.id_modulo_periodo
+		inner join modulo mod
+			on modper.id_modulo = mod.id
+		inner join modulo_periodo_atendimento_grupo modperategru
+			on modperategru.id_modulo_periodo = modper.id
+		inner join atendimento_grupo ategru
+			on ategru.id = modperategru.id_atendimento_grupo
+		inner join atendimento_grupo_atendimento_usuario ategruateusu
+			on ategruateusu.id_atendimento_grupo = ategru.id
+		inner join atendimento_usuario ateusu
+			on ateusu.id = ategruateusu.id_atendimento_usuario
+		inner join informacao_atendimento infate
+			on ateusu.id_informacao_atendimento = infate.id
+		inner join usuario usu
+			on usu.id = ateusu.id_usuario
+		inner join informacao_essencial infess
+			on infess.id = usu.id_informacao_essencial
+		where usu.id = $P{param_id_usuario} and ategru.status = 'NORMAL' and infate.frequencia not in ('OA')
+		)aux
+		on ategru.data = aux.data_atendimento and usu.id = aux.id_usuario and aux.hora_inicio between ategru.hora_inicio and ategru.hora_termino
+where usu.id = $P{param_id_usuario} and gru.id = $P{param_id_grupo} and modper.id = $P{param_id_modulo_periodo} and ategru.status = 'NORMAL' and infate.frequencia in ('OA')]]>
+	</queryString>
+	<field name="id_grupo" class="java.lang.Long"/>
+	<field name="id_modulo_periodo" class="java.lang.Long"/>
+	<field name="nome_grupo" class="java.lang.String"/>
+	<field name="data_atendimento" class="java.sql.Date"/>
+	<field name="hora_inicio" class="java.sql.Time"/>
+	<field name="hora_termino" class="java.sql.Time"/>
+	<field name="frequencia" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="id_usuario" class="java.lang.Long"/>
+	<field name="nome_usuario" class="java.lang.String"/>
+	<group name="data_atendimento">
+		<groupExpression><![CDATA[$F{data_atendimento}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="50" height="15" uuid="d893e75d-a677-4d42-a8d6-6f40299b3a0b"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_grupo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="HH:mm">
+				<reportElement x="440" y="0" width="35" height="15" uuid="e4128b44-fc01-42ef-b82e-be113e3451d3"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora_inicio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="HH:mm">
+				<reportElement x="475" y="0" width="41" height="15" uuid="b7d52c1e-1061-4bca-949c-71b5bf32fc19"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora_termino}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="516" y="0" width="36" height="15" uuid="1be0f566-ca86-4e6a-a380-69e1ca8f857e"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{frequencia}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="50" y="0" width="315" height="15" uuid="3f32ef36-1421-4217-b653-13d3ac59d872"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/YYYY">
+				<reportElement x="365" y="0" width="75" height="15" uuid="a89830ac-2e08-46bd-93e7-6abe76a42623"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_atendimento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

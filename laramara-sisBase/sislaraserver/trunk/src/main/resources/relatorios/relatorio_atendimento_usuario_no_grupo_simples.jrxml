@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Relatório de atendimentos de Usuário no Grupo Simples" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71f531de-c450-4454-918d-13a619933fac">
+	<property name="ireport.zoom" value="1.3636363636363635"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_id_grupo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_id_modulo_periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Projetos\\sislaraserver\\trunk\\src\\main\\resources\\relatorios\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     nomgru.nome AS nomegrupo,
+     gru.turma AS turma,
+     mod.nome AS modulo,
+     infess.id AS infoess,
+     usu.id AS prontuario,
+     infess.nome AS nomeusuario,
+     ate.data AS data,
+     ate.total_horas AS totalhoras,
+     infoaten.frequencia AS frequencia,
+     tipoaten.nome AS tipoatendimento,
+     infoaten.justificativa AS justificativa
+FROM
+     atendimento_grupo ate INNER JOIN atendimento_grupo_atendimento_usuario ateateusu ON ate.id = ateateusu.id_atendimento_grupo
+     INNER JOIN atendimento_usuario ateusu ON ateateusu.id_atendimento_usuario = ateusu.id
+     INNER JOIN usuario usu ON ateusu.id_usuario = usu.id
+     INNER JOIN informacao_atendimento infoaten ON ateusu.id_informacao_atendimento = infoaten.id
+     INNER JOIN informacao_essencial infess ON usu.id_informacao_essencial = infess.id
+     INNER JOIN modulo_periodo_atendimento_grupo modperaten ON ate.id = modperaten.id_atendimento_grupo
+     INNER JOIN modulo_periodo modper ON modperaten.id_modulo_periodo = modper.id
+     INNER JOIN modulo mod ON modper.id_modulo = mod.id
+     INNER JOIN grupo_modulo_periodo grumodper ON modper.id = grumodper.id_modulo_periodo
+     INNER JOIN grupo gru ON grumodper.id_grupo = gru.id
+     INNER JOIN nome_grupo nomgru ON gru.id_nome_grupo = nomgru.id
+     INNER JOIN descricao_tipo_atendimento desctipoaten ON gru.id_descricao_tipo_atendimento = desctipoaten.id
+     INNER JOIN tipo_atendimento tipoaten ON desctipoaten.id_tipo_atendimento = tipoaten.id
+WHERE
+     gru.id = $P{param_id_grupo} AND modper.id = $P{param_id_modulo_periodo} AND ate.status = 'NORMAL'
+ORDER BY
+     tipoaten.nome ASC,
+     gru.turma ASC,
+     desctipoaten.nome ASC,
+     mod.nome ASC,
+     tipoaten.nome ASC,
+     infess.nome ASC,
+     ate.data ASC]]>
+	</queryString>
+	<field name="nomegrupo" class="java.lang.String"/>
+	<field name="turma" class="java.lang.String"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="infoess" class="java.lang.Long"/>
+	<field name="prontuario" class="java.lang.Long"/>
+	<field name="nomeusuario" class="java.lang.String"/>
+	<field name="data" class="java.sql.Date"/>
+	<field name="totalhoras" class="java.sql.Time"/>
+	<field name="frequencia" class="java.lang.String"/>
+	<field name="tipoatendimento" class="java.lang.String"/>
+	<field name="justificativa" class="java.lang.String"/>
+	<group name="nomegrupo">
+		<groupExpression><![CDATA[$F{nomegrupo}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="turma">
+		<groupExpression><![CDATA[$F{turma}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="modulo">
+		<groupExpression><![CDATA[$F{modulo}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="c9937fd5-4907-4589-8351-1c3c1fbc181f" mode="Transparent" x="0" y="0" width="61" height="15"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="11" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomegrupo}+'-'+$F{turma}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="f8f28e11-3dce-42c9-a97e-4d485ef1e6c8" x="61" y="0" width="494" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="11" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipoatendimento}+" - "+$F{modulo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="nomeusuario">
+		<groupExpression><![CDATA[$F{nomeusuario}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<staticText>
+					<reportElement uuid="7519e436-2d52-46fa-b2cc-842ae44fb3b8" x="0" y="15" width="76" height="15"/>
+					<textElement>
+						<font fontName="Verdana" isBold="true" isUnderline="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Data]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="e776e197-3f97-4568-9f6b-b76b6daa2e89" x="76" y="15" width="70" height="15"/>
+					<textElement>
+						<font fontName="Verdana" isBold="true" isUnderline="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Frequência]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="8b87a47e-32f5-40d6-9388-c247d96793f5" x="146" y="15" width="100" height="15"/>
+					<textElement>
+						<font fontName="Verdana" isBold="true" isUnderline="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Justificativa]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="647166ad-58f3-4512-b4b6-dd1fd5ece4b1" x="0" y="0" width="555" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="11" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{prontuario}+"  "+$F{nomeusuario}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="44">
+				<subreport>
+					<reportElement uuid="37723d91-7cd9-45b0-9b1f-13427988ff54" x="1" y="0" width="555" height="44"/>
+					<subreportParameter name="param_id_modulo_periodo">
+						<subreportParameterExpression><![CDATA[$P{param_id_modulo_periodo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="param_id_grupo">
+						<subreportParameterExpression><![CDATA[$P{param_id_grupo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="param_infess">
+						<subreportParameterExpression><![CDATA[$F{infoess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["relatorio_atendimento_usuario_no_grupo_simples_subrelatorio_totalizacao.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="77">
+			<image>
+				<reportElement uuid="6e2dd2fc-3892-460c-b7f6-cc2056a29659" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="eae2b40d-e509-4f19-84c7-e4e44a5bd390" x="101" y="35" width="455" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[ATENDIMENTO SIMPLES DO USUARIO NO GRUPO]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="f734b915-631a-4d14-96c6-454568decb43" x="-20" y="75" width="595" height="2" forecolor="#666666"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement uuid="519edf68-9c82-429f-9cca-20adba0145bc" x="0" y="0" width="76" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="ed905c9a-be52-43ea-8b89-5b8dc9e54f23" x="76" y="0" width="70" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{frequencia}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b60542ca-3559-4939-82e1-36b55989d2b4" x="146" y="0" width="409" height="15"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{justificativa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="f0f9d92a-7d4f-4f95-b4b6-1c8320007714" mode="Opaque" x="0" y="4" width="515" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="24548abb-8d1a-4904-9f47-740a09e85003" mode="Opaque" x="515" y="4" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="fa772dde-a13e-4c28-99be-bef6bb9013e5" x="0" y="4" width="261" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

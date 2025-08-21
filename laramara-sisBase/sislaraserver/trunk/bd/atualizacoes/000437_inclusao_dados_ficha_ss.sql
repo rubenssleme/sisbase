@@ -1,0 +1,11 @@
+﻿insert into servico (descricao) values ('Infectologista');
+insert into necessidade (descricao)values('Avaliação');
+insert into necessidade (descricao)values('Orientação');
+insert into necessidade (descricao)values('Atendimento Especializado');
+insert into necessidade (descricao)values('Habilitação e Reabilitação');
+insert into necessidade (descricao)values('Reabilitação Profissional');
+insert into necessidade (descricao)values('Socialização');
+insert into necessidade (descricao)values('Cursos e Oficinas');
+insert into necessidade (descricao)values('Encaminhamento para Trabalho');
+insert into necessidade (descricao)values('Apoio Educacional');
+delete from recurso_moradia where id = 23;

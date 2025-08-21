@@ -1,0 +1,1 @@
+﻿update profissional set habilitado = true where id = 70;

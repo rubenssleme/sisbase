@@ -1,0 +1,1 @@
+﻿ALTER TABLE CONTA_ACESSO ADD COLUMN TOKEN character varying(36);

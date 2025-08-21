@@ -1,0 +1,1 @@
+﻿update profissional set habilitado = false where id in (63, 167);

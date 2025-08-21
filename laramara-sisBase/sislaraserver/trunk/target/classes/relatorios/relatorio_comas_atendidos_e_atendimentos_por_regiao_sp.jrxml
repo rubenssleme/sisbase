@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_comas_atendidos_por_regiao_sp" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5ec12c9-f549-4466-80b0-ee3a9b86cfd5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_data_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select aux3.zona, sum(aux3.total_atendidos) as total_atendidos, sum(aux3.total_atendimentos)as total_atendimentos from (
+	select aux.zona, count(distinct aux.id) as total_atendidos, 0 as total_atendimentos from(
+		select ende.zona, usu.id from grupo gru
+			inner join grupo_modulo_periodo grumodper
+				on gru.id = grumodper.id_grupo
+			inner JOIN modulo_periodo modper
+				ON grumodper.id_modulo_periodo = modper.id
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = gru.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner JOIN modulo mod
+				ON modper.id_modulo = mod.id
+			inner JOIN modulo_periodo_atendimento_grupo modperaten
+				ON modper.id = modperaten.id_modulo_periodo
+			inner JOIN atendimento_grupo ate
+				ON ate.id = modperaten.id_atendimento_grupo
+			inner join atendimento_grupo_atendimento_usuario ategruateusu
+				on ate.id = ategruateusu.id_atendimento_grupo
+			inner join atendimento_usuario ateusu
+				on ateusu.id = ategruateusu.id_atendimento_usuario
+			inner join usuario usu
+				on usu.id = ateusu.id_usuario
+			inner join informacao_atendimento infate
+				on infate.id = ateusu.id_informacao_atendimento
+			inner join atendimento_grupo_atendimento_profissional ategruatepro
+				on ategruatepro.id_atendimento_grupo = ate.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ategruatepro.id_atendimento_profissional
+			inner join informacao_atendimento infatepro
+				on infatepro.id = atepro.id_informacao_atendimento
+			inner join informacao_essencial infess
+				on infess.id = usu.id_informacao_essencial
+			inner join informacao_essencial_endereco infessend
+				on infess.id = infessend.id_informacao_essencial
+			inner join endereco ende
+				on ende.id = infessend.id_endereco
+			inner join municipio mun
+				on mun.id = ende.id_municipio
+		WHERE ate.status = 'NORMAL' and gru.excluido is false and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and mod.id not in (102, 103, 104, 106, 70) and ate.data between $P{param_data_inicio} and $P{param_data_termino} and ende.data_final_vigencia is null and ende.uf = 'SP' and mun.id = 4850
+	union all
+	select ende.zona, usu.id from atendimento_individual ateind
+		left join usuario usu
+			on usu.id = ateind.id_usuario
+		inner join informacao_essencial infess
+			on (infess.id = usu.id_informacao_essencial)
+		inner join informacao_atendimento infate
+			on infate.id = ateind.id_informacao_atendimento
+		inner join descricao_tipo_atendimento destipate
+			on (destipate.id = ateind.id_descricao_tipo_atendimento)
+		inner join tipo_atendimento tip
+			on (tip.id = destipate.id_tipo_atendimento)
+		inner join modulo mod
+			on (mod.id = ateind.id_modulo)
+		inner join atendimento_individual_atendimento_profissional ateindatepro
+			on ateindatepro.id_atendimento_individual = ateind.id
+		inner join atendimento_profissional atepro
+			on atepro.id = ateindatepro.id_atendimento_profissional
+		inner join informacao_atendimento infatepro
+			on infatepro.id = atepro.id_informacao_atendimento
+		inner join informacao_essencial_endereco infessend
+			on infess.id = infessend.id_informacao_essencial
+		inner join endereco ende
+			on ende.id = infessend.id_endereco
+		inner join municipio mun
+			on mun.id = ende.id_municipio
+	where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and mod.id not in (102, 103, 104, 106, 70) and ateind.data between $P{param_data_inicio} and $P{param_data_termino} and ende.data_final_vigencia is null and ende.uf = 'SP' and mun.id = 4850)aux
+	group by aux.zona
+	union all
+	select aux2.zona, 0 as total_atendidos, sum(aux2.total_atendimentos) as total_atendimentos from (
+		select aux.zona, sum(aux.total_atendimentos) as total_atendimentos from(
+			select ategru.id, ende.zona, count(distinct atepro.id_profissional)*count(distinct usu.id) as total_atendimentos from grupo gru
+				inner join grupo_modulo_periodo grumodper
+					on gru.id = grumodper.id_grupo
+				inner JOIN modulo_periodo modper
+					ON grumodper.id_modulo_periodo = modper.id
+				inner join descricao_tipo_atendimento destipate
+					on (destipate.id = gru.id_descricao_tipo_atendimento)
+				inner join tipo_atendimento tip
+					on (tip.id = destipate.id_tipo_atendimento)
+				inner JOIN modulo mod
+					ON modper.id_modulo = mod.id
+				inner JOIN modulo_periodo_atendimento_grupo modperaten
+					ON modper.id = modperaten.id_modulo_periodo
+				inner JOIN atendimento_grupo ategru
+					ON ategru.id = modperaten.id_atendimento_grupo
+				inner join atendimento_grupo_atendimento_usuario ategruateusu
+					on ategru.id = ategruateusu.id_atendimento_grupo
+				inner join atendimento_usuario ateusu
+					on ateusu.id = ategruateusu.id_atendimento_usuario
+				inner join usuario usu
+					on usu.id = ateusu.id_usuario
+				inner join informacao_essencial infess
+					on (infess.id = usu.id_informacao_essencial)
+				inner join informacao_atendimento infate
+					on infate.id = ateusu.id_informacao_atendimento
+				inner join atendimento_grupo_atendimento_profissional ategruatepro
+					on ategruatepro.id_atendimento_grupo = ategru.id
+				inner join atendimento_profissional atepro
+					on atepro.id = ategruatepro.id_atendimento_profissional
+				inner join informacao_atendimento infatepro
+					on infatepro.id = atepro.id_informacao_atendimento
+				inner join informacao_essencial_endereco infessend
+					on infess.id = infessend.id_informacao_essencial
+				inner join endereco ende
+					on ende.id = infessend.id_endereco
+				inner join municipio mun
+					on mun.id = ende.id_municipio
+			WHERE ategru.status = 'NORMAL' and gru.excluido is false and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and mod.id not in (102, 103, 104, 106, 70) and ategru.data between $P{param_data_inicio} and $P{param_data_termino} and ende.data_final_vigencia is null and ende.uf = 'SP' and mun.id = 4850
+			group by ategru.id, ende.zona)aux
+		group by aux.zona
+		union all
+		select aux.zona, sum(aux.total_atendimentos) as total_atendimentos from(
+			select ateind.id, ende.zona, count(distinct atepro.id_profissional)*count(distinct usu.id) as total_atendimentos from atendimento_individual ateind
+				inner join usuario usu
+					on usu.id = ateind.id_usuario
+				inner join informacao_atendimento infate
+					on infate.id = ateind.id_informacao_atendimento
+				inner join informacao_essencial infess
+					on (infess.id = usu.id_informacao_essencial)
+				inner join atendimento_individual_atendimento_profissional ateindatepro
+					on ateindatepro.id_atendimento_individual = ateind.id
+				inner join atendimento_profissional atepro
+					on atepro.id = ateindatepro.id_atendimento_profissional
+				inner join informacao_atendimento infatepro
+					on infatepro.id = atepro.id_informacao_atendimento
+				inner join descricao_tipo_atendimento destipate
+					on (destipate.id = ateind.id_descricao_tipo_atendimento)
+				inner join tipo_atendimento tip
+					on (tip.id = destipate.id_tipo_atendimento)
+				inner join modulo mod
+					on (mod.id = ateind.id_modulo)
+				inner join informacao_essencial_endereco infessend
+					on infess.id = infessend.id_informacao_essencial
+				inner join endereco ende
+					on ende.id = infessend.id_endereco
+				inner join municipio mun
+					on mun.id = ende.id_municipio
+			where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and infatepro.frequencia = 'AT'  and mod.id not in (102, 103, 104, 106, 70) and ateind.data between $P{param_data_inicio} and $P{param_data_termino} and ende.data_final_vigencia is null and ende.uf = 'SP' and mun.id = 4850
+			group by ateind.id, ende.zona)aux
+		group by aux.zona)aux2
+	group by aux2.zona)aux3
+group by aux3.zona
+order by sum(aux3.total_atendidos) desc;]]>
+	</queryString>
+	<field name="zona" class="java.lang.String"/>
+	<field name="total_atendidos" class="java.math.BigDecimal"/>
+	<field name="total_atendimentos" class="java.math.BigDecimal"/>
+	<group name="zona">
+		<groupExpression><![CDATA[$F{zona}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72"/>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement uuid="c06c5fb1-7b36-4823-a6aa-9eb9118bcec3" mode="Opaque" x="0" y="0" width="277" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Zona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f344810d-6169-41db-b39a-c681fc9a4de4" mode="Opaque" x="277" y="0" width="80" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Atendidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="008d5020-7c3c-4ee7-a5c1-66bb7f2132db" mode="Opaque" x="375" y="1" width="113" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Atendimentos]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="25375013-86ca-47d9-86a0-5993bf12a5c0" x="277" y="0" width="80" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_atendidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e1edfd2c-85d7-4de1-b00a-02df37857cdf" mode="Opaque" x="0" y="0" width="198" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{zona}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="893ee1e2-b128-4fa1-aa00-c18d65dc721b" x="375" y="0" width="113" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_atendimentos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="a5e07894-11ba-4669-9d4e-9da5ab80cfb3" mode="Opaque" x="0" y="4" width="515" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="e19d5aaa-aa32-48de-ae59-e870b9f5a556" mode="Opaque" x="515" y="4" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="ac2631a7-7dfd-46aa-bc48-d316971fe5ae" x="0" y="4" width="100" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

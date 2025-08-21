@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report6" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03ce5a16-9617-45c2-85cb-b08e6e160b19">
+	<property name="ireport.zoom" value="1.5026296018031553"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_data_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Projetos\\sislaraserver\\trunk\\src\\main\\resources\\relatorios\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, count(infess.id) as total_atendimentos, count(distinct infess.id) as total_pessoas, pro.nome as profissional
+	from atendimento_individual ateind
+	left join usuario usu
+		on usu.id = ateind.id_usuario
+	left join pre_cadastro pre
+		on pre.id = ateind.id_pre_cadastro
+	inner join informacao_essencial infess
+		on (infess.id = pre.id_informacao_essencial or infess.id = usu.id_informacao_essencial)
+	inner join descricao_tipo_atendimento destipate
+		on (destipate.id = ateind.id_descricao_tipo_atendimento)
+	inner join tipo_atendimento tip
+		on (tip.id = destipate.id_tipo_atendimento)
+	inner join modulo mod
+		on (mod.id = ateind.id_modulo)
+	inner join informacao_atendimento infate
+		on infate.id = ateind.id_informacao_atendimento
+	inner join atendimento_individual_atendimento_profissional ateindatepro
+		on ateind.id = ateindatepro.id_atendimento_individual
+	inner join atendimento_profissional atepro
+		on atepro.id = ateindatepro.id_atendimento_profissional
+	inner join profissional pro
+		on pro.id = atepro.id_profissional
+	inner join informacao_atendimento infatepro
+		on infatepro.id = atepro.id_informacao_atendimento
+where ateind.data between $P{param_data_inicio} and $P{param_data_termino} and status = 'NORMAL' and infate.frequencia = 'AT' and infatepro.frequencia = 'AT'
+group by tip.nome, destipate.nome, mod.nome, pro.nome
+order by tip.nome, destipate.nome, mod.nome, pro.nome;]]>
+	</queryString>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="total_atendimentos" class="java.lang.Long"/>
+	<field name="total_pessoas" class="java.lang.Long"/>
+	<field name="profissional" class="java.lang.String"/>
+	<variable name="soma_atendimentos" class="java.lang.Long" resetType="Group" resetGroup="modulo" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_atendimentos}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<group name="tipo">
+		<groupExpression><![CDATA[$F{tipo}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<line>
+					<reportElement uuid="a256841e-79e7-45eb-bd6e-692d96e6095f" x="-20" y="0" width="595" height="1" forecolor="#666666"/>
+				</line>
+				<textField>
+					<reportElement uuid="6c942fd0-4f9a-4eb5-b910-a15dd6a10b53" mode="Opaque" x="0" y="1" width="555" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="descricao">
+		<groupExpression><![CDATA[$F{descricao}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement uuid="f4b94dcd-637d-48ec-b00e-4d9c7900b9ed" x="17" y="0" width="538" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="modulo">
+		<groupExpression><![CDATA[$F{modulo}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement uuid="b8c09f42-6eca-41f6-b5c2-2425dc4f8a81" x="33" y="0" width="328" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<textField>
+					<reportElement uuid="ce2eecf5-bdfa-48fa-b761-a6e6856c63d6" x="365" y="0" width="99" height="15"/>
+					<textElement textAlignment="Center">
+						<font fontName="Verdana" isBold="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{soma_atendimentos}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="d44ee98d-9825-4737-bb2c-ded060efcab9" x="392" y="0" width="46" height="1"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="profissional">
+		<groupExpression><![CDATA[$F{profissional}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="50081ba6-e8ba-4a0a-b4d4-8810447e49cd" x="51" y="0" width="310" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{profissional}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="b15d50ad-b41a-4361-ac07-89ecd756bc1a" x="479" y="0" width="76" height="15"/>
+					<textElement textAlignment="Center">
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_pessoas}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="17f0dd45-1c06-42a3-86ac-2b85f2c52cad" x="365" y="0" width="99" height="15"/>
+					<textElement textAlignment="Center">
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_atendimentos}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="95">
+			<image>
+				<reportElement uuid="43f83f64-9840-4ed8-8688-d0cae000e89e" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="c227b5e0-5924-432c-8ae4-8600e9c70b9a" x="101" y="35" width="455" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE ATENDIMNETOS INDIVIDUAIS]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement uuid="ffe265e3-0a10-489e-ba6f-f23fe1f97a6f" x="380" y="60" width="75" height="15"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_data_inicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="451c8e15-00de-49c9-87a0-af6d47e0a3be" x="456" y="60" width="20" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[até]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement uuid="a5e86a54-217a-4c16-809b-1f1316346717" x="479" y="60" width="75" height="15"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_data_termino}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="7f2f78a2-c8ad-4f39-a268-3f280ddff8da" x="-20" y="75" width="595" height="2" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="850ca2c8-371f-437a-b23e-5ed68fcafd1a" x="365" y="80" width="99" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Atendimentos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2e81c949-090d-494f-ac2f-7df9fcd1f214" x="479" y="80" width="76" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Atendidos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="8a81215f-86da-4dfd-a2dd-bfa8a2569c62" mode="Transparent" x="0" y="0" width="239" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7f4da3b9-9fdb-4a12-a864-43e361389c8a" mode="Transparent" x="239" y="0" width="276" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="2e283145-8407-48ef-b698-92664e9b9f92" mode="Transparent" x="515" y="0" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band height="31">
+			<subreport>
+				<reportElement uuid="b6290f27-01fd-4b00-86c1-4b780022b5dc" x="0" y="0" width="555" height="31"/>
+				<subreportParameter name="param_data_inicio">
+					<subreportParameterExpression><![CDATA[$P{param_data_inicio}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="param_data_termino">
+					<subreportParameterExpression><![CDATA[$P{param_data_termino}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["relatorio_quantidade_atendimentos_atendidos_individual_subrelatorio_totalizacao.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

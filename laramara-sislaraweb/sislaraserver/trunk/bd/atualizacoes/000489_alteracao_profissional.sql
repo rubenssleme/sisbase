@@ -1,0 +1,2 @@
+﻿insert into profissional(nome, habilitado, voluntario, profissional)values('Alessandra Ramos Pinto', true, true, true);
+insert into profissional(nome, habilitado, voluntario, profissional)values('Ederson Lopes Rubinho', true, true, true);

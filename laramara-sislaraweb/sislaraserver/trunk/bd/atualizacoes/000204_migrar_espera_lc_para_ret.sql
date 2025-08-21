@@ -1,0 +1,1 @@
+﻿update espera set tipo_espera = 'RET' where tipo_espera = 'LC';

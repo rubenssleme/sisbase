@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report10" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="47f63b0e-2b43-4c3e-a402-efd517975e04">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Projetos\\sislaraserver\\trunk\\src\\main\\resources\\relatorios\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_id_usuario" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_foto" class="java.io.InputStream" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select usu.id as prontuario, usu.data_cadastro, info.nome, info.data_nascimento, usu.naturalidade, usu.nacionalidade, usu.genero, usu.grupo_etnico, ende.uf, ende.zona, hiscla.classificacao_social, usu.genero,
+hisrg.rg, estciv.descricao as estado_civil, ende.endereco, ende.numero, ende.bairro, mun.nome as municipio, ende.cep, ende.bairro, ende.complemento, info.id_contato, con.nome_contato, pais. nome as pais,
+tel.tipo as tipo, tel.ddd as ddd, tel.telefone as telefone, hisstausu.status as status_usuario, array_to_string(array_agg(distinct hisset.id_setor),', ') as setores, usu.rg_data_expedicao, usu.rg_orgao_emissor, usu.rg_uf, info.cpf
+	from usuario usu
+	inner join informacao_essencial info
+		ON (info.id = usu.id_informacao_essencial)
+	inner join informacao_essencial_endereco infoend
+		ON (infoend.id_informacao_essencial = info.id )
+	inner join endereco ende
+		ON (ende.id = infoend.id_endereco)
+	inner join municipio mun
+		ON (mun.id = ende.id_municipio)
+	left join usuario_historico_classificacao_social usuhiscla
+		ON (usu.id = usuhiscla.id_usuario)
+	left join historico_classificacao_social hiscla
+		ON (hiscla.id = usuhiscla.id_historico_classificacao_social)
+	left join usuario_historico_classificacao_social usuhisclasoc
+		ON (usu.id = usuhisclasoc.id_usuario)
+	left join historico_classificacao_social hisclasoc
+		ON (hisclasoc.id = usuhisclasoc.id_historico_classificacao_social)
+	left join informacao_essencial_historico_rg infohisrg
+		ON (infohisrg.id_informacao_essencial = info.id)
+	left join historico_rg hisrg
+		ON (hisrg.id = infohisrg.id_historico_rg)
+	left join estado_civil estciv
+		ON (estciv.id = usu.id_estado_civil)
+	left join contato con
+		ON (con.id = info.id_contato)
+	left Join pais pais
+		ON (pais.id = ende.id_pais)
+	inner join telefone tel
+		ON (tel.id_contato = con.id)
+	left join usuario_historico_status_usuario usuhisstausu
+		on usuhisstausu.id_usuario = usu.id
+	left join historico_status_usuario hisstausu
+		on hisstausu.id = usuhisstausu.id_historico_status_usuario
+	left join usuario_historico_setor usuhisset
+		on usuhisset.id_usuario = usu.id
+	left join historico_setor hisset
+		on hisset.id = usuhisset.id_historico_setor
+where
+	ende.data_final_vigencia is null
+	and hiscla.data_final_vigencia is null
+	and hisclasoc.data_final_vigencia is null
+	and hisrg.data_final_vigencia is null
+	and usu.id = $P{param_id_usuario}
+	and hisstausu.data_final_vigencia is null
+	and hisset.data_final_vigencia is null
+group by usu.id, usu.data_cadastro, info.nome, info.data_nascimento, usu.naturalidade, usu.nacionalidade, usu.genero, ende.uf, ende.zona, hiscla.classificacao_social, usu.genero, hisrg.rg,
+	estciv.descricao, ende.endereco, ende.numero, ende.bairro, mun.nome, ende.cep, ende.bairro, ende.complemento, info.id_contato, con.nome_contato, pais.nome, tel.tipo,
+	tel.ddd, tel.telefone, hisstausu.status, usu.rg_data_expedicao, usu.rg_orgao_emissor, usu.rg_uf, info.cpf
+order by usu.id]]>
+	</queryString>
+	<field name="prontuario" class="java.lang.Long"/>
+	<field name="data_cadastro" class="java.sql.Timestamp"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="data_nascimento" class="java.sql.Date"/>
+	<field name="naturalidade" class="java.lang.String"/>
+	<field name="nacionalidade" class="java.lang.String"/>
+	<field name="genero" class="java.lang.String"/>
+	<field name="grupo_etnico" class="java.lang.String"/>
+	<field name="uf" class="java.lang.String"/>
+	<field name="zona" class="java.lang.String"/>
+	<field name="classificacao_social" class="java.lang.String"/>
+	<field name="rg" class="java.lang.String"/>
+	<field name="estado_civil" class="java.lang.String"/>
+	<field name="endereco" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="bairro" class="java.lang.String"/>
+	<field name="municipio" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String"/>
+	<field name="id_contato" class="java.lang.Long"/>
+	<field name="nome_contato" class="java.lang.String"/>
+	<field name="pais" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="ddd" class="java.lang.String"/>
+	<field name="telefone" class="java.lang.String"/>
+	<field name="status_usuario" class="java.lang.String"/>
+	<field name="setores" class="java.lang.String"/>
+	<field name="rg_data_expedicao" class="java.sql.Date"/>
+	<field name="rg_orgao_emissor" class="java.lang.String"/>
+	<field name="rg_uf" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<group name="id_contato">
+		<groupExpression><![CDATA[$F{id_contato}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="telefone">
+		<groupExpression><![CDATA[$F{telefone}]]></groupExpression>
+		<groupHeader>
+			<band height="11">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="81" y="0" width="181" height="11" uuid="ac8ac0e9-a5d6-4d3d-95ed-24183fd0905a"/>
+					<textElement>
+						<font fontName="Verdana" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ddd}+"-"+$F{telefone}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="1" y="0" width="79" height="11" uuid="253ad6ab-37a7-465f-8a62-403f102c0430"/>
+					<textElement>
+						<font fontName="Verdana" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="185">
+			<staticText>
+				<reportElement mode="Transparent" x="403" y="29" width="72" height="13" uuid="2587d7dc-af19-41dc-8ab8-16fa5f83b9f6"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Prontuário]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="403" y="42" width="73" height="16" uuid="755d8e10-2da9-43e1-838d-4b686ce71bb7"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prontuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="29" width="282" height="13" uuid="58957edf-c448-4b6a-a688-420c8504aac4"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="121" y="42" width="282" height="16" uuid="e9eca2a9-fd05-4e92-8667-7e65a78ff90b"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="475" y="29" width="120" height="13" isPrintWhenDetailOverflows="true" uuid="e9b5a70f-7e2c-471b-85cd-cd24212a576c"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Data de Nascimento]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="476" y="42" width="119" height="16" uuid="ca213d71-bff2-4624-8c80-11a0b11d8b6c"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="259" y="58" width="115" height="13" uuid="6e911a70-5255-4c42-85d6-dce56563d224"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Naturalidade]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="259" y="71" width="115" height="16" uuid="847d705f-d1e4-4360-a602-206688a06d17"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{naturalidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="193" y="58" width="66" height="13" uuid="d7982f07-e3b3-4725-829c-ae3ca1d1a57c"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Cor/Raça	]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="193" y="71" width="66" height="16" uuid="43b101fa-57c9-42af-9c0f-a47ef233a19f"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grupo_etnico}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="0" width="112" height="13" isPrintWhenDetailOverflows="true" uuid="9bf98f3f-458c-4aff-b340-922623ba55d1"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Data de Cadastro]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="121" y="13" width="112" height="16" uuid="c8f4f9f6-b593-4ec8-b4be-4bd3e5e196dd"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_cadastro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="87" width="87" height="13" uuid="b968aa09-6425-49f4-848c-e91c17a03cb0"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RG]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="121" y="100" width="88" height="16" uuid="9a747dab-6088-4c77-9a9b-6f2064e2e61f"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="374" y="58" width="92" height="13" uuid="07171078-a445-45f8-9679-d45526003bcd"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nacionalidade]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="374" y="71" width="92" height="16" uuid="8e60b28c-0070-40e3-9815-ef073cfbf619"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nacionalidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="58" width="73" height="13" uuid="711affe0-6399-45cd-b9fd-25b3be6a454e"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Gênero]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="121" y="71" width="73" height="16" uuid="b3719a92-8945-4dcb-b88c-fb9f4efcd0aa"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{genero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="458" y="143" width="60" height="13" uuid="723bd24f-d91a-4cf0-a2f7-b50284c35065"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CEP]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="458" y="156" width="60" height="16" uuid="8d1e72f7-dd41-4805-b406-1975c841d632"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="114" width="272" height="13" uuid="59dbbe25-2a4e-4db6-8c4b-dfaf267b40ab"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="127" width="272" height="16" uuid="66c53f41-2989-4d60-9489-fffe3072059c"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="273" y="114" width="52" height="13" uuid="35a297f6-4f58-422f-9701-36689a8225ea"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="273" y="127" width="52" height="16" uuid="f7d1f06b-467b-484a-b75d-8c95c060734d"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="114" width="89" height="13" uuid="49477746-874a-4627-b29d-480e5767005d"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Complemento]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="358" y="127" width="89" height="16" uuid="3e8a92c5-3439-4d96-ba31-1ae5b8f6b1ae"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{complemento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="143" width="272" height="13" uuid="d580688a-3420-40b1-bd99-6ef181dcde94"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Bairro]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="156" width="272" height="16" uuid="7dc5556a-3879-416c-a7ae-84084d846c04"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bairro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="143" width="20" height="13" uuid="686e0bda-9560-43ca-9428-8e045c97e0af"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[UF]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="435" y="156" width="20" height="16" uuid="6c5ab167-351d-4fcb-81ce-b6a3078609c8"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{uf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="273" y="143" width="191" height="13" uuid="b39255a9-c529-4157-9dcc-4946b39cbdcd"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Municipio]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="273" y="156" width="162" height="16" uuid="a2438b8e-0c05-463e-bb88-af501dd25a63"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="172" width="80" height="13" uuid="b8bec580-84de-40d4-8029-72cae3076518"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Telefone(s)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="87" width="150" height="13" uuid="f1c45020-bb9a-432b-969d-04a4ed3def70"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="208" y="100" width="150" height="16" uuid="77350884-00cd-4ff1-a7b3-e8b0e2963f7d"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,1 @@
+insert into motivo_cancelamento(id, descricao)values(5, 'Feriado');

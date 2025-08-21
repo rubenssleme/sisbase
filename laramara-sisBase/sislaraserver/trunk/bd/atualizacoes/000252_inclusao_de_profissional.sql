@@ -1,0 +1,1 @@
+﻿insert into profissional(nome, habilitado, voluntario, profissional)values('Denis Pinto Garcia', true, true, true);

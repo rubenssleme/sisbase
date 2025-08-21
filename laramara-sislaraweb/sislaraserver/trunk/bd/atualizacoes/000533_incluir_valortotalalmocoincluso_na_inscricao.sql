@@ -1,0 +1,1 @@
+ALTER TABLE inscricao ADD COLUMN valor_total_almoco_incluso boolean;

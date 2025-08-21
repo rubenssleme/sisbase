@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd">
+     
+    <task:annotation-driven executor="myExecutor" scheduler="myScheduler"/>
+	<task:executor id="myExecutor" pool-size="5"/>
+	<task:scheduler id="myScheduler" pool-size="10"/>
+        
+	<context:annotation-config/>
+	<context:component-scan base-package="br.laramara.ti" />
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSourceSistelemarketing"/>
+    </bean>
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="location" value="/application.properties" />
+	</bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="SistelemarketingPersistenceUnit" />
+        <property name="dataSource" ref="dataSourceSistelemarketing"/>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+			
+	<bean id="fabricaSistelemarketing" class="org.mybatis.spring.SqlSessionFactoryBean">
+  		<property name="dataSource" ref="dataSourceSistelemarketing" />
+	</bean>
+	
+    <bean primary="true" id="dataSourceSistelemarketing" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${sistema.db.driver}"/>
+        <property name="jdbcUrl" value="${sistema.db.url}${sistema.db.endereco}:${sistema.db.porta}/${sistema.db.bancodedados}"/>
+        <property name="user" value="${sistema.db.usuario}"/>
+        <property name="password" value="${sistema.db.senha}"/>
+        <property name="maxPoolSize" value="100"/>
+        <property name="maxIdleTime" value="60"/>
+    </bean>
+    
+    <bean id="dataSourcePbx" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${pbx.db.driver}"/>
+        <property name="jdbcUrl" value="${pbx.db.url}${pbx.db.endereco}:${pbx.db.porta}/${pbx.db.bancodedados}"/>
+        <property name="user" value="${pbx.db.usuario}"/>
+        <property name="password" value="${pbx.db.senha}"/>
+        <property name="maxPoolSize" value="100"/>
+        <property name="maxIdleTime" value="60"/>
+    </bean>
+</beans>

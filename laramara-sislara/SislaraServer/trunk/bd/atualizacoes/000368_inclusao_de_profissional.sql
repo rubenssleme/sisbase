@@ -1,0 +1,1 @@
+﻿insert into profissional(nome, habilitado, voluntario, profissional)values('Maria Luiza Morooka', true, true, true);	

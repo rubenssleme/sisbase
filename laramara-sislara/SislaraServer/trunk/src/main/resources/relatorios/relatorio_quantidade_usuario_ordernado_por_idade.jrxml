@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_quantidade_usuario_por_idade" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6b1ff8c4-854c-42a5-8b2e-d0b1fdbbed09">
+	<property name="ireport.zoom" value="1.5026296018031553"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select extract(year from age(info.data_nascimento)) as idade, count(usu.id) as quantidade
+	from usuario usu inner join informacao_essencial info
+		on (info.id = usu.id_informacao_essencial)
+group by extract(year from age(info.data_nascimento))
+order by extract(year from age(info.data_nascimento));]]>
+	</queryString>
+	<field name="idade" class="java.lang.Double"/>
+	<field name="quantidade" class="java.lang.Long"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="77">
+			<image>
+				<reportElement uuid="fa0b7ade-ff37-4140-a61b-9c4c594d5680" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="4b39e188-2e4a-40af-bcb5-9cae1413dfe1" x="101" y="35" width="455" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[QUANTIDADE DE USUÁRIOS POR IDADE]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d2de46a9-c83f-4a99-9fd9-2b21aa35aa01" x="-20" y="75" width="595" height="2" forecolor="#666666"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<line>
+				<reportElement uuid="9c98174d-7097-47d3-9372-541c450bf615" x="-20" y="15" width="595" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="86a42619-faee-42eb-8ea5-8ff9bef07d6e" mode="Opaque" x="0" y="0" width="40" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Idade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b16efd25-e577-4c62-b146-ac08faeec59f" mode="Opaque" x="54" y="0" width="78" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<textField isStretchWithOverflow="true" pattern="###0">
+				<reportElement uuid="ac94fe16-cbdb-489e-b318-f08a59119ae4" x="0" y="0" width="40" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idade}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="c53edd0a-9ee6-4e15-b9d7-3fbde37e30c7" x="54" y="0" width="78" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="33c5dc21-c385-4fbd-b0b3-fc97f7da17b6" mode="Opaque" x="0" y="4" width="515" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="2e444e0a-895f-4658-8e40-5a2ac1985540" mode="Opaque" x="515" y="4" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yy">
+				<reportElement uuid="f8f20efb-b5de-4ecd-a6c2-9793b16c04c3" x="0" y="4" width="100" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

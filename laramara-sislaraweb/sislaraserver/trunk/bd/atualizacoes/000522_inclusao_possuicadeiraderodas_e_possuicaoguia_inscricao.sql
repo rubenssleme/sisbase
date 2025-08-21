@@ -1,0 +1,2 @@
+alter table inscricao add column usuario_externo_possui_cadeira_de_rodas boolean;
+alter table inscricao add column usuario_externo_possui_cao_guia boolean;

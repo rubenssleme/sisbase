@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3_subreport1" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5e81bf33-59cf-486f-b726-87d8388fbd67">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_id_modulo_periodo" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[select pro.nome from modulo_periodo_profissional_vinculo modperprovin
+	inner join profissional_vinculo provin
+		on provin.id = modperprovin.id_profissional_vinculo
+	inner join profissional pro
+		on pro.id = provin.id_profissional
+where modperprovin.id_modulo_periodo = $P{param_id_modulo_periodo}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band height="13">
+			<staticText>
+				<reportElement uuid="57bd1364-90dc-487b-830c-d939c86ae46e" x="0" y="0" width="100" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Profissionais:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="8">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="7fafd7d3-e308-48c8-821c-d6a333b099ce" x="0" y="0" width="555" height="8"/>
+				<textElement>
+					<font fontName="Verdana" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

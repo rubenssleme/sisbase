@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" resourceKey="Form.title"/>
+    <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
+    <Property name="resizable" type="boolean" value="false"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jpaTelaEditarMovimentacao" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jpaTelaEditarMovimentacao" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jpaTelaEditarMovimentacao">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="jpaTelaEditarMovimentacao" noResource="true"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jlaQtdCor" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jtfQtdCor" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jlaCor" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jlaFibra" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jcbFibra" min="-2" pref="123" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jlaDirecaoFibra" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jtfDirecaoFibra" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jlaFormato" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jtfFormato" min="-2" pref="85" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jcbCor" min="-2" pref="532" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jbuAdicionarCor" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlaCliente" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="jlaGl" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jcbCliente" min="-2" pref="875" max="-2" attributes="0"/>
+                                      <Component id="jtfGl" min="-2" pref="139" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jbuAdicionarCliente" min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <Component id="jlaCodigoProduto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jtfCodigoProduto" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jlaDescricao" min="-2" pref="46" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jcbDescricao" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jcbAdicionarDescricao" min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jlaDescricaoProduto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jcbDescricaoProduto" min="-2" pref="593" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jbuAdicionarDescricaoProduto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jlaCodigoAnterior" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jtfCodigoAnterior" min="-2" pref="134" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jlaEspecificacao" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jcbEspecificacao" min="-2" pref="61" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jlaGramatura" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jtfGramatura" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jlaPapel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jcbPapel" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jlaLaetus" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jtfLaetus" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jlaSangria" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jcbSangria" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jlaAbdb" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jcbAbdb" min="-2" pref="103" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jlaObsEspecificacao" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jspObsEspecificacao" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jbuSalvar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jbuFechar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jlaObsArte" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jspObsArte" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jlaPasta" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jtfPasta" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jlaGr" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jtfGr" min="-2" pref="108" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlaPlanaPapel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlaBobinas" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jcbBobinas" min="-2" pref="115" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jcbAdicionarBobinas" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jcbPlanaPapel" min="-2" pref="115" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jcbAdicionarPlanaPapel" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jlaTipoProva" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jcbTipoProva" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jtfGl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaGl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jbuAdicionarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jtfCodigoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbAdicionarDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaCodigoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jcbCor" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlaCor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbuAdicionarCor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jtfQtdCor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlaQtdCor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jcbFibra" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaDirecaoFibra" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfDirecaoFibra" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaFormato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfFormato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaFibra" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlaDescricaoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbDescricaoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbuAdicionarDescricaoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfCodigoAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaCodigoAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlaGramatura" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfGramatura" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaPapel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbPapel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaLaetus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfLaetus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaSangria" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbSangria" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaAbdb" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbAbdb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jcbEspecificacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaEspecificacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jlaObsEspecificacao" min="-2" max="-2" attributes="0"/>
+                      <Component id="jspObsEspecificacao" min="-2" pref="63" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jlaObsArte" min="-2" max="-2" attributes="0"/>
+                      <Component id="jspObsArte" min="-2" pref="76" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jcbTipoProva" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlaTipoProva" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlaGr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfGr" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlaPasta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfPasta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlaBobinas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbBobinas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbAdicionarBobinas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlaPlanaPapel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbPlanaPapel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbAdicionarPlanaPapel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="105" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jbuSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbuFechar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jlaGl">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaGl.text"/>
+            <Property name="name" type="java.lang.String" value="jlaGl" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfGl">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" resourceKey="jtfGl.text"/>
+            <Property name="name" type="java.lang.String" value="jtfGl" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuSalvar">
+          <Properties>
+            <Property name="mnemonic" type="int" value="83"/>
+            <Property name="text" type="java.lang.String" resourceKey="jbuSalvar.text"/>
+            <Property name="name" type="java.lang.String" value="jbuSalvar" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuSalvarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuFechar">
+          <Properties>
+            <Property name="mnemonic" type="int" value="70"/>
+            <Property name="text" type="java.lang.String" resourceKey="jbuFechar.text"/>
+            <Property name="name" type="java.lang.String" value="jbuFechar" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuFecharActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaCliente">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaCliente.text"/>
+            <Property name="name" type="java.lang.String" value="jlaCliente" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbCliente">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbCliente" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuAdicionarCliente">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jbuAdicionarCliente.text"/>
+            <Property name="name" type="java.lang.String" value="jbuAdicionarCliente" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAdicionarClienteActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaCodigoProduto">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaCodigoProduto.text"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="name" type="java.lang.String" value="jlaCodigoProduto" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfCodigoProduto">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfCodigoProduto.text"/>
+            <Property name="name" type="java.lang.String" value="jtfCodigoProduto" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaDescricao">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaDescricao.text"/>
+            <Property name="name" type="java.lang.String" value="jlaDescricao" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbDescricao">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbDescricao" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jcbAdicionarDescricao">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jcbAdicionarDescricao.text"/>
+            <Property name="name" type="java.lang.String" value="jcbAdicionarDescricao" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbAdicionarDescricaoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaQtdCor">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaQtdCor.text"/>
+            <Property name="name" type="java.lang.String" value="jlaQtdCor" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfQtdCor">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfQtdCor.text"/>
+            <Property name="name" type="java.lang.String" value="jtfQtdCor" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaCor">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaCor.text"/>
+            <Property name="name" type="java.lang.String" value="jlaCor" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbCor">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbCor" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuAdicionarCor">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jbuAdicionarCor.text"/>
+            <Property name="name" type="java.lang.String" value="jbuAdicionarCor" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAdicionarCorActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaFibra">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaFibra.text"/>
+            <Property name="name" type="java.lang.String" value="jlaFibra" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbFibra">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbFibra" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaDirecaoFibra">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaDirecaoFibra.text"/>
+            <Property name="name" type="java.lang.String" value="jlaDirecaoFibra" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfDirecaoFibra">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfDirecaoFibra.text"/>
+            <Property name="name" type="java.lang.String" value="jtfDirecaoFibra" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaFormato">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaFormato.text"/>
+            <Property name="name" type="java.lang.String" value="jlaFormato" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfFormato">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfFormato.text"/>
+            <Property name="name" type="java.lang.String" value="jtfFormato" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaDescricaoProduto">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaDescricaoProduto.text"/>
+            <Property name="name" type="java.lang.String" value="jlaDescricaoProduto" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbDescricaoProduto">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbDescricaoProduto" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuAdicionarDescricaoProduto">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jbuAdicionarDescricaoProduto.text"/>
+            <Property name="name" type="java.lang.String" value="jbuAdicionarDescricaoProduto" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAdicionarDescricaoProdutoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaCodigoAnterior">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaCodigoAnterior.text"/>
+            <Property name="name" type="java.lang.String" value="jlaCodigoAnterior" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfCodigoAnterior">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfCodigoAnterior.text"/>
+            <Property name="name" type="java.lang.String" value="jtfCodigoAnterior" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaGramatura">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaGramatura.text"/>
+            <Property name="name" type="java.lang.String" value="jlaGramatura" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfGramatura">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfGramatura.text"/>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="jtfGramatura.toolTipText"/>
+            <Property name="name" type="java.lang.String" value="jtfGramatura" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaPapel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaPapel.text"/>
+            <Property name="name" type="java.lang.String" value="jlaPapel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbPapel">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbPapel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaLaetus">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaLaetus.text"/>
+            <Property name="name" type="java.lang.String" value="jlaLaetus" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfLaetus">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfLaetus.text"/>
+            <Property name="name" type="java.lang.String" value="jtfLaetus" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaSangria">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaSangria.text"/>
+            <Property name="name" type="java.lang.String" value="jlaSangria" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbSangria">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbSangria" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaAbdb">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaAbdb.text"/>
+            <Property name="name" type="java.lang.String" value="jlaAbdb" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbAbdb">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbAbdb" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaEspecificacao">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaEspecificacao.text"/>
+            <Property name="name" type="java.lang.String" value="jlaEspecificacao" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbEspecificacao">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbEspecificacao" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaObsEspecificacao">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaObsEspecificacao.text"/>
+            <Property name="name" type="java.lang.String" value="jlaObsEspecificacao" noResource="true"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jspObsEspecificacao">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jspObsEspecificacao" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JEditorPane" name="jepObsEspecificacao">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jepObsEspecificacao" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jlaObsArte">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaObsArte.text"/>
+            <Property name="name" type="java.lang.String" value="jlaObsArte" noResource="true"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jspObsArte">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jspObsArte" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JEditorPane" name="jepObsArte">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jepObsArte" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jlaGr">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaGr.text"/>
+            <Property name="name" type="java.lang.String" value="jlaGr" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaPasta">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaPasta.text"/>
+            <Property name="name" type="java.lang.String" value="jlaPasta" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfGr">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfGr.text"/>
+            <Property name="name" type="java.lang.String" value="jtfGr" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfPasta">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jtfPasta.text"/>
+            <Property name="name" type="java.lang.String" value="jtfPasta" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaBobinas">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaBobinas.text"/>
+            <Property name="name" type="java.lang.String" value="jlaBobinas" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbBobinas">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbBobinas" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaPlanaPapel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaPlanaPapel.text"/>
+            <Property name="name" type="java.lang.String" value="jlaPlanaPapel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbPlanaPapel">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbPlanaPapel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jcbAdicionarBobinas">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jcbAdicionarBobinas.text"/>
+            <Property name="name" type="java.lang.String" value="jcbAdicionarBobinas" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbAdicionarBobinasActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jcbAdicionarPlanaPapel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jcbAdicionarPlanaPapel.text"/>
+            <Property name="name" type="java.lang.String" value="jcbAdicionarPlanaPapel" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbAdicionarPlanaPapelActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaTipoProva">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jlaTipoProva.text"/>
+            <Property name="name" type="java.lang.String" value="jlaTipoProva" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbTipoProva">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jcbTipoProva" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

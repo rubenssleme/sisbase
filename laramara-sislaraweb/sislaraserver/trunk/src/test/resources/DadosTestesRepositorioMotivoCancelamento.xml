@@ -1,0 +1,4 @@
+<dataset>
+	<motivo_cancelamento id="122" descricao="Motivo A" agendamento="true"/>
+	<motivo_cancelamento id="133" descricao="Motivo B" agendamento="true"/>
+</dataset>

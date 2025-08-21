@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5cc3222e-0008-403c-a418-b87e6c28cac8">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_data_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_condicional_cn_ou_ret" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select cn.*, espera_oftalmo_triando.data_espera_triagem_ou_aee_oftal_triando, espera_oftalmo_aguardando.data_espera_triagem_ou_aee_oftal_aguardando, espera_oftalmo_agendado.data_espera_triagem_ou_aee_oftal_agendada, atend_triagem_ou_aee_oftal.data_atend_triagem_ou_aee_oftal , espera_av_fun_aguardando.data_espera_av_fun_aguardando, atend_av_fun.data_atend_av_fun  from
+			(select distinct usu.id, ateind.data as data_atendimento_ss_avaliacao_triagem
+				from atendimento_individual ateind
+					inner join usuario usu
+						on usu.id = ateind.id_usuario
+					inner join informacao_essencial infess
+						on (infess.id = usu.id_informacao_essencial)
+					inner join informacao_atendimento infate
+						on infate.id = ateind.id_informacao_atendimento
+					inner join descricao_tipo_atendimento destipate
+						on (destipate.id = ateind.id_descricao_tipo_atendimento)
+					inner join tipo_atendimento tip
+						on (tip.id = destipate.id_tipo_atendimento)
+					inner join modulo mod
+						on (mod.id = ateind.id_modulo)
+					inner join atendimento_individual_atendimento_profissional ateindatepro
+						on ateindatepro.id_atendimento_individual = ateind.id
+					inner join atendimento_profissional atepro
+						on atepro.id = ateindatepro.id_atendimento_profissional
+					inner join profissional pro
+						on pro.id = atepro.id_profissional
+			where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and ateind.data between $P{param_data_inicio} and $P{param_data_termino} and destipate.id = 37 and mod.id in (37) and usu.id $P!{param_condicional_cn_ou_ret} in (
+				select usu.id
+					from atendimento_individual ateind
+						inner join usuario usu
+							on usu.id = ateind.id_usuario
+						inner join informacao_essencial infess
+							on (infess.id = usu.id_informacao_essencial)
+						inner join informacao_atendimento infate
+							on infate.id = ateind.id_informacao_atendimento
+						inner join descricao_tipo_atendimento destipate
+							on (destipate.id = ateind.id_descricao_tipo_atendimento)
+						inner join tipo_atendimento tip
+							on (tip.id = destipate.id_tipo_atendimento)
+						inner join modulo mod
+							on (mod.id = ateind.id_modulo)
+				where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and ateind.data > '01/01/1999' and ateind.data < $P{param_data_inicio} and destipate.id = 37 and mod.id in (37))
+			order by usu.id)cn
+			left join (
+				select esp.id_usuario, max(hisstaesp.data_inicial_vigencia) as data_espera_triagem_ou_aee_oftal_triando from espera esp
+					inner join espera_historico_status_espera esphisstaesp
+						on esphisstaesp.id_espera = esp.id
+					inner join historico_status_espera hisstaesp
+						on hisstaesp.id = esphisstaesp.id_historico_status_espera
+				where hisstaesp.status = 'TRIANDO' and esp.tipo_espera = 'CN' and hisstaesp.data_final_vigencia is null and esp.id_descricao_tipo_atendimento = 40 and esp.id_modulo in (130, 1)
+				group by esp.id_usuario
+				)espera_oftalmo_triando
+			on espera_oftalmo_triando.id_usuario = cn.id and espera_oftalmo_triando.data_espera_triagem_ou_aee_oftal_triando > cn.data_atendimento_ss_avaliacao_triagem
+			left join (
+				select esp.id_usuario, max(hisstaesp.data_inicial_vigencia) as data_espera_triagem_ou_aee_oftal_aguardando from espera esp
+					inner join espera_historico_status_espera esphisstaesp
+						on esphisstaesp.id_espera = esp.id
+					inner join historico_status_espera hisstaesp
+						on hisstaesp.id = esphisstaesp.id_historico_status_espera
+				where hisstaesp.status = 'AGUARDANDO' and esp.tipo_espera = 'CN' and hisstaesp.data_final_vigencia is null and esp.id_descricao_tipo_atendimento = 40 and esp.id_modulo in (130, 1)
+				group by esp.id_usuario
+				)espera_oftalmo_aguardando
+			on espera_oftalmo_aguardando.id_usuario = cn.id and espera_oftalmo_aguardando.data_espera_triagem_ou_aee_oftal_aguardando > cn.data_atendimento_ss_avaliacao_triagem
+			left join (
+				select esp.id_usuario, max(hisstaesp.data_inicial_vigencia) as data_espera_triagem_ou_aee_oftal_agendada from espera esp
+					inner join espera_historico_status_espera esphisstaesp
+						on esphisstaesp.id_espera = esp.id
+					inner join historico_status_espera hisstaesp
+						on hisstaesp.id = esphisstaesp.id_historico_status_espera
+				where hisstaesp.status = 'AGENDADO' and esp.tipo_espera = 'CN' and hisstaesp.data_final_vigencia is null and esp.id_descricao_tipo_atendimento = 40 and esp.id_modulo in (130, 1)
+				group by esp.id_usuario
+				)espera_oftalmo_agendado
+			on espera_oftalmo_agendado.id_usuario = cn.id and espera_oftalmo_agendado.data_espera_triagem_ou_aee_oftal_agendada > cn.data_atendimento_ss_avaliacao_triagem
+			left join (
+				select usu.id, max(ateind.data) as data_atend_triagem_ou_aee_oftal from atendimento_individual ateind
+					inner join usuario usu
+						on usu.id = ateind.id_usuario
+					inner join informacao_essencial infess
+						on (infess.id = usu.id_informacao_essencial)
+					inner join informacao_atendimento infate
+						on infate.id = ateind.id_informacao_atendimento
+					inner join descricao_tipo_atendimento destipate
+						on (destipate.id = ateind.id_descricao_tipo_atendimento)
+					inner join tipo_atendimento tip
+						on (tip.id = destipate.id_tipo_atendimento)
+					inner join modulo mod
+						on (mod.id = ateind.id_modulo)
+				where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and destipate.id = 40 and mod.id in (130, 1)
+				group by usu.id
+				) atend_triagem_ou_aee_oftal
+			on atend_triagem_ou_aee_oftal.id = cn.id and atend_triagem_ou_aee_oftal.data_atend_triagem_ou_aee_oftal  > cn.data_atendimento_ss_avaliacao_triagem
+			left join (
+				select esp.id_usuario, max(hisstaesp.data_inicial_vigencia) as data_espera_av_fun_aguardando from espera esp
+					inner join espera_historico_status_espera esphisstaesp
+						on esphisstaesp.id_espera = esp.id
+					inner join historico_status_espera hisstaesp
+						on hisstaesp.id = esphisstaesp.id_historico_status_espera
+				where hisstaesp.status = 'AGUARDANDO' and esp.tipo_espera = 'CN' and hisstaesp.data_final_vigencia is null and esp.id_descricao_tipo_atendimento = 17 and esp.id_modulo in (1)
+				group by esp.id_usuario
+				)espera_av_fun_aguardando
+			on espera_av_fun_aguardando.id_usuario = cn.id and espera_av_fun_aguardando.data_espera_av_fun_aguardando > cn.data_atendimento_ss_avaliacao_triagem
+			left join (
+				select usu.id, max(ateind.data) as data_atend_av_fun from atendimento_individual ateind
+					inner join usuario usu
+						on usu.id = ateind.id_usuario
+					inner join informacao_essencial infess
+						on (infess.id = usu.id_informacao_essencial)
+					inner join informacao_atendimento infate
+						on infate.id = ateind.id_informacao_atendimento
+					inner join descricao_tipo_atendimento destipate
+						on (destipate.id = ateind.id_descricao_tipo_atendimento)
+					inner join tipo_atendimento tip
+						on (tip.id = destipate.id_tipo_atendimento)
+					inner join modulo mod
+						on (mod.id = ateind.id_modulo)
+				where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and destipate.id = 17 and mod.id = 1
+				group by usu.id
+				) atend_av_fun
+			on atend_av_fun.id = cn.id and atend_av_fun.data_atend_av_fun  > cn.data_atendimento_ss_avaliacao_triagem
+		order by cn.id]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="data_atendimento_ss_avaliacao_triagem" class="java.sql.Date"/>
+	<field name="data_espera_triagem_ou_aee_oftal_triando" class="java.sql.Timestamp"/>
+	<field name="data_espera_triagem_ou_aee_oftal_aguardando" class="java.sql.Timestamp"/>
+	<field name="data_espera_triagem_ou_aee_oftal_agendada" class="java.sql.Timestamp"/>
+	<field name="data_atend_triagem_ou_aee_oftal" class="java.sql.Date"/>
+	<field name="data_espera_av_fun_aguardando" class="java.sql.Timestamp"/>
+	<field name="data_atend_av_fun" class="java.sql.Date"/>
+	<group name="nome">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="77">
+			<image>
+				<reportElement uuid="3f0ead70-2a2e-4908-8534-a793a2c90fcb" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="8f462bd6-3a6e-4ff8-a4ff-9b79c0be5b35" x="101" y="35" width="455" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fluxo de atendimentos da Av. Funcional]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="ea5c295b-0f31-494d-959e-326bea896b47" x="-20" y="75" width="595" height="2" forecolor="#666666"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="51">
+			<staticText>
+				<reportElement uuid="ee368ba0-7a6e-4e8d-80f6-397209b02154" x="1" y="0" width="48" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prontuário	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="38e5255b-e25c-445c-98f0-c02f2de16968" x="128" y="1" width="60" height="49"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dt. Espera Oftal. Triagem ou AEE Triando]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b9089584-58fc-47e5-9365-cf831917d3f6" positionType="FixRelativeToBottom" x="1" y="50" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="69cf2692-9fc4-444c-817e-6ce26ddd0629" x="197" y="1" width="60" height="50"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dt. Espera Oftal. Triagem ou AEE Aguardando]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="752fe955-8272-4542-a50c-62352616e98d" x="267" y="1" width="60" height="50"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dt. Espera Oftal. Triagem ou AEE Agendado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b4d6278e-c353-4004-b0a8-6dc144449a41" x="336" y="1" width="60" height="50"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dt. Aten. Oftal. Triagem ou AEE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ad9ba932-e2b0-473a-8d83-07853de5d172" x="407" y="1" width="60" height="50"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dt. Espera Av. Func. Aguardando]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9e711093-a918-447c-a7a8-855ff0d329b6" x="477" y="1" width="60" height="50"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dt. Aten. Av. Func.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aa38d924-135d-44fd-b54c-6a37047f38fe" x="58" y="1" width="60" height="50"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dt. Aten. S.S. Avaliação e Triagem]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<line>
+				<reportElement uuid="8b1b5102-9f28-4409-b1f7-b702f4f0f762" positionType="FixRelativeToBottom" x="0" y="13" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="9165b961-c052-449b-babd-c3e518d044b3" x="0" y="0" width="49" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="cd6810bc-281a-47b5-bc7a-1346b3c744d9" x="58" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_atendimento_ss_avaliacao_triagem}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="8abbd647-9f66-4eba-9c90-0ae2003097c2" x="197" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_espera_triagem_ou_aee_oftal_aguardando}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="bfab665a-ef8d-42b3-bce1-ab113f7ad70b" x="267" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_espera_triagem_ou_aee_oftal_agendada}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="191aa565-1d86-4f66-a638-0c0750a8b432" x="336" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_atend_triagem_ou_aee_oftal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="21f4c803-81f2-4bf4-9e9b-2902490d039e" x="477" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_atend_av_fun}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="2a8c403d-791f-463f-9191-210e48e06c44" x="407" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_espera_av_fun_aguardando}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="93923ee9-6811-433f-bbe5-e7cfbacc26b6" x="128" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_espera_triagem_ou_aee_oftal_triando}]]></textFieldExpression>
+			</textField>
+			<line direction="BottomUp">
+				<reportElement uuid="2b370228-84a4-4d2b-94aa-0d5e808dec1a" x="472" y="-51" width="1" height="64"/>
+			</line>
+			<line direction="BottomUp">
+				<reportElement uuid="4dd6af36-e8d9-44af-8650-e5b948facbe9" x="192" y="-51" width="1" height="64"/>
+			</line>
+			<line direction="BottomUp">
+				<reportElement uuid="1403816b-8fe4-469d-b076-3e4d8238d1e3" x="262" y="-51" width="1" height="64"/>
+			</line>
+			<line direction="BottomUp">
+				<reportElement uuid="54913a35-7e51-496e-bc40-06a330a4b8bb" x="122" y="-51" width="1" height="64"/>
+			</line>
+			<line direction="BottomUp">
+				<reportElement uuid="c7ea2d1b-182b-486c-9c16-b992729488e7" x="53" y="-51" width="1" height="64"/>
+			</line>
+			<line direction="BottomUp">
+				<reportElement uuid="cbf2858d-56a3-4c65-8f9a-4fd4b8df3787" x="331" y="-51" width="1" height="64"/>
+			</line>
+			<line direction="BottomUp">
+				<reportElement uuid="59eb663d-1058-4aab-8b8e-c5a41a55572c" x="402" y="-51" width="1" height="64"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField evaluationTime="Report">
+				<reportElement uuid="8c235abb-9ffb-48d0-84b3-64ca15494526" mode="Transparent" x="515" y="4" width="40" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="af2d913f-d41a-4c41-95bf-0521c7d44a9e" mode="Transparent" x="0" y="4" width="239" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4c19db9b-7ad9-45c6-a7e9-800aedd7a936" mode="Transparent" x="239" y="4" width="276" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

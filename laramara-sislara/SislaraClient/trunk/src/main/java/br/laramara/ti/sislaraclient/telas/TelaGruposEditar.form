@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.6" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" resourceKey="Form.title"/>
+    <Property name="modalityType" type="java.awt.Dialog$ModalityType" editor="org.netbeans.modules.form.editors.EnumEditor">
+      <Value id="APPLICATION_MODAL"/>
+    </Property>
+    <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
+    <Property name="resizable" type="boolean" value="false"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jpaEditarGrupos" alignment="0" pref="1019" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jpaEditarGrupos" alignment="0" pref="715" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jpaEditarGrupos">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Property name="color" resourceKey="jpaEditarGrupos.border.lineColor"/>
+            </LineBorder>
+          </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" value="jpaEditarGrupos" noResource="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JTabbedPane" name="jtpGrupos">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jtpGrupos.font"/>
+            <Property name="name" type="java.lang.String" value="jtpGrupos" noResource="true"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jtpGrupos.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="40" width="1000" height="620"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jpaGrupo">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jpaGrupo" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Grupo">
+                    <Property name="tabTitle" type="java.lang.String" resourceKey="jpaGrupo.TabConstraints.tabTitle"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="true"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jlaSetor">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaSetor.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaSetor.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaSetor" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="825" y="60" width="170" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jcbSetor">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jcbSetor.font"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="1">
+                        <StringItem index="0" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jcbSetor" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jcbSetor.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="825" y="80" width="160" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaTipoAtendimento">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaTipoAtendimento.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaTipoAtendimento.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaTipoAtendimento" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="10" width="210" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jcbTipoAtendimento">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jcbTipoAtendimento.font"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="1">
+                        <StringItem index="0" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jcbTipoAtendimento" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jcbTipoAtendimento.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbTipoAtendimentoActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="30" width="575" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaDescricaoTipoAtendimento">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaDescricaoTipoAtendimento.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaDescricaoTipoAtendimento.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaDescricaoTipoAtendimento" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="60" width="260" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jcbDescricaoTipoAtendimento">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jcbDescricaoTipoAtendimento.font"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="1">
+                        <StringItem index="0" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jcbDescricaoTipoAtendimento" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jComboBox2.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbDescricaoTipoAtendimentoActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="80" width="540" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaDataInicio">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaDataTermino.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaDataInicio.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaDataInicio" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="560" y="60" width="100" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="jftDataInicio">
+                  <Properties>
+                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                      <Format format="##/##/####" subtype="-1" type="5"/>
+                    </Property>
+                    <Property name="focusLostBehavior" type="int" value="0"/>
+                    <Property name="font" type="java.awt.Font" resourceKey="jftDataInicio.font"/>
+                    <Property name="name" type="java.lang.String" value="jftDataInicio" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jftDataInicial.AccessibleContext.accessibleName"/>
+                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jftDataInicio.AccessibleContext.accessibleDescription"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="560" y="80" width="100" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JButton" name="jbuSelecionarDataInicial">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jbuSelecionarDataTermino.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jbuSelecionarDataInicial.text"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jbuSelecionarDataInicial" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuSelecionarDataInicial.AccessibleContext.accessibleName"/>
+                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jbuSelecionarDataInicial.AccessibleContext.accessibleDescription"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuSelecionarDataInicialActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="660" y="80" width="25" height="25"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaDataTermino">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaDataTermino.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaDataTermino.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaDataTermino" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="690" y="60" width="120" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="jftDataTermino">
+                  <Properties>
+                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                      <Format format="##/##/####" subtype="-1" type="5"/>
+                    </Property>
+                    <Property name="focusLostBehavior" type="int" value="0"/>
+                    <Property name="font" type="java.awt.Font" resourceKey="jftDataTermino.font"/>
+                    <Property name="name" type="java.lang.String" value="jftDataTermino" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jftDataTermino.AccessibleContext.accessibleName"/>
+                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jftDataTermino.AccessibleContext.accessibleDescription"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="690" y="80" width="100" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JButton" name="jbuSelecionarDataTermino">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jbuSelecionarDataTermino.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jbuSelecionarDataTermino.text"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jbuSelecionarDataTermino" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuSelecionarDataTermino.AccessibleContext.accessibleName"/>
+                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jbuSelecionarDataTermino.AccessibleContext.accessibleDescription"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuSelecionarDataTerminoActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="790" y="80" width="25" height="25"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaGrupo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaNivel.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaGrupo.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaGrupo" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="110" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jcbGrupo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jcbGrupo.font"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="1">
+                        <StringItem index="0" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jcbGrupo" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jcbGrupo.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="130" width="140" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaTurma">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaNivel.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaTurma.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaTurma" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="160" y="110" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="jftTurma">
+                  <Properties>
+                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                      <Format format="##" subtype="-1" type="5"/>
+                    </Property>
+                    <Property name="focusLostBehavior" type="int" value="0"/>
+                    <Property name="font" type="java.awt.Font" resourceKey="jftTurma.font"/>
+                    <Property name="name" type="java.lang.String" value="jftTurma" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jftTurma.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="160" y="130" width="70" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaNivel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaNivel.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaNivel.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaNivel" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="240" y="110" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="jftNivel">
+                  <Properties>
+                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                      <Format format="##" subtype="-1" type="5"/>
+                    </Property>
+                    <Property name="focusLostBehavior" type="int" value="0"/>
+                    <Property name="font" type="java.awt.Font" resourceKey="jftNivel.font"/>
+                    <Property name="name" type="java.lang.String" value="jftNivel" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jftNivel.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="240" y="130" width="70" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="jchAtivo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jchAtivo.font"/>
+                    <Property name="selected" type="boolean" value="true"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jchAtivo.text"/>
+                    <Property name="name" type="java.lang.String" value="jchAtivo" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="320" y="130" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaTipificacao">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaTipificacao.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaTipificacao.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaTipificacao" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="160" width="220" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jcbTipificacao">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jcbTipificacao.font"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="1">
+                        <StringItem index="0" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jcbTipificacao" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jcbTipificacao.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="180" width="310" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JButton" name="jbuAdicionarTipificacao">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jbuAdicionarTipificacao.font"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jbuAdicionarTipificacao.icon"/>
+                    <Property name="mnemonic" type="int" value="65"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jbuAdicionarTipificacao.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jbuAdicionarTipificacao" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuAdicionarTipificacao.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAdicionarTipificacaoActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="330" y="180" width="130" height="35"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaTipificacaoAdicionadas">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaTipificacaoAdicionadas.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaTipificacaoAdicionadas.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaTipificacaoAdicionadas" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="210" width="310" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jspTipificacaoAdicionadas">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="jspTipificacaoAdicionadas" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="230" width="310" height="70"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JList" name="jliTipificacaoAdicionadas">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" resourceKey="jliTipificacaoAdicionadas.font"/>
+                        <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new DefaultListModel()" type="code"/>
+                        </Property>
+                        <Property name="toolTipText" type="java.lang.String" resourceKey="jliTipificacaoAdicionadas.toolTipText"/>
+                        <Property name="name" type="java.lang.String" value="jliTipificacaoAdicionadas" noResource="true"/>
+                      </Properties>
+                      <AccessibilityProperties>
+                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jliTipificacaoAdicionadas.AccessibleContext.accessibleName"/>
+                      </AccessibilityProperties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="jbuRemoverTipificacao">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jbuAdicionarTipificacao.font"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jbuRemoverTipificacao.icon"/>
+                    <Property name="mnemonic" type="int" value="82"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jbuRemoverTipificacao.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jbuRemoverTipificacao" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuRemoverTipificacao.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuRemoverTipificacaoActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="330" y="230" width="130" height="35"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jpaModulosAtividades">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jpaModulosAtividades" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="M&#xf3;dulos / Atividades">
+                    <Property name="tabTitle" type="java.lang.String" resourceKey="jpaModulosAtividades.TabConstraints.tabTitle"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="true"/>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jpaModulos">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="jpaModulos" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="0" y="0" width="1000" height="200"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                    <Property name="useNullLayout" type="boolean" value="true"/>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jlaModulosAtividadesAdicionados">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" resourceKey="jlaModulosAtividadesAdicionados.font"/>
+                        <Property name="text" type="java.lang.String" resourceKey="jlaModulosAtividadesAdicionados.text"/>
+                        <Property name="name" type="java.lang.String" value="jlaModulosAtividadesAdicionados" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="10" y="10" width="280" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jbuRemoverModulo">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" resourceKey="jbuRemoverModulo.font"/>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="jbuRemoverModulo.icon"/>
+                        <Property name="mnemonic" type="int" value="114"/>
+                        <Property name="text" type="java.lang.String" resourceKey="jbuRemoverModulo.text"/>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Cursor em Forma de M&#xe3;o"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="jbuRemoverModulo" noResource="true"/>
+                      </Properties>
+                      <AccessibilityProperties>
+                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuRemoverModulo.AccessibleContext.accessibleName"/>
+                      </AccessibilityProperties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuRemoverModuloActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="860" y="110" width="130" height="35"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Container class="javax.swing.JScrollPane" name="jspModuloAtividadesAdicionados">
+                      <Properties>
+                        <Property name="name" type="java.lang.String" value="jspModuloAtividadesAdicionados" noResource="true"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                      </AuxValues>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="10" y="30" width="840" height="160"/>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JTable" name="jtaModuloAtividadesAdicionados">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" resourceKey="jtaModuloAtividadesAdicionados.font"/>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new ModeloTabelaModuloPeriodo()" type="code"/>
+                            </Property>
+                            <Property name="autoResizeMode" type="int" value="0"/>
+                            <Property name="name" type="java.lang.String" value="jtaModuloAtividadesAdicionados" noResource="true"/>
+                            <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                              <JTableSelectionModel selectionMode="0"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jtaModuloAtividadesAdicionados.AccessibleContext.accessibleName"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtaModuloAtividadesAdicionadosKeyPressed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Component class="javax.swing.JButton" name="jbuNovo">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" resourceKey="jbuNovo.font"/>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="jbuNovo.icon"/>
+                        <Property name="mnemonic" type="int" value="78"/>
+                        <Property name="text" type="java.lang.String" resourceKey="jbuNovo.text"/>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Cursor em Forma de M&#xe3;o"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="jbuNovo" noResource="true"/>
+                      </Properties>
+                      <AccessibilityProperties>
+                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuNovo.AccessibleContext.accessibleName"/>
+                      </AccessibilityProperties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuNovoActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="860" y="30" width="130" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jbuAlterar">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" resourceKey="jbuAlterar.font"/>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="jbuAlterar.icon"/>
+                        <Property name="mnemonic" type="int" value="101"/>
+                        <Property name="text" type="java.lang.String" resourceKey="jbuAlterar.text"/>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Cursor em Forma de M&#xe3;o"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="jbuAlterar" noResource="true"/>
+                      </Properties>
+                      <AccessibilityProperties>
+                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuAlterar.AccessibleContext.accessibleName"/>
+                      </AccessibilityProperties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAlterarActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="860" y="70" width="130" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jpaDescricao">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jpaDescricao" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Descri&#xe7;&#xe3;o/OBS">
+                    <Property name="tabTitle" type="java.lang.String" resourceKey="jpaDescricao.TabConstraints.tabTitle"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jspDescricao" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jlaDescricao" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jlaDescricao" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jspDescricao" min="-2" pref="254" max="-2" attributes="0"/>
+                          <EmptySpace pref="304" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jlaDescricao">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaDescricao.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaDescricao.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaDescricao" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jspDescricao">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="jspDescricao" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JEditorPane" name="jepDescricao">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" resourceKey="jepDescricao.font"/>
+                        <Property name="name" type="java.lang.String" value="jepDescricao" noResource="true"/>
+                      </Properties>
+                      <AccessibilityProperties>
+                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jepDescricao.AccessibleContext.accessibleName"/>
+                        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jepDescricao.AccessibleContext.accessibleDescription"/>
+                      </AccessibilityProperties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jpaDoacao">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jpaDoacao" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Doa&#xe7;&#xe3;o">
+                    <Property name="tabTitle" type="java.lang.String" resourceKey="jpaDoacao.TabConstraints.tabTitle"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="true"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jlaInstituicaoEnsino">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaInstituicaoEnsino.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaInstituicaoEnsino.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaInstituicaoEnsino" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="11" width="170" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jcbInstituicaoEnsino">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jcbInstituicaoEnsino.font"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="1">
+                        <StringItem index="0" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jcbInstituicaoEnsino" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jcbInstituicaoEnsino.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="30" width="600" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JButton" name="jbuNova">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jbuNova.font"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jbuNova.icon"/>
+                    <Property name="mnemonic" type="int" value="78"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jbuNova.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jbuNova" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuNova.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuNovaActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="620" y="25" width="110" height="30"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaRecursos">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaRecursosAdicionados.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaRecursos.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaRecursos" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="60" width="290" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jcbRecursos">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jcbRecursos.font"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="1">
+                        <StringItem index="0" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jcbRecursos" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jcbRecursos.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="80" width="290" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaQuantidadeRecurso">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaQuantidadeRecurso.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaQuantidadeRecurso.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaQuantidadeRecurso" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="310" y="60" width="100" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="jftQuantidadeRecurso">
+                  <Properties>
+                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                      <Format format="####" subtype="-1" type="5"/>
+                    </Property>
+                    <Property name="focusLostBehavior" type="int" value="0"/>
+                    <Property name="font" type="java.awt.Font" resourceKey="jftQuantidadeRecurso.font"/>
+                    <Property name="name" type="java.lang.String" value="jftQuantidadeRecurso" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jftQuantidadeRecurso.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="310" y="80" width="90" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JButton" name="jbuAdicionarRecurso">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jbuRemoverRecurso.font"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jbuAdicionarRecurso.icon"/>
+                    <Property name="mnemonic" type="int" value="65"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jbuAdicionarRecurso.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jbuAdicionarRecurso" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuAdicionarRecurso.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAdicionarRecursoActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="410" y="75" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlaRecursosAdicionados">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jlaRecursosAdicionados.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jlaRecursosAdicionados.text"/>
+                    <Property name="name" type="java.lang.String" value="jlaRecursosAdicionados" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="110" width="290" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jspRecursosAdicionados">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="jspRecursosAdicionados" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="130" width="390" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JList" name="jliDoacaoRecursosAdicionados">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" resourceKey="jliDoacaoRecursosAdicionados.font"/>
+                        <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new DefaultListModel()" type="code"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="jliDoacaoRecursosAdicionados" noResource="true"/>
+                      </Properties>
+                      <AccessibilityProperties>
+                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jliDoacaoRecursosAdicionados.AccessibleContext.accessibleName"/>
+                      </AccessibilityProperties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="jbuRemoverRecurso">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jbuRemoverRecurso.font"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jbuRemoverRecurso.icon"/>
+                    <Property name="mnemonic" type="int" value="82"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jbuRemoverRecurso.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jbuRemoverRecurso" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuRemoverRecurso.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuRemoverRecursoActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="410" y="130" width="130" height="30"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="jbuSalvar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuSalvar.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuSalvar.icon"/>
+            <Property name="mnemonic" type="int" value="115"/>
+            <Property name="text" type="java.lang.String" resourceKey="jbuSalvar.text"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuSalvar" noResource="true"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuSalvar.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuSalvarActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="11" y="670" width="120" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuFechar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuFechar.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuFechar.icon"/>
+            <Property name="mnemonic" type="int" value="102"/>
+            <Property name="text" type="java.lang.String" resourceKey="jbuFechar.text"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuFechar" noResource="true"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuFechar.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuFecharActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="890" y="670" width="120" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

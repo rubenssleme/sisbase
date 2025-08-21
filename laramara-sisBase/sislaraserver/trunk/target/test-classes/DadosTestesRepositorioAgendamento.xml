@@ -1,0 +1,26 @@
+<dataset>
+	<perfil id="3" descricao="Administrador"/>
+	<perfil_permissoes id_perfil="3" permissao="USUARIO_EDICAO" />
+	<conta_acesso id="3" id_perfil="3" login="Paulo" senha="ca99498816e8e429036944e00aaf6594" bloqueado="false" extensao_relatorios="pdf" filtro_grupo="false"/>
+	<profissional id="1000" nome="Paulo Augusto Bandeira dos Santos" habilitado="true"/>
+	<setor id="PROCEJA" descricao="PROCEJA"/>
+	<setor id="NENHUM" descricao="NENHUM"/>
+	<local_atendimento id="1" nome="SALA 1"/>
+	<tipo_atendimento id="22222" nome="Capacitação Profissional"/>
+	<descricao_tipo_atendimento id="12222" id_tipo_atendimento="22222" nome="Atendimento de Teste" sigla="ATT" inativo="false"/>
+	<estado_civil id="1" descricao="Casado"/>
+	<contato id="899999" ramal="2323" nome_contato="Josep Meaza" email="paulo@yahoo.com.br" />
+	<informacao_essencial id="44444" nome="Jose Augusto Siqueira" id_contato="899999" data_nascimento="1982-07-27" />
+	<modulo id="1" nome="Informática"/>
+	<usuario id="12222" versao="1" data_cadastro="1999-12-31" id_informacao_essencial="44444" genero="MASCULINO" naturalidade="Belém" rg_uf="PA" rg_data_expedicao="1998-12-31" rg_orgao_emissor="SEGUP" id_estado_civil="1" nacionalidade="Brasileiro" nao_alfabetizado="true" nao_esta_na_escola="true" tipo_leitura="AMPLIADO"/>
+	<agendamento id="1" id_usuario="12222" id_profissional="1000" id_descricao_tipo_atendimento="12222" id_modulo="1" id_setor="PROCEJA" id_local_atendimento="1" reserva_para="RETORNO" data="2012-12-31" hora_inicio="09:00:00" hora_termino="12:00:00"/>
+	<agendamento id="2" id_usuario="12222" id_profissional="1000" id_descricao_tipo_atendimento="12222" id_modulo="1" id_setor="PROCEJA" id_local_atendimento="1" reserva_para="RETORNO" data="2012-12-31" hora_inicio="09:00:00" hora_termino="12:00:00"/>
+	<agendamento id="3" id_usuario="12222" id_profissional="1000" id_descricao_tipo_atendimento="12222" id_modulo="1" id_setor="PROCEJA" id_local_atendimento="1" reserva_para="RETORNO" data="2012-12-30" hora_inicio="09:00:00" hora_termino="12:00:00"/>
+	<agendamento id="4" id_usuario="12222" id_profissional="1000" id_descricao_tipo_atendimento="12222" id_modulo="1" id_setor="PROCEJA" id_local_atendimento="1" reserva_para="RETORNO" data="2012-12-30" hora_inicio="09:00:00" hora_termino="12:00:00"/>
+	<historico_status_agendamento id="11111" data_inicial_vigencia="2012-01-01" status="AGENDADO" id_conta_acesso="3"/>
+	<historico_status_agendamento id="12222" data_inicial_vigencia="2012-01-01" status="AGENDADO" id_conta_acesso="3"/>
+	<historico_status_agendamento id="13333" data_inicial_vigencia="2012-01-01" status="AGENDADO" id_conta_acesso="3"/>
+	<agendamento_historico_status_agendamento id_agendamento="1" id_historico_status_agendamento="11111"/>	
+	<agendamento_historico_status_agendamento id_agendamento="2" id_historico_status_agendamento="12222"/>	
+	<agendamento_historico_status_agendamento id_agendamento="3" id_historico_status_agendamento="13333"/>	
+</dataset>

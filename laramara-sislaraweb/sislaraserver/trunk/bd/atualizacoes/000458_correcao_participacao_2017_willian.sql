@@ -1,0 +1,2 @@
+﻿insert into participacao_detalhada (participacao, quantidade)values ('APENAS_USUARIO', 1); insert into informacao_atendimento_participacao_detalhada (id_informacao_atendimento, id_participacao_detalhada)values(204615, currval('participacao_detalhada_id_seq'));
+insert into participacao_detalhada (participacao, quantidade)values ('APENAS_USUARIO', 1); insert into informacao_atendimento_participacao_detalhada (id_informacao_atendimento, id_participacao_detalhada)values(199047, currval('participacao_detalhada_id_seq'));

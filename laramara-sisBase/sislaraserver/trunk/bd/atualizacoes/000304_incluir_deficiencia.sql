@@ -1,0 +1,1 @@
+﻿insert into deficiencia(id, descricao)values(13, 'Transtornos do espectro do autismo');

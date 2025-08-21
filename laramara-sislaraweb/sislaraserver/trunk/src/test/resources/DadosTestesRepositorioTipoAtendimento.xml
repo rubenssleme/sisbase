@@ -1,0 +1,18 @@
+<dataset>
+	<modulo id="1" nome="Informática"/>
+	<modulo id="2" nome="Ética"/>
+
+	<tipo_atendimento id="11111" nome="Atendimento Educacional Especializado"/>
+	<tipo_atendimento id="22222" nome="Capacitação Profissional"/>
+	
+	<descricao_tipo_atendimento id="13333" id_tipo_atendimento="11111" nome="Curso de Informatica" sigla="INFO" descricao="Texto de descrição." inativo="false"/>
+	<descricao_tipo_atendimento id="11111" id_tipo_atendimento="11111" nome="Curso de Inativo" sigla="INFOINAT" descricao="Texto de descrição." inativo="true"/>
+	<descricao_tipo_atendimento id="122222" id_tipo_atendimento="22222" nome="Curso de Informatica Avancado" sigla="INFO" descricao="Texto de descrição." inativo="false"/>
+
+	<tipo_atendimento_descricao_tipo_atendimento id_tipo_atendimento="11111" id_descricao_tipo_atendimento="13333"/>
+	<tipo_atendimento_descricao_tipo_atendimento id_tipo_atendimento="11111" id_descricao_tipo_atendimento="11111"/>
+	<tipo_atendimento_descricao_tipo_atendimento id_tipo_atendimento="22222" id_descricao_tipo_atendimento="122222"/>
+	
+	<descricao_tipo_atendimento_modulo id_descricao_tipo_atendimento="13333" id_modulo="1"/>
+	<descricao_tipo_atendimento_modulo id_descricao_tipo_atendimento="13333" id_modulo="2"/>
+</dataset>

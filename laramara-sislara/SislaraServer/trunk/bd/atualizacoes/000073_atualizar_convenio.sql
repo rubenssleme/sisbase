@@ -1,0 +1,1 @@
+﻿update convenio set descricao = 'Secretaria Municipal da Educação' where id = 2;

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91dddfb0-7eba-4cab-9cf1-3e6f88d12a0d">
+	<property name="ireport.zoom" value="1.2100000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_data_inicio" class="java.util.Date"/>
+	<parameter name="param_data_termino" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT nomgru.nome as grupo, gru.turma, desctipoaten.nome as descricao, mod.nome as modulo, tipvin.descricao as vinculo, count (distinct atepre.id_pre_cadastro) as quantidade
+FROM atendimento_grupo ate
+     INNER JOIN modulo_periodo_atendimento_grupo modperaten
+	ON ate.id = modperaten.id_atendimento_grupo
+     INNER JOIN atendimento_grupo_atendimento_pre_cadastro ategruatepre
+	ON ate.id = ategruatepre.id_atendimento_grupo
+     INNER JOIN atendimento_pre_cadastro atepre
+	ON atepre.id = ategruatepre.id_atendimento_pre_cadastro
+     INNER JOIN modulo_periodo modper
+	ON modperaten.id_modulo_periodo = modper.id
+     INNER JOIN modulo mod
+	ON modper.id_modulo = mod.id
+     INNER JOIN grupo_modulo_periodo grumodper
+	ON modper.id = grumodper.id_modulo_periodo
+     INNER JOIN grupo gru
+	ON grumodper.id_grupo = gru.id
+     INNER JOIN descricao_tipo_atendimento desctipoaten
+	ON gru.id_descricao_tipo_atendimento = desctipoaten.id
+     INNER JOIN tipo_atendimento tipoaten
+	ON desctipoaten.id_tipo_atendimento = tipoaten.id
+     INNER JOIN modulo_periodo_modulo_pre_cadastro modpermodpre
+	ON modper.id = modpermodpre.id_modulo_periodo
+     INNER JOIN modulo_pre_cadastro modprecad
+	ON (modprecad.id = modpermodpre.id_modulo_pre_cadastro and modprecad.id_pre_cadastro = atepre.id_pre_cadastro)
+     INNER JOIN tipo_vinculo tipvin
+	ON tipvin.id = modprecad.id_tipo_vinculo
+     INNER JOIN nome_grupo nomgru
+	ON gru.id_nome_grupo = nomgru.id
+WHERE ate.data between $P{param_data_inicio} and $P{param_data_termino}
+group by nomgru.nome, gru.turma, desctipoaten.nome, mod.nome, tipvin.descricao
+order by nomgru.nome, gru.turma, desctipoaten.nome, mod.nome, tipvin.descricao]]>
+	</queryString>
+	<field name="grupo" class="java.lang.String"/>
+	<field name="turma" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="vinculo" class="java.lang.String"/>
+	<field name="quantidade" class="java.lang.Long"/>
+	<group name="turma">
+		<groupExpression><![CDATA[$F{turma}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<line>
+					<reportElement uuid="bf264b8e-ff50-48a1-b5ad-945da2bffa1b" x="0" y="0" width="555" height="1" forecolor="#666666"/>
+				</line>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="83eb4f69-18fa-4fdd-b3cf-acbb487b04b4" x="0" y="0" width="444" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{grupo}+ " - " +$F{turma}+ " - " +$F{descricao}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="modulo">
+		<groupExpression><![CDATA[$F{modulo}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="8faec605-0397-48bf-bd9f-aae13f608d6a" x="20" y="0" width="384" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="76">
+			<image>
+				<reportElement uuid="d737fd94-7d67-45f1-b998-f703ad9d454d" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="de99c1d4-26f7-4ddc-b914-cab4da04af98" x="100" y="25" width="455" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[QUANTIDADE DE ATENDIDOS POR TIPOS DE VINCULOS POR GRUPO]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="10e313d3-0408-4be4-a32e-7fdf09091577" positionType="FixRelativeToBottom" x="0" y="75" width="555" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="15">
+			<staticText>
+				<reportElement uuid="33767b49-f175-434a-b078-5d6c2d90fd60" mode="Opaque" x="444" y="0" width="111" height="15" forecolor="#006699" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="c04f63a8-7bd5-4dca-ab60-3ea4b76f7118" x="40" y="0" width="364" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vinculo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="cd0a67d5-d001-4c99-adbc-ba5372307d03" x="444" y="0" width="111" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="14">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="9c017c94-ddbe-49b7-b899-da715535fd0c" mode="Transparent" x="0" y="0" width="239" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b10f3f2c-d4d0-44ae-956b-235b079d7be3" mode="Transparent" x="239" y="0" width="276" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="dc4e7d63-66a2-4b3b-929b-af28f9a8ea0d" mode="Transparent" x="515" y="0" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

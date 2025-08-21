@@ -1,0 +1,1 @@
+﻿update pendencia set resolvida = true where id in (select id from pendencia where prontuario in (10729, 9734, 10717, 10834) and resolvida = false and tipo = 'REUNIAO_DE_INTEGRACAO');

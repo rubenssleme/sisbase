@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Porcentagens de frequencias por grupo" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2a9cb57a-1521-4bb0-9c46-f0839807a489">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_id_grupo" class="java.lang.Long"/>
+	<parameter name="param_id_modulo_periodo" class="java.lang.Long"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Projetos\\sislaraserver\\trunk\\src\\main\\resources\\relatorios\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from (
+	select gru.id as id_grupo, modper.id as id_modulo_periodo, nomgru.nome||'-'||gru.turma as nome, gru.data_inicio, tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, usu.id as id_usuario, modusu.status as status, infess.nome as nome_usuario, infate.frequencia, count(infate.frequencia) total_frequencia, count(infate.frequencia) / sum(count(infate.frequencia)) OVER (PARTITION BY usu.id) as porcentagem from grupo gru
+		inner join nome_grupo nomgru
+			on nomgru.id = gru.id_nome_grupo
+		inner join descricao_tipo_atendimento destipate
+			on destipate.id = gru.id_descricao_tipo_atendimento
+		inner join tipo_atendimento tip
+			on destipate.id_tipo_atendimento = tip.id
+		inner join grupo_modulo_periodo grumodper
+			on grumodper.id_grupo = gru.id
+		inner join modulo_periodo modper
+			on modper.id = grumodper.id_modulo_periodo
+		inner join modulo mod
+			on modper.id_modulo = mod.id
+		inner join modulo_periodo_atendimento_grupo modperategru
+			on modperategru.id_modulo_periodo = modper.id
+		inner join atendimento_grupo ategru
+			on ategru.id = modperategru.id_atendimento_grupo
+		inner join atendimento_grupo_atendimento_usuario ategruateusu
+			on ategruateusu.id_atendimento_grupo = ategru.id
+		inner join atendimento_usuario ateusu
+			on ateusu.id = ategruateusu.id_atendimento_usuario
+		inner join informacao_atendimento infate
+			on ateusu.id_informacao_atendimento = infate.id
+		inner join usuario usu
+			on usu.id = ateusu.id_usuario
+		inner join informacao_essencial infess
+			on infess.id = usu.id_informacao_essencial
+		inner join modulo_periodo_modulo_usuario modpermodusu
+			on modpermodusu.id_modulo_periodo = modper.id
+		inner join modulo_usuario modusu
+			on modusu.id = modpermodusu.id_modulo_usuario and modusu.id_usuario = usu.id
+	where gru.id = $P{param_id_grupo} and modper.id = $P{param_id_modulo_periodo} and ategru.status = 'NORMAL' and infate.frequencia in ('AT', 'FJ', 'FU', 'OA')
+	group by gru.id, modper.id, nomgru.nome, gru.turma, gru.data_inicio, tip.nome, destipate.nome, mod.nome, usu.id, modusu.status, infess.nome, infate.frequencia
+	union all
+	select gru.id as id_grupo, modper.id as id_modulo_periodo, nomgru.nome||'-'||gru.turma as nome, gru.data_inicio, tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, usu.id as id_usuario, modusu.status as status, infess.nome as nome_usuario, infate.frequencia, count(infate.frequencia) as total_frequencia, null as porcentagem from grupo gru
+		inner join nome_grupo nomgru
+			on nomgru.id = gru.id_nome_grupo
+		inner join descricao_tipo_atendimento destipate
+			on destipate.id = gru.id_descricao_tipo_atendimento
+		inner join tipo_atendimento tip
+			on destipate.id_tipo_atendimento = tip.id
+		inner join grupo_modulo_periodo grumodper
+			on grumodper.id_grupo = gru.id
+		inner join modulo_periodo modper
+			on modper.id = grumodper.id_modulo_periodo
+		inner join modulo mod
+			on modper.id_modulo = mod.id
+		inner join modulo_periodo_atendimento_grupo modperategru
+			on modperategru.id_modulo_periodo = modper.id
+		inner join atendimento_grupo ategru
+			on ategru.id = modperategru.id_atendimento_grupo
+		inner join atendimento_grupo_atendimento_usuario ategruateusu
+			on ategruateusu.id_atendimento_grupo = ategru.id
+		inner join atendimento_usuario ateusu
+			on ateusu.id = ategruateusu.id_atendimento_usuario
+		inner join informacao_atendimento infate
+			on ateusu.id_informacao_atendimento = infate.id
+		inner join usuario usu
+			on usu.id = ateusu.id_usuario
+		inner join informacao_essencial infess
+			on infess.id = usu.id_informacao_essencial
+		inner join modulo_periodo_modulo_usuario modpermodusu
+			on modpermodusu.id_modulo_periodo = modper.id
+		inner join modulo_usuario modusu
+			on modusu.id = modpermodusu.id_modulo_usuario and modusu.id_usuario = usu.id
+	where gru.id = $P{param_id_grupo} and modper.id = $P{param_id_modulo_periodo} and ategru.status = 'NORMAL' and infate.frequencia not in ('AT', 'FJ', 'FU', 'OA')
+	group by gru.id, modper.id, nomgru.nome, gru.turma, gru.data_inicio, tip.nome, destipate.nome, mod.nome, usu.id, modusu.status, infess.nome, infate.frequencia
+) as todos
+order by todos.id_usuario, todos.porcentagem, todos.total_frequencia]]>
+	</queryString>
+	<field name="id_grupo" class="java.lang.Long"/>
+	<field name="id_modulo_periodo" class="java.lang.Long"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="data_inicio" class="java.sql.Date"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="id_usuario" class="java.lang.Long"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="nome_usuario" class="java.lang.String"/>
+	<field name="frequencia" class="java.lang.String"/>
+	<field name="total_frequencia" class="java.lang.Long"/>
+	<field name="porcentagem" class="java.math.BigDecimal"/>
+	<group name="id_grupo">
+		<groupExpression><![CDATA[$F{id_grupo}]]></groupExpression>
+		<groupHeader>
+			<band height="118">
+				<textField>
+					<reportElement x="0" y="0" width="328" height="20" uuid="86d29cf2-e27a-46ed-86da-6813385fe7d8"/>
+					<textElement>
+						<font fontName="Verdana" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Nome do grupo: " + $F{nome}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="40" width="555" height="20" uuid="185830c8-fd5a-453c-8083-d752f279572a"/>
+					<textElement>
+						<font fontName="Verdana" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Tipo: "+$F{tipo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="60" width="555" height="20" uuid="31dccf9b-5295-4594-8bb9-591658e02909"/>
+					<textElement>
+						<font fontName="Verdana" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Descrição: "+$F{descricao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="80" width="555" height="20" uuid="202656b6-1c0d-424f-8da4-d4259cf66670"/>
+					<textElement>
+						<font fontName="Verdana" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Módulo: "+$F{modulo}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement x="92" y="20" width="185" height="20" uuid="3d2b41d8-b383-4a87-ae47-35864d701857"/>
+					<textElement>
+						<font fontName="Verdana" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{data_inicio}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="20" width="92" height="20" uuid="683cd72b-dfa7-405a-9724-1df999c2a5ec"/>
+					<textElement>
+						<font fontName="Verdana" size="12" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Data de início:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="98" width="555" height="20" uuid="42f3980f-2213-4495-8754-59188ea22cd3"/>
+					<text><![CDATA[OBS: A base de calculo da porcentagem contém somente as frequencias AT, FJ, FU e OA.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="id_usuario">
+		<groupExpression><![CDATA[$F{id_usuario}]]></groupExpression>
+		<groupHeader>
+			<band height="18">
+				<textField>
+					<reportElement x="0" y="0" width="555" height="18" forecolor="#000000" uuid="87c75e20-14f8-43db-ace9-085fbaf01eb2"/>
+					<textElement>
+						<font fontName="Verdana" size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_usuario} + " - " + $F{nome_usuario} + " - " + $F{status}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<subreport>
+					<reportElement x="0" y="0" width="555" height="20" uuid="b5d6d11d-7000-4c32-bfb8-bf96e491323d"/>
+					<subreportParameter name="param_id_modulo_periodo">
+						<subreportParameterExpression><![CDATA[$F{id_modulo_periodo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="param_id_grupo">
+						<subreportParameterExpression><![CDATA[$F{id_grupo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="param_id_usuario">
+						<subreportParameterExpression><![CDATA[$F{id_usuario}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["relatorio_porcentagem_frequencias_por_grupo_subrelatorio.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="49">
+			<staticText>
+				<reportElement x="60" y="10" width="502" height="20" uuid="f7bd001c-ac47-433d-b30b-42e488848162"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[PORCENTAGENS DE FREQUENCIAS DO GRUPO]]></text>
+			</staticText>
+			<image>
+				<reportElement mode="Opaque" x="0" y="0" width="60" height="49" uuid="6ba8ded6-82d8-4a74-a285-0d238348a2e0"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="39" height="15" uuid="a3013d15-c879-416e-b17a-59b05eeaf77c"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{frequencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="39" y="0" width="35" height="15" uuid="de2b7f07-c4bf-4dce-9c32-2aa2801abfe9"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_frequencia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00 %" isBlankWhenNull="true">
+				<reportElement x="74" y="0" width="85" height="15" uuid="aae34bdf-cbea-438d-8e40-cd7a4e799185"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{porcentagem}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" uuid="0f0dec04-16e4-47d6-8598-785d8999e863"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" uuid="efb8fee9-ac62-4b88-a33c-90331b99197d"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

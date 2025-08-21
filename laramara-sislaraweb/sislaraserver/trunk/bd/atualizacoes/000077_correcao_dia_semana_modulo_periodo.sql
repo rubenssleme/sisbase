@@ -1,0 +1,1 @@
+﻿UPDATE modulo_periodo SET dia_semana = 'DOMINGO' where dia_semana = 'DOMINDO';

@@ -1,0 +1,11 @@
+﻿insert into endereco(id, data_inicial_vigencia)values(99999, '"0001-01-01 00:00:00"');
+insert into contato(id)values(99999);
+insert into instituicao (id, nome, id_endereco, id_contato, tipo, classificacao)values(99999, 'INSTITUIÇÃO DE ENSINO NÃO INFORMADA', 99999, 99999, 'OUTRO_MUNICIPIO', 'NENHUMA');
+insert into instituicao_escolaridade(id_instituicao, id_escolaridade)values(99999, 1);
+insert into instituicao_escolaridade(id_instituicao, id_escolaridade)values(99999, 2);
+insert into instituicao_escolaridade(id_instituicao, id_escolaridade)values(99999, 3);
+insert into instituicao_escolaridade(id_instituicao, id_escolaridade)values(99999, 4);
+insert into instituicao_escolaridade(id_instituicao, id_escolaridade)values(99999, 5);
+insert into instituicao_escolaridade(id_instituicao, id_escolaridade)values(99999, 6);
+insert into instituicao_escolaridade(id_instituicao, id_escolaridade)values(99999, 7);
+insert into instituicao_escolaridade(id_instituicao, id_escolaridade)values(99999, 8);

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_todos_usuarios_com_staus_provisorio_ou_acesso" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="31d0daa6-dbc5-4bbb-9765-b19b14254c98">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="3"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Projetos\\sislaraserver\\trunk\\src\\main\\resources\\relatorios\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select gru.id as id_grupo, nomgru.nome as nome_grupo, gru.turma, modper.vagas, gru.data_inicio as data_inicio_grupo, mod.id as id_modulo, mod.nome as modulo, usu.id, infess.nome, modusu.data_inicio as data_inicio_usuario, date_part('days', now() - modusu.data_inicio) as dias_apos_data_inicio, modusu.data_ocorrencia as data_ocorrencia, date_part('days', now() - modusu.data_ocorrencia) as dias_apos_data_ocorrencia, modusu.status from modulo_usuario modusu
+		inner join modulo_periodo_modulo_usuario modpermodusu
+			on modpermodusu.id_modulo_usuario = modusu.id
+		inner join modulo_periodo modper
+			on modper.id = modpermodusu.id_modulo_periodo
+		inner join grupo_modulo_periodo grumodper
+			on grumodper.id_modulo_periodo = modper.id
+		inner join grupo gru
+			on gru.id = grumodper.id_grupo
+		inner join nome_grupo nomgru
+			on nomgru.id = gru.id_nome_grupo
+		inner join modulo mod
+			on modper.id_modulo = mod.id
+		inner join usuario usu
+			on usu.id = modusu.id_usuario
+		inner join informacao_essencial infess
+			on infess.id = usu.id_informacao_essencial
+	where modusu.status in ('ACESSO', 'PROVISORIO') and gru.ativo = true
+group by gru.id, nomgru.nome, mod.id, mod.nome, usu.id, infess.nome, gru.turma, modper.vagas, modusu.data_inicio, modusu.data_ocorrencia, modusu.status
+order by nomgru.nome, gru.turma, mod.id, usu.id, infess.nome,  modper.vagas, modusu.data_inicio, modusu.data_ocorrencia, modusu.status]]>
+	</queryString>
+	<field name="id_grupo" class="java.lang.Long"/>
+	<field name="nome_grupo" class="java.lang.String"/>
+	<field name="turma" class="java.lang.String"/>
+	<field name="vagas" class="java.lang.Integer"/>
+	<field name="data_inicio_grupo" class="java.sql.Date"/>
+	<field name="id_modulo" class="java.lang.Long"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="data_inicio_usuario" class="java.sql.Date"/>
+	<field name="dias_apos_data_inicio" class="java.lang.Double"/>
+	<field name="data_ocorrencia" class="java.sql.Date"/>
+	<field name="dias_apos_data_ocorrencia" class="java.lang.Double"/>
+	<field name="status" class="java.lang.String"/>
+	<group name="id_grupo">
+		<groupExpression><![CDATA[$F{id_grupo}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement uuid="2935b681-c2a7-4b16-a96b-245abe852e13" mode="Opaque" x="0" y="0" width="79" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome_grupo} + "-"+ $F{turma}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement uuid="ee1344db-b354-46cb-b93a-e1e5d21208eb" x="79" y="0" width="115" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{data_inicio_grupo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="1">
+				<line>
+					<reportElement uuid="bb1ea982-c6e6-46d0-a0a8-a2ab838e2c74" positionType="FixRelativeToBottom" x="0" y="0" width="802" height="1"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="modulo">
+		<groupExpression><![CDATA[$F{modulo}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<textField>
+					<reportElement uuid="afda01e0-a6dc-44f8-8839-2ecc5beec62d" x="0" y="0" width="409" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="11" isBold="true" isItalic="false" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="226fe063-3e5e-4b17-8674-f21c9739771f" mode="Opaque" x="409" y="0" width="66" height="27"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="7" isBold="true" isItalic="false" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Data de início no módulo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="88eb0171-6e83-4de1-8a9d-8b24daad706e" mode="Opaque" x="486" y="0" width="66" height="27"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="7" isBold="true" isItalic="false" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Dias após data de início no módulo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b3d108fb-e2b0-4575-b52d-abc3d2d1da68" mode="Opaque" x="644" y="0" width="66" height="27"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="7" isBold="true" isItalic="false" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Dias após data de ocorrência no módulo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="c95db676-b4a2-45ce-9095-6f1191ae2731" mode="Opaque" x="569" y="0" width="66" height="27"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="7" isBold="true" isItalic="false" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Data de ocorrência no módulo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="eaf2228e-3e68-46cc-bcfe-d261320c9ba3" mode="Opaque" x="73" y="15" width="217" height="11"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Vagas disponíveis(se vazio, todas estão disponíveis):]]></text>
+				</staticText>
+				<subreport>
+					<reportElement uuid="ceb6d616-b9bd-4bcc-9555-b436325a81b6" mode="Transparent" x="290" y="15" width="48" height="11"/>
+					<subreportParameter name="param_id_modulo">
+						<subreportParameterExpression><![CDATA[$F{id_modulo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="param_id_grupo">
+						<subreportParameterExpression><![CDATA[$F{id_grupo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["relatorio_todos_usuarios_com_status_de_grupo_provisorio_ou_acesso_vagas_disponiveis.jasper"]]></subreportExpression>
+				</subreport>
+				<staticText>
+					<reportElement uuid="4ce080d2-e93a-4378-815c-0054780da9ea" mode="Opaque" x="0" y="15" width="29" height="11"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Vagas:]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="a6c320d6-6883-413e-9ccf-1e000fff5e06" x="29" y="15" width="22" height="11"/>
+					<textElement>
+						<font fontName="Verdana" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vagas}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="75">
+			<staticText>
+				<reportElement uuid="a71b0343-355c-4f1a-95fe-3e4c3161c589" x="101" y="35" width="701" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RELAÇÃO DE USUÁRIOS COM STATUS PROVISÓRIO OU ACESSO NOS GRUPOS ATIVOS]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="fa093131-3af1-48d1-936a-e9214219505d" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement uuid="f481cd91-b200-43f4-8903-fca87ebb9038" x="-20" y="20" width="822" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="7b2211bd-fd16-4552-a8ec-d96deaa1ecef" mode="Opaque" x="0" y="0" width="79" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5d3323b8-e046-49ad-9952-7ae33fbed44f" mode="Opaque" x="79" y="0" width="115" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Início]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="ca33a2f0-b0a3-4cb8-aaec-ed0b76ed2ac9" x="119" y="0" width="290" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0">
+				<reportElement uuid="589ada49-859b-4600-b374-5cb1e015e035" x="486" y="0" width="66" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dias_apos_data_inicio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="4cdf1bda-73b8-4039-925c-ccac5607b951" x="569" y="0" width="66" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_ocorrencia}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="9a8f2fd8-4934-45ab-a23b-3c04be15fda3" x="644" y="0" width="66" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dias_apos_data_ocorrencia}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b4b6ebe3-cf93-4af1-adb0-9f8ba11612a1" x="0" y="0" width="73" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="329ebd7d-7877-4cd3-ba1a-2ca4c04619cd" x="409" y="0" width="66" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_inicio_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3e12e56e-0282-4b41-a38d-cfdf758290c0" x="73" y="0" width="46" height="15"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="06a5489a-0f0f-4247-bc87-d471ea8203cc" mode="Transparent" x="486" y="4" width="276" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="595c932a-4a17-4b56-9932-816899d29256" mode="Transparent" x="0" y="4" width="239" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="3df8e92e-4672-4709-b620-8ac8a9427973" mode="Transparent" x="762" y="4" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

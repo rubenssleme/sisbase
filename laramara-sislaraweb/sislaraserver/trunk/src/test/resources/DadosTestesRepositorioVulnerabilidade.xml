@@ -1,0 +1,4 @@
+<dataset>
+	<vulnerabilidade id="1" descricao="Vulnerabilidade A" disponivel_para_familia="true" disponivel_para_usuario="false"/>
+	<vulnerabilidade id="2" descricao="Vulnerabilidade B" disponivel_para_familia="false" disponivel_para_usuario="true"/>
+</dataset>

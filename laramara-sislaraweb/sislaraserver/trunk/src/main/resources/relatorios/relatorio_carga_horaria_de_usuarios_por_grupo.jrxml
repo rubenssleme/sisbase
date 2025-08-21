@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1cb5b48a-cf29-4be8-ae37-58aa7e3c5300">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_nome_grupo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select nomgru.nome, gru.turma, gru.data_inicio, gru.data_termino, mod.nome as modulo, modper.carga_horaria, modper.carga_horaria_minima, inf.nome as usuario, cast(sum(ategru.total_horas) as text) as total_horas, cast(modper.carga_horaria_minima as interval) <= sum(ategru.total_horas) as completou_carga_horaria_minima, modusu.status, modusu.aprovado
+	from grupo gru
+	inner join grupo_modulo_periodo grumodper
+		on gru.id = grumodper.id_grupo
+	inner join nome_grupo nomgru
+		on nomgru.id = gru.id_nome_grupo
+	inner join modulo_periodo modper
+		on modper.id = grumodper.id_modulo_periodo
+	inner join modulo mod
+		on mod.id = modper.id_modulo
+	inner join modulo_periodo_modulo_usuario modpermodusu
+		on modper.id = modpermodusu.id_modulo_periodo
+	inner join modulo_usuario modusu
+		on modusu.id = modpermodusu.id_modulo_usuario
+	inner join usuario usu
+		on usu.id = modusu.id_usuario
+	inner join informacao_essencial inf
+		on inf.id = usu.id_informacao_essencial
+	inner join modulo_periodo_atendimento_grupo modperategru
+		on modper.id = modperategru.id_modulo_periodo
+	inner join atendimento_grupo_atendimento_usuario ategruateusu
+		on ategruateusu.id_atendimento_grupo = modperategru.id_atendimento_grupo
+	inner join atendimento_usuario ateusu
+		on ateusu.id = ategruateusu.id_atendimento_usuario and ateusu.id_usuario = usu.id
+	inner join atendimento_grupo ategru
+		on ategru.id = modperategru.id_atendimento_grupo
+	inner join informacao_atendimento infate
+		on infate.id = ateusu.id_informacao_atendimento
+where UPPER(CONCAT(nomgru.nome, '-', gru.turma, '-', to_char(gru.data_inicio, 'DD/MM/YYYY'))) like UPPER($P{param_nome_grupo}) and ategru.status = 'NORMAL' and infate.frequencia = 'AT'
+group by nomgru.nome, gru.turma, gru.data_inicio, gru.data_termino, mod.nome, modper.carga_horaria, modper.carga_horaria_minima, inf.nome, modusu.status, modusu.aprovado
+order by mod.nome, inf.nome]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="turma" class="java.lang.String"/>
+	<field name="data_inicio" class="java.sql.Date"/>
+	<field name="data_termino" class="java.sql.Date"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="carga_horaria" class="java.lang.String"/>
+	<field name="carga_horaria_minima" class="java.lang.String"/>
+	<field name="usuario" class="java.lang.String"/>
+	<field name="total_horas" class="java.lang.String"/>
+	<field name="completou_carga_horaria_minima" class="java.lang.Boolean"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="aprovado" class="java.lang.Boolean"/>
+	<group name="modulo">
+		<groupExpression><![CDATA[$F{modulo}]]></groupExpression>
+		<groupHeader>
+			<band height="45">
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="332a81db-85be-4647-87af-92d1ca79a855" x="0" y="0" width="802" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="">
+					<reportElement uuid="577ac0f3-57ef-4b14-a9eb-3d4ef2e824c6" x="0" y="15" width="373" height="13"/>
+					<textElement>
+						<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Carga horária: "+$F{carga_horaria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="75256865-ffbb-4654-9131-06406d247c78" x="0" y="28" width="373" height="15"/>
+					<textElement>
+						<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Carga horária mínima: "+$F{carga_horaria_minima}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="4eec5d2b-57ce-49ee-9b05-f9db845cdd98" positionType="FixRelativeToBottom" mode="Opaque" x="0" y="44" width="802" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="1b5798e2-4433-4e08-a0cc-cefeaecbe546" mode="Transparent" x="569" y="28" width="55" height="15"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Status]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="409a40ea-7913-4d88-ad0c-c81017dfe1cc" mode="Transparent" x="657" y="28" width="99" height="15"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Aprovado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="88caa1cb-3131-468d-a670-1496b4313c17" mode="Transparent" x="467" y="20" width="88" height="25"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Completou carga horária mínima]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d11b39db-0be4-4fd2-b65e-e250f05d1200" mode="Transparent" x="373" y="28" width="94" height="16"/>
+					<textElement textAlignment="Left">
+						<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Total de horas]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="8"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="67">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement uuid="c52b7274-f204-4db2-867d-96988535a3c0" x="142" y="52" width="114" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_inicio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="da7ea257-add1-4b11-9cd1-0d4ae75e053f" x="0" y="52" width="142" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}+"-"+$F{turma}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="52138482-d1bf-432c-86b2-8667a5924a0b" mode="Opaque" x="0" y="0" width="74" height="52"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="5efc16ed-59c1-4470-9b9b-3659fd4d57d4" x="74" y="12" width="728" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph firstLineIndent="30" rightIndent="40"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE CARGA HORÁRIA DE USUÁRIO POR GRUPO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="10">
+			<line>
+				<reportElement uuid="659170c3-5ec6-40e5-b4f0-d9b7f6823d7a" positionType="FixRelativeToBottom" x="0" y="9" width="802" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="38f8adb5-db14-4c16-bfab-8329b9a67c02" x="467" y="0" width="88" height="10"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{completou_carga_horaria_minima} ? "SIM" : "NÃO"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="d86ed3b7-b3e2-4437-a586-14458e5690d5" x="569" y="0" width="88" height="10"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement uuid="4c074b73-5a9d-4f38-a349-e16d0ceea9d7" x="657" y="0" width="55" height="10"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aprovado} ? "SIM" : "NÃO"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement uuid="bad3ba92-05d8-4ae2-8933-6c4312044e61" x="0" y="0" width="355" height="10"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="8b47afc2-1027-4b86-a247-e167e7152d0f" x="373" y="0" width="94" height="10"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_horas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="2e46df00-118a-413d-bca2-0b965315fcd8" x="0" y="4" width="261" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="5b024d9e-84a5-4031-b057-bd5d1972220e" mode="Opaque" x="762" y="4" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1bf2ec68-4561-4c02-803d-5c02dbe057fb" mode="Opaque" x="0" y="4" width="762" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

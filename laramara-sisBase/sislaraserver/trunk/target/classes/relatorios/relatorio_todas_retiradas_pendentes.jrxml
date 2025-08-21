@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="10f5d90d-f80b-4d2a-ae67-299a6843c864">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select ret.prontuario, pro.nome as profissional, vol.nome as voluntario, hisstatret.data_inicial_vigencia, hisstatret.status, con.login from retirada ret
+	inner join retirada_historico_status_retirada rethisstatret
+		on ret.id = rethisstatret.id_retirada
+	inner join historico_status_retirada hisstatret
+		on hisstatret.id = rethisstatret.id_historico_status_retirada
+	inner join profissional pro
+		on pro.id = ret.id_profissional
+	left join profissional vol
+		on vol.id = ret.id_voluntario
+	inner join conta_acesso con
+		on con.id = hisstatret.id_conta_acesso
+where hisstatret.status = 'RETIRADO' and hisstatret.data_final_vigencia is null
+order by hisstatret.data_inicial_vigencia desc]]>
+	</queryString>
+	<field name="prontuario" class="java.lang.Long"/>
+	<field name="profissional" class="java.lang.String"/>
+	<field name="voluntario" class="java.lang.String"/>
+	<field name="data_inicial_vigencia" class="java.sql.Timestamp"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="login" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="73">
+			<staticText>
+				<reportElement uuid="aea44b5b-da40-4675-8ccf-8527cee07aeb" x="101" y="32" width="455" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE RETIRADAS PENDENTES]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="57ec1456-b444-42e6-8646-5e24f700d7bb" mode="Opaque" x="0" y="-3" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement uuid="2736b6dd-d77e-477d-9bbe-2c1b97da96ab" x="-20" y="72" width="595" height="1" forecolor="#666666"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<line>
+				<reportElement uuid="dafe6125-cfdd-45e3-bdff-d8cf4c597d31" x="-20" y="16" width="595" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="1e6f006e-fabf-4c26-b629-84ad276af05c" mode="Transparent" x="0" y="1" width="42" height="15" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Pront.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4fc6e3c-c927-429c-b808-2e8fe96f2315" mode="Transparent" x="42" y="1" width="140" height="15" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Profissional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cbb06ec7-dd50-4379-98a1-5e56959db2c8" mode="Transparent" x="182" y="1" width="153" height="15" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Voluntário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="66c46eb0-be43-4d39-8bd5-69c038151b56" mode="Transparent" x="477" y="0" width="79" height="15" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Resp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22ea9426-8c8b-4011-b894-680aa42669e0" mode="Transparent" x="338" y="1" width="79" height="15" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="82ac85e4-068f-4dc7-894a-0b3336eb16f2" mode="Transparent" x="414" y="1" width="59" height="15" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Left">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b2c66644-b43b-433a-ae21-11d4ec1eee38" x="182" y="0" width="153" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{voluntario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f15f7a12-97ee-4e61-8fd7-a5e77d573537" positionType="Float" x="477" y="0" width="78" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{login}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="9ca84e01-5cb9-4eca-b2a0-c6beae035df9" x="0" y="0" width="42" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prontuario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4a8762ff-c9eb-4450-ab21-01dd33b246b6" x="42" y="0" width="140" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{profissional}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement uuid="1261deae-287b-486d-b7d9-845c7d30140d" x="335" y="0" width="79" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_inicial_vigencia}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b82b152c-78be-4510-92b1-27278fe02afe" x="414" y="0" width="59" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="d34a3ded-ecd1-4089-ac1b-08ff6491613b" mode="Transparent" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="1d93e2ed-28f3-413f-8f86-c6a64d983ce4" mode="Transparent" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yy">
+				<reportElement uuid="a06f417b-0fd0-490c-9c3c-858373a308ec" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

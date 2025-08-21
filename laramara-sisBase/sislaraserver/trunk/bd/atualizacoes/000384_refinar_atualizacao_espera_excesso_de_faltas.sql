@@ -1,0 +1,15 @@
+﻿update espera set justificativa_cancelamento = 'Cancelamento executado diretamente no banco de dados(Equipe TI). Impactos: Status AGUARDANDO na lista de espera antiga de oftalmologia transferido para CANCELADO. Data de cadastro ficará em branco.' where id in(
+16633,
+16920,
+16945,
+17300,
+17307,
+17366,
+17517,
+17525,
+17664,
+17685,
+17776,
+17781,
+17800,
+17811);

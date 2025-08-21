@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_comas_atendidos_por_uf" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1fc704ff-21d5-48e1-8fe2-7c1e88676480">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_data_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select usu.id, infess.nome,
+	sum((CASE set.id WHEN 'CTO' THEN 1 ELSE 0 END)) as CTO,
+	sum((CASE set.id WHEN 'PROCEJA' THEN 1 ELSE 0 END)) as PROCEJA
+from usuario usu
+	inner join informacao_essencial infess
+		on infess.id = usu.id_informacao_essencial
+	inner join usuario_historico_setor usuhisset
+		on usuhisset.id_usuario = usu.id
+	inner join historico_setor hisset
+		on hisset.id = usuhisset.id_historico_setor
+	inner join setor set
+		on set.id = hisset.id_setor
+where hisset.data_final_vigencia is null and usu.id in (
+	select usu.id
+			from atendimento_individual ateind
+				left join usuario usu
+					on usu.id = ateind.id_usuario
+				inner join informacao_essencial infess
+					on (infess.id = usu.id_informacao_essencial)
+				inner join informacao_atendimento infate
+					on infate.id = ateind.id_informacao_atendimento
+				inner join descricao_tipo_atendimento destipate
+					on (destipate.id = ateind.id_descricao_tipo_atendimento)
+				inner join tipo_atendimento tip
+					on (tip.id = destipate.id_tipo_atendimento)
+				inner join modulo mod
+					on (mod.id = ateind.id_modulo)
+				inner join atendimento_individual_atendimento_profissional ateindatepro
+					on ateindatepro.id_atendimento_individual = ateind.id
+				inner join atendimento_profissional atepro
+					on atepro.id = ateindatepro.id_atendimento_profissional
+				inner join informacao_atendimento infatepro
+					on infatepro.id = atepro.id_informacao_atendimento
+			where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and ateind.data  between $P{param_data_inicio} and $P{param_data_termino}
+	union all
+	select usu.id
+	from grupo gru
+				inner join grupo_modulo_periodo grumodper
+					on gru.id = grumodper.id_grupo
+				inner JOIN modulo_periodo modper
+					ON grumodper.id_modulo_periodo = modper.id
+				inner join descricao_tipo_atendimento destipate
+					on (destipate.id = gru.id_descricao_tipo_atendimento)
+				inner join tipo_atendimento tip
+					on (tip.id = destipate.id_tipo_atendimento)
+				inner JOIN modulo mod
+					ON modper.id_modulo = mod.id
+				inner JOIN modulo_periodo_atendimento_grupo modperaten
+					ON modper.id = modperaten.id_modulo_periodo
+				inner JOIN atendimento_grupo ate
+					ON ate.id = modperaten.id_atendimento_grupo
+				inner join atendimento_grupo_atendimento_usuario ategruateusu
+					on ate.id = ategruateusu.id_atendimento_grupo
+				inner join atendimento_usuario ateusu
+					on ateusu.id = ategruateusu.id_atendimento_usuario
+				inner join usuario usu
+					on usu.id = ateusu.id_usuario
+				inner join informacao_atendimento infate
+					on infate.id = ateusu.id_informacao_atendimento
+				inner join atendimento_grupo_atendimento_profissional ategruatepro
+					on ategruatepro.id_atendimento_grupo = ate.id
+				inner join atendimento_profissional atepro
+					on atepro.id = ategruatepro.id_atendimento_profissional
+				inner join informacao_atendimento infatepro
+					on infatepro.id = atepro.id_informacao_atendimento
+				inner join informacao_essencial infess
+					on infess.id = usu.id_informacao_essencial
+			WHERE ate.status = 'NORMAL' and gru.excluido is false and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and ate.data between $P{param_data_inicio} and $P{param_data_termino}) and not EXISTS (
+	select 1 from usuario_periodo_deficiencia where id_usuario = usu.id
+)
+group by usu.id, infess.nome
+order by usu.id;]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="cto" class="java.lang.Long"/>
+	<field name="proceja" class="java.lang.Long"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="75">
+			<staticText>
+				<reportElement uuid="50d98798-9cab-419c-a428-bd8a29d6a80f" x="100" y="0" width="466" height="55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RELAÇÃO DE PRONTUÁRIOS ATENDIDOS SEM INFORMAÇÕES DE DEFICIÊNCIA]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="183ab74e-4a17-4876-9144-50bfdc326799" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="ffcc0127-5a71-4075-a67c-be6fc028a107" x="118" y="55" width="81" height="20"/>
+				<textElement>
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_data_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="f4123109-c535-4ea8-97c6-d9ef3e0c4566" x="227" y="55" width="76" height="20"/>
+				<textElement>
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_data_termino}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ce524e83-8639-4c6e-aff1-d15f5b1c07fd" x="199" y="55" width="28" height="20"/>
+				<textElement>
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<text><![CDATA[até]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="9"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<staticText>
+				<reportElement uuid="fdd605a5-ac37-4a00-ac96-888ae353f570" mode="Opaque" x="0" y="0" width="100" height="17"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prontuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fb787ffb-50cd-41d5-9eb7-44d3962e37b4" mode="Opaque" x="355" y="0" width="48" height="17"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fff17224-f9a2-4fff-9695-a2681b0db948" mode="Opaque" x="403" y="0" width="74" height="17"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROCEJA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<textField>
+				<reportElement uuid="5df62d94-aade-4f90-b6ed-dd3a8a2bb0f6" x="0" y="0" width="274" height="14"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id} + " - " + $F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d80a4e63-5e9b-4e83-be17-d90d8816f992" x="355" y="0" width="48" height="14"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{cto} == 1) ? "SIM" : "NÃO"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="a362b052-efcb-4148-a3cb-a4e3d72b4f67" x="0" y="13" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="6965c6c9-49cf-40f9-a62b-b114874c7b81" x="403" y="0" width="74" height="14"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{proceja} == 1) ? "SIM" : "NÃO"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="89fb1237-5b34-4dca-899a-360f318842d6" mode="Transparent" x="0" y="4" width="515" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="3181ec3b-41be-4914-b823-20734fbe4ba0" mode="Opaque" x="515" y="4" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="20">
+			<textField>
+				<reportElement uuid="9f9dc80d-006f-4f7d-b59b-1004021ad302" x="45" y="0" width="100" height="14"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="83b14ea0-573e-448a-b452-cded9a19e7ec" mode="Opaque" x="0" y="0" width="45" height="17"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total: ]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

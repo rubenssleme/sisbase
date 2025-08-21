@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_ficha_do_servico_social_primeiro_bloco" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="eabf30b2-31b6-4b51-972b-6841043a75dc">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_id_usuario" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select com.descricao,percom.epoca_incidencia, percom.data_inicial_vigencia, percom.data_final_vigencia from usuario usu
+	inner join usuario_periodo_comprometimento usupercom
+		on usupercom.id_usuario = usu.id
+	inner join periodo_comprometimento percom
+		on percom.id = usupercom.id_periodo_comprometimento
+	inner join comprometimento com
+		on com.id = percom.id_comprometimento
+where usu.id = $P{param_id_usuario}]]>
+	</queryString>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="epoca_incidencia" class="java.lang.String"/>
+	<field name="data_inicial_vigencia" class="java.sql.Timestamp"/>
+	<field name="data_final_vigencia" class="java.sql.Timestamp"/>
+	<group name="perdef">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="13">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="210" height="13" uuid="2a9058ac-46c9-4a01-9680-4ad38f1f0f98"/>
+					<textElement>
+						<font fontName="Verdana" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="210" y="0" width="120" height="13" uuid="187944d5-67e1-472d-b176-8168773f995b"/>
+					<textElement>
+						<font fontName="Verdana" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{epoca_incidencia}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band height="16">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="355" height="16" forecolor="#C13F00" uuid="25395734-9238-417f-813d-282718646bc6"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Verdana" size="11" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Outros comprometimentos observados (SEM Laudo)]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

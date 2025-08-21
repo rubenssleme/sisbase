@@ -1,0 +1,1 @@
+﻿insert into cargo(nome)values('Auxiliar de divulgação');

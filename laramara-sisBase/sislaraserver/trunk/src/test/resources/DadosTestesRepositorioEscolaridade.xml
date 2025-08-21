@@ -1,0 +1,8 @@
+<dataset>
+	<serie id="1" descricao="1º Série"/>
+	<serie id="2" descricao="2º Série"/>
+	<escolaridade id="1" descricao="Superior"/>
+	<escolaridade id="2" descricao="Doutorado"/>
+	<escolaridade_serie id_escolaridade="1" id_serie="1"/>
+	<escolaridade_serie id_escolaridade="2" id_serie="2"/>
+</dataset>

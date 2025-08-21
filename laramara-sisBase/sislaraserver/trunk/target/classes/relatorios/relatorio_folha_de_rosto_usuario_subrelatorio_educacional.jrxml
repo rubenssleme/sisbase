@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report10_subreport3" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f2417ebf-deff-4d00-bff0-a1a5af96280f">
+	<property name="ireport.zoom" value="2.357947691000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_id_usuario" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select  esc.descricao as escolaridade, ser.descricao as serie, infedu.situacao as situacao
+	from usuario usu
+	inner join usuario_informacao_educacional usuinfedu
+		on(usu.id = usuinfedu.id_usuario)
+	left join informacao_educacional infedu
+		on (infedu.id = usuinfedu.id_informacao_educacional)
+	left join instituicao ins
+		on (ins.id = infedu.id_instituicao)
+	left join escolaridade esc
+		on (esc.id = infedu.id_escolaridade)
+	left join serie ser
+		on (ser.id = infedu.id_serie)
+where
+	usu.id = $P{param_id_usuario} and infedu.data_final_vigencia is null and infedu.excluido is not true]]>
+	</queryString>
+	<field name="escolaridade" class="java.lang.String"/>
+	<field name="serie" class="java.lang.String"/>
+	<field name="situacao" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band height="13">
+			<staticText>
+				<reportElement uuid="7bafd190-9f83-4bab-9e41-c097b1141b1b" x="0" y="0" width="555" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[INFORMAÇÕES EDUCACIONAIS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="13">
+			<line>
+				<reportElement uuid="ef4c4d3d-4fae-4f8f-a2bf-f2f8399de743" x="-20" y="0" width="595" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="673553ab-ace9-4ed7-9b11-1a875289f7f2" x="0" y="0" width="105" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Escolaridade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1d31a05b-ffb3-408c-852b-4a4575459c49" x="105" y="0" width="78" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Série]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b2848cd4-fcea-441e-b38d-cf1e6b335fc6" x="183" y="0" width="92" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Situação]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="12097724-0226-4829-b35f-f8468d94924f" x="0" y="0" width="105" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{escolaridade}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f868cb98-b49a-4c0f-a46c-ab2a8eb85448" x="105" y="0" width="78" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ea04c4ec-6677-4ff1-9dda-e06fd0e017fb" x="183" y="0" width="92" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,40 @@
+<dataset>
+	<perfil id="3" descricao="Administrador"/>
+	<conta_acesso id="1000" id_perfil="3" login="Paulo" senha="ca99498816e8e429036944e00aaf6594" bloqueado="false" extensao_relatorios="pdf" filtro_grupo="false"/>
+	
+	<contato id="699999" ramal="2323" nome_contato="Josep Meaza" email="paulo@yahoo.com.br" />
+
+	<historico_rg id="44444" data_inicial_vigencia="2000-01-01" rg="1234"/>
+	<historico_rg id="55555" data_inicial_vigencia="2000-01-01" rg="4321"/>
+	
+	<estado_civil id="1" descricao="Casado"/>
+		
+	<informacao_essencial id="44444" nome="Jose Augusto Siqueira" id_contato="699999" data_nascimento="1982-07-27"/>
+	<informacao_essencial id="55555" nome="Jose Augusto Siqueira" id_contato="699999" data_nascimento="1982-07-27"/>
+	
+	<informacao_essencial_historico_rg id_informacao_essencial="44444" id_historico_rg="44444"/>
+	<informacao_essencial_historico_rg id_informacao_essencial="55555" id_historico_rg="55555"/>
+	
+	<pre_cadastro id="12222" data_cadastro="0001-01-01" id_informacao_essencial="44444" />
+	<pre_cadastro id="22222" data_cadastro="0001-01-01" id_informacao_essencial="55555" />
+	
+	<usuario id="12222" data_cadastro="1999-12-31" id_informacao_essencial="55555" genero="MASCULINO" naturalidade="Belém" rg_uf="PA" rg_data_expedicao="1998-12-31" rg_orgao_emissor="SEGUP" id_estado_civil="1" nacionalidade="Brasileiro" tipo_leitura="AMPLIADO"/>
+	
+	<tipo_atendimento id="11111" nome="Atendimento Educacional Especializado"/>
+	
+	<descricao_tipo_atendimento id="12222" id_tipo_atendimento="11111" nome="Curso de Informatica" sigla="INFO" descricao="Texto de descrição." inativo="false"/>
+	
+	<modulo id="1" nome="Informática"/>
+	
+	<setor id="CTO" descricao="CTO"/>
+	<setor id="NENHUM" descricao="NENHUM"/>
+	
+	<nome_grupo id="1000" nome="G00"/>
+		
+	<espera id="12222" id_pre_cadastro="12222" data="2012-01-01" id_descricao_tipo_atendimento="12222" id_modulo="1" id_nome_grupo="1000" id_setor="CTO" tipo_espera="RET" interesse="true" lm_ligou="true" pendencias="true"/>
+	<espera id="22222" id_usuario="12222" data="2012-12-31" id_descricao_tipo_atendimento="12222" id_modulo="1" id_nome_grupo="1000" id_setor="CTO" tipo_espera="RET" interesse="true" lm_ligou="true" pendencias="true"/>
+	<historico_status_espera id="11111" data_inicial_vigencia="2012-01-01" status="AGUARDANDO" id_conta_acesso="1000"/>
+	<espera_historico_status_espera id_espera="12222" id_historico_status_espera="11111"/>
+	<historico_status_espera id="22222" data_inicial_vigencia="2012-01-01" status="AGUARDANDO" id_conta_acesso="1000"/>
+	<espera_historico_status_espera id_espera="22222" id_historico_status_espera="22222"/>
+</dataset>

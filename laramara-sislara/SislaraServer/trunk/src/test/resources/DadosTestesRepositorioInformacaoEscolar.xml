@@ -1,0 +1,17 @@
+<dataset>
+	<pais id="1" nome="Brasil"/>
+	
+	<municipio id="4850" nome="São Paulo" uf="SP"/>
+		
+	<endereco id="55555" data_inicial_vigencia ="0001-01-01" uf="SP" id_municipio="4850" bairro="Barra Funda" endereco="Rua das Andradas" numero="348" zona="LESTE" id_pais="1"/>
+
+	<contato id="399999" ramal="2323" nome_contato="Josep Meaza" email="paulo@yahoo.com.br" />
+
+	<instituicao id="122222" id_endereco="55555" id_contato="399999" tipo="EE" nome="EE Ministro de Godoi" nome_coordenador_responsavel="Paulo Augusto" classificacao="ESTADUAL" OBS="Texto de obs."/>
+	
+	<escolaridade id="1" descricao="SUPERIOR"/>
+	
+	<serie id="1" descricao="1º Série"/>
+		
+	<informacao_educacional id="88888" data_inicial_vigencia="0001-01-01" id_instituicao="122222" id_escolaridade="1" id_serie="1" situacao="CURSANDO" periodo="MANHA" data_referencia="2001-01-01" excluido="false"/> 
+</dataset>

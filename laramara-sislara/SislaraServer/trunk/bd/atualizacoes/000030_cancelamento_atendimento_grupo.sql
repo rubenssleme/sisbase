@@ -1,0 +1,1 @@
+update atendimento_grupo set status = 'CANCELADO' where id in (169, 171);

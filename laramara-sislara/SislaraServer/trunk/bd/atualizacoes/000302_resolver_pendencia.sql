@@ -1,0 +1,1 @@
+﻿update pendencia set resolvida = true where id = 85;

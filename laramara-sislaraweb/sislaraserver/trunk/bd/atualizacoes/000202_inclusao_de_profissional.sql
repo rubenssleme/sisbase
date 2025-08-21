@@ -1,0 +1,1 @@
+﻿insert into profissional(nome, habilitado, voluntario, profissional)values('DANIEL BERNARDES PINTO', true, true, true); 

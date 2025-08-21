@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="02c4fdbf-d7ac-41b3-8a72-3f2d5c1806fa">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_data_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    usu.id AS prontuario, infess.nome AS nomeusuario, gru.id as id_grupo, nomgru.nome AS nomegrupo, gru.turma AS turma, mod.id as id_modulo, mod.nome AS modulo, infoaten.frequencia as frequencia, count(infoaten.frequencia) as tot_frequencia
+FROM
+     atendimento_grupo ate INNER JOIN atendimento_grupo_atendimento_usuario ateateusu ON ate.id = ateateusu.id_atendimento_grupo
+     INNER JOIN atendimento_usuario ateusu ON ateateusu.id_atendimento_usuario = ateusu.id
+     INNER JOIN usuario usu ON ateusu.id_usuario = usu.id
+     INNER JOIN informacao_atendimento infoaten ON ateusu.id_informacao_atendimento = infoaten.id
+     INNER JOIN informacao_essencial infess ON usu.id_informacao_essencial = infess.id
+     INNER JOIN modulo_periodo_atendimento_grupo modperaten ON ate.id = modperaten.id_atendimento_grupo
+     INNER JOIN modulo_periodo modper ON modperaten.id_modulo_periodo = modper.id
+     INNER JOIN modulo mod ON modper.id_modulo = mod.id
+     INNER JOIN grupo_modulo_periodo grumodper ON modper.id = grumodper.id_modulo_periodo
+     INNER JOIN grupo gru ON grumodper.id_grupo = gru.id
+     INNER JOIN nome_grupo nomgru ON gru.id_nome_grupo = nomgru.id
+     INNER JOIN usuario_convenio usucon ON usu.id = usucon.id_usuario
+     INNER JOIN convenio con ON con.id = usucon.id_convenio
+WHERE
+     ate.status='NORMAL' and con.id = 2  and ate.data between $P{param_data_inicio} and $P{param_data_termino}
+GROUP BY
+     usu.id, infess.nome, gru.id, nomgru.nome, gru.turma, mod.id, mod.nome, infoaten.frequencia
+ORDER BY
+     infess.nome, nomgru.nome, gru.turma, mod.nome, infoaten.frequencia]]>
+	</queryString>
+	<field name="prontuario" class="java.lang.Long"/>
+	<field name="nomeusuario" class="java.lang.String"/>
+	<field name="id_grupo" class="java.lang.Long"/>
+	<field name="nomegrupo" class="java.lang.String"/>
+	<field name="turma" class="java.lang.String"/>
+	<field name="id_modulo" class="java.lang.Long"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="frequencia" class="java.lang.String"/>
+	<field name="tot_frequencia" class="java.lang.Long"/>
+	<group name="prontuario">
+		<groupExpression><![CDATA[$F{prontuario}]]></groupExpression>
+		<groupHeader>
+			<band height="14">
+				<textField>
+					<reportElement uuid="65a50d90-4d05-43c0-ae25-f98982927dbf" mode="Opaque" x="0" y="1" width="38" height="13"/>
+					<textElement>
+						<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{prontuario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="b16c0e20-58fe-4a0d-a8d1-0cb5368d5d0b" x="38" y="1" width="517" height="13"/>
+					<textElement>
+						<font fontName="Verdana" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomeusuario}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="1">
+				<line>
+					<reportElement uuid="34650457-2d03-40b0-8d7e-a084e1ac3d3a" positionType="FixRelativeToBottom" x="-20" y="0" width="595" height="1"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="id_grupo">
+		<groupExpression><![CDATA[$F{id_grupo}]]></groupExpression>
+		<groupHeader>
+			<band height="13">
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="8d99c284-682e-493d-91a1-9f7a3ff171c5" x="62" y="0" width="111" height="13"/>
+					<textElement>
+						<font fontName="Verdana" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomegrupo}+"-"+$F{turma}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="modulo">
+		<groupExpression><![CDATA[$F{modulo}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="frequencia">
+		<groupExpression><![CDATA[$F{frequencia}]]></groupExpression>
+		<groupHeader>
+			<band height="13">
+				<textField>
+					<reportElement uuid="2d556ccd-18b2-4ac0-aec0-e742fe38af7a" x="305" y="0" width="28" height="13"/>
+					<textElement>
+						<font fontName="Verdana" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{frequencia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="72d50bfe-3e08-4c71-ace0-a21e5811a222" x="333" y="0" width="42" height="13"/>
+					<textElement>
+						<font fontName="Verdana" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tot_frequencia}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="52eb3268-831b-4782-a8a9-7e0e789c3780" x="100" y="0" width="205" height="13"/>
+					<textElement>
+						<font fontName="Verdana" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="75">
+			<image>
+				<reportElement uuid="65f5b7b8-301a-4ebf-b039-4b9f13a42e52" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="844c7b5b-9d3e-49d8-ab91-b03e20b1ec6b" x="100" y="12" width="455" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE QUANTIDADE DE ATENDIMENTOS PARA A PREFEITURA (Apenas usuários conveniados à prefeitura)]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="42c74a75-6cbe-4e14-9a74-6f0b4a7eda8e" x="121" y="62" width="63" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_data_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="48fd10e6-7378-47af-9db4-3316b18ded5d" x="205" y="62" width="100" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_data_termino}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="64f45005-6f42-4e2e-aa5f-bf07d1e1e673" mode="Opaque" x="184" y="62" width="18" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["até"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="8">
+			<line>
+				<reportElement uuid="912923eb-fda3-4fa3-a5a4-48aef439e811" x="-20" y="7" width="595" height="1" forecolor="#666666"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13">
+			<textField>
+				<reportElement uuid="ff9fc863-d5bd-41e5-97ec-2aa54a3e94c2" mode="Opaque" x="0" y="0" width="515" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="9f421711-2ca1-4e70-a2bf-04c758befc7c" mode="Opaque" x="515" y="0" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="8804add8-f04f-43b5-835c-c6d4b449eed1" x="0" y="0" width="261" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,1 @@
+﻿insert into profissional(nome, habilitado, voluntario, profissional)values('Elizabeth Nunes Abreu', true, true, true);

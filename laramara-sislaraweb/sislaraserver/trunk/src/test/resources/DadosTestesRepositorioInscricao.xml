@@ -1,0 +1,19 @@
+<dataset>
+	<municipio id="4850" nome="São Paulo" uf="SP" />
+	
+	<endereco id="55555" data_inicial_vigencia="0001-01-01" uf="SP" id_municipio="4850" bairro="Barra Funda" endereco="Rua das Andradas" numero="348" />
+	
+	<usuario_externo id="1111" email="carloskafka7@gmail.com" nome_completo="Carlos Henrique da Silva Kafka" ddd="11" telefone_celular="39176134" senha="81dc9bdb52d04dc20036dbd8313ed055" data_nascimento="1993-09-27" bloqueado="false" rg_rne="333474685" autorizo_recebimento_informativo="true" id_endereco_residencial="55555" e_pessoa_com_deficiencia="true" possui_cegueira="false" possui_baixa_visao="true"/>
+	
+	<setor id="CTO" descricao="CTO"/>
+	
+	<nome_grupo id="1004" nome="G04"/>
+	
+	<tipo_atendimento id="10" nome="Visita Monitorada"/>
+	
+	<descricao_tipo_atendimento id="12222" id_tipo_atendimento="10" nome="Atendimento de Teste" sigla="ATT" inativo="false"/>
+	
+	<grupo id="16666" ativo="true" id_setor="CTO" id_descricao_tipo_atendimento="12222" data_inicio="2011-12-31" data_termino="2011-12-31" id_nome_grupo="1004" turma="1" nivel="1"/>
+	
+	<inscricao />
+</dataset>

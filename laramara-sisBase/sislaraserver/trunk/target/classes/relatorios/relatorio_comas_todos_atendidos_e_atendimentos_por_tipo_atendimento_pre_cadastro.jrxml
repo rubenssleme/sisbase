@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8f2ab037-ce7c-4c35-acd3-bdcf0680cb2d">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_data_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select aux3.tipo, aux3.descricao, aux3.modulo, sum(aux3.total_atendimentos) as total_atendimentos, sum(aux3.total_atendimentos_familia) as total_atendimentos_familia, sum(aux3.total_atendidos) as total_atendidos  from (
+	select aux.tipo, aux.descricao, aux.modulo, sum(aux.total_atendimentos) as total_atendimentos, 0 as total_atendimentos_familia, 0 as total_atendidos from(
+		select atepre.id, tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, count(distinct atepro.id_profissional)*count(distinct pre.id) as total_atendimentos from grupo gru
+			inner join grupo_modulo_periodo grumodper
+				on gru.id = grumodper.id_grupo
+			inner JOIN modulo_periodo modper
+				ON grumodper.id_modulo_periodo = modper.id
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = gru.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner JOIN modulo mod
+				ON modper.id_modulo = mod.id
+			inner JOIN modulo_periodo_atendimento_grupo modperaten
+				ON modper.id = modperaten.id_modulo_periodo
+			inner JOIN atendimento_grupo ategru
+				ON ategru.id = modperaten.id_atendimento_grupo
+			inner join atendimento_grupo_atendimento_pre_cadastro ategruatepre
+				on ategru.id = ategruatepre.id_atendimento_grupo
+			inner join atendimento_pre_cadastro atepre
+				on atepre.id = ategruatepre.id_atendimento_pre_cadastro
+			inner join pre_cadastro pre
+				on pre.id = atepre.id_pre_cadastro
+			inner join informacao_atendimento infate
+				on infate.id = atepre.id_informacao_atendimento
+			inner join atendimento_grupo_atendimento_profissional ategruatepro
+				on ategruatepro.id_atendimento_grupo = ategru.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ategruatepro.id_atendimento_profissional
+			inner join informacao_atendimento infatepro
+				on infatepro.id = atepro.id_informacao_atendimento
+			WHERE ategru.status = 'NORMAL' and gru.excluido is false and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and ategru.data between $P{param_data_inicio} and $P{param_data_termino}
+		group by atepre.id, tip.nome, destipate.nome, mod.nome)aux
+	group by aux.tipo, aux.descricao, aux.modulo
+	union all
+	select aux.tipo, aux.descricao, aux.modulo, 0 as total_atendimentos, sum(aux.total_atendimentos_familia) as total_atendimentos_familia, 0 as total_atendidos from(
+		select atepre.id, tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, count(distinct atepro.id_profissional)*count(distinct pre.id) as total_atendimentos_familia from grupo gru
+			inner join grupo_modulo_periodo grumodper
+				on gru.id = grumodper.id_grupo
+			inner JOIN modulo_periodo modper
+				ON grumodper.id_modulo_periodo = modper.id
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = gru.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner JOIN modulo mod
+				ON modper.id_modulo = mod.id
+			inner JOIN modulo_periodo_atendimento_grupo modperaten
+				ON modper.id = modperaten.id_modulo_periodo
+			inner JOIN atendimento_grupo ategru
+				ON ategru.id = modperaten.id_atendimento_grupo
+			inner join atendimento_grupo_atendimento_pre_cadastro ategruatepre
+				on ategru.id = ategruatepre.id_atendimento_grupo
+			inner join atendimento_pre_cadastro atepre
+				on atepre.id = ategruatepre.id_atendimento_pre_cadastro
+			inner join pre_cadastro pre
+				on pre.id = atepre.id_pre_cadastro
+			inner join informacao_atendimento infate
+				on infate.id = atepre.id_informacao_atendimento
+			inner join atendimento_grupo_atendimento_profissional ategruatepro
+				on ategruatepro.id_atendimento_grupo = ategru.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ategruatepro.id_atendimento_profissional
+			inner join informacao_atendimento infatepro
+				on infatepro.id = atepro.id_informacao_atendimento
+			WHERE ategru.status = 'NORMAL' and gru.excluido is false and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and ategru.data between $P{param_data_inicio} and $P{param_data_termino} and infate.participacao in ('COM_FAMILIA', 'APENAS_FAMILIA')
+		group by atepre.id, tip.nome, destipate.nome, mod.nome)aux
+	group by aux.tipo, aux.descricao, aux.modulo
+	union all
+	select aux.tipo, aux.descricao, aux.modulo, sum(aux.total_atendimentos) as total_atendimentos, 0 as total_atendimentos_familia, 0 as total_atendidos from(
+		select ateind.id, tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo,  count(distinct atepro.id_profissional)*count(distinct infess.id) as total_atendimentos from atendimento_individual ateind
+			inner join pre_cadastro pre
+				on pre.id = ateind.id_pre_cadastro
+			inner join informacao_atendimento infate
+				on infate.id = ateind.id_informacao_atendimento
+			inner join informacao_essencial infess
+				on (infess.id = pre.id_informacao_essencial)
+			inner join atendimento_individual_atendimento_profissional ateindatepro
+				on ateindatepro.id_atendimento_individual = ateind.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ateindatepro.id_atendimento_profissional
+			inner join informacao_atendimento infatepro
+				on infatepro.id = atepro.id_informacao_atendimento
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = ateind.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner join modulo mod
+				on (mod.id = ateind.id_modulo)
+			where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and infatepro.frequencia = 'AT'  and ateind.data between $P{param_data_inicio} and $P{param_data_termino}
+		group by ateind.id, tip.nome, destipate.nome, mod.nome)aux
+	group by aux.tipo, aux.descricao, aux.modulo
+	union all
+	select aux.tipo, aux.descricao, aux.modulo, 0 as total_atendimentos, sum(aux.total_atendimentos_familia) as total_atendimentos_familia, 0 as total_atendidos from(
+		select ateind.id, tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, count(distinct atepro.id_profissional)*count(distinct infess.id) as total_atendimentos_familia from atendimento_individual ateind
+			inner join pre_cadastro pre
+				on pre.id = ateind.id_pre_cadastro
+			inner join informacao_essencial infess
+				on (infess.id = pre.id_informacao_essencial)
+			inner join informacao_atendimento infate
+				on infate.id = ateind.id_informacao_atendimento
+			inner join atendimento_individual_atendimento_profissional ateindatepro
+				on ateindatepro.id_atendimento_individual = ateind.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ateindatepro.id_atendimento_profissional
+			inner join informacao_atendimento infatepro
+				on infatepro.id = atepro.id_informacao_atendimento
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = ateind.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner join modulo mod
+				on (mod.id = ateind.id_modulo)
+			where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and infatepro.frequencia = 'AT'  and ateind.data  between $P{param_data_inicio} and $P{param_data_termino} and ateind.participacao in ('COM_FAMILIA', 'APENAS_FAMILIA')
+		group by ateind.id, tip.nome, destipate.nome, mod.nome)aux
+	group by aux.tipo, aux.descricao, aux.modulo
+	union all
+	select aux2.tipo, aux2.descricao, aux2.modulo, 0 as total_atendimentos, 0 as tota_atendimentos_familia, count(distinct aux2.id_pre_cadastro) total_atendidos from (
+		select tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, 0 as total_atendimentos, 0 as total_atendimentos_familia, atepre.id_pre_cadastro from grupo gru
+			inner join grupo_modulo_periodo grumodper
+				on gru.id = grumodper.id_grupo
+			inner JOIN modulo_periodo modper
+				ON grumodper.id_modulo_periodo = modper.id
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = gru.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner JOIN modulo mod
+				ON modper.id_modulo = mod.id
+			inner JOIN modulo_periodo_atendimento_grupo modperaten
+				ON modper.id = modperaten.id_modulo_periodo
+			inner JOIN atendimento_grupo ate
+				ON ate.id = modperaten.id_atendimento_grupo
+			inner join atendimento_grupo_atendimento_pre_cadastro ategruatepre
+				on ate.id = ategruatepre.id_atendimento_grupo
+			inner join atendimento_pre_cadastro atepre
+				on atepre.id = ategruatepre.id_atendimento_pre_cadastro
+			inner join informacao_atendimento infate
+				on infate.id = atepre.id_informacao_atendimento
+			inner join atendimento_grupo_atendimento_profissional ategruatepro
+				on ategruatepro.id_atendimento_grupo = ate.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ategruatepro.id_atendimento_profissional
+			inner join informacao_atendimento infatepro
+				on infatepro.id = atepro.id_informacao_atendimento
+		WHERE ate.status = 'NORMAL' and gru.excluido is false and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and ate.data between $P{param_data_inicio} and $P{param_data_termino}
+	union all
+	select tip.nome as tipo, destipate.nome as descricao, mod.nome as modulo, 0 as total_atendimentos, 0 as total_atendimentos_familia, pre.id from atendimento_individual ateind
+		inner join pre_cadastro pre
+			on pre.id = ateind.id_pre_cadastro
+		inner join informacao_essencial infess
+			on (infess.id = pre.id_informacao_essencial)
+		inner join informacao_atendimento infate
+			on infate.id = ateind.id_informacao_atendimento
+		inner join descricao_tipo_atendimento destipate
+			on (destipate.id = ateind.id_descricao_tipo_atendimento)
+		inner join tipo_atendimento tip
+			on (tip.id = destipate.id_tipo_atendimento)
+		inner join modulo mod
+			on (mod.id = ateind.id_modulo)
+		inner join atendimento_individual_atendimento_profissional ateindatepro
+			on ateindatepro.id_atendimento_individual = ateind.id
+		inner join atendimento_profissional atepro
+			on atepro.id = ateindatepro.id_atendimento_profissional
+		inner join informacao_atendimento infatepro
+			on infatepro.id = atepro.id_informacao_atendimento
+	where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and infatepro.frequencia = 'AT' and ateind.data between $P{param_data_inicio} and $P{param_data_termino})aux2
+	group by aux2.tipo, aux2.descricao, aux2.modulo)aux3
+group by aux3.tipo, aux3.descricao, aux3.modulo
+order by aux3.tipo, aux3.descricao, aux3.modulo;]]>
+	</queryString>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="total_atendimentos" class="java.math.BigDecimal"/>
+	<field name="total_atendimentos_familia" class="java.math.BigDecimal"/>
+	<field name="total_atendidos" class="java.math.BigDecimal"/>
+	<group name="tipo">
+		<groupExpression><![CDATA[$F{tipo}]]></groupExpression>
+		<groupHeader>
+			<band/>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="descricao">
+		<groupExpression><![CDATA[$F{descricao}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="modulo">
+		<groupExpression><![CDATA[$F{modulo}]]></groupExpression>
+		<groupHeader>
+			<band height="12">
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="5ea48f89-d139-4878-8cd9-cf23ff19b0a0" x="495" y="0" width="175" height="12"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Verdana" size="6" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="d43bb18b-aa66-47ef-adeb-c3b28ca9e1a7" x="685" y="0" width="39" height="12"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Verdana" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_atendimentos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="124e2c6b-217d-4cfa-afb7-63894c2ec10d" x="724" y="0" width="36" height="12"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Verdana" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_atendimentos_familia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="94846cb8-3f23-43c0-9cb1-1aeb9fae0295" x="760" y="0" width="40" height="12"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Verdana" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_atendidos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+					<reportElement uuid="7c3bfa5c-41e3-4e0c-8f55-92aba63f3e54" mode="Opaque" x="0" y="0" width="209" height="12"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Verdana" size="6" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="eede0a27-38da-44ca-ad02-ffd050b2e0c0" x="209" y="0" width="286" height="12"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Verdana" size="6" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72"/>
+	</title>
+	<pageHeader>
+		<band height="11"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="10">
+			<staticText>
+				<reportElement uuid="ea62f44f-0d22-47e7-97f9-b4021c2d959a" x="612" y="0" width="188" height="10"/>
+				<textElement>
+					<font fontName="Verdana" size="6"/>
+				</textElement>
+				<text><![CDATA[Atendimentos / Atendimentos com Família / Atendidos]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13">
+			<textField evaluationTime="Report">
+				<reportElement uuid="995b88c2-fdb0-45bd-8da3-6f349991bb62" mode="Transparent" x="760" y="0" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="fd988065-f195-4be0-a7a4-b55b37690aca" mode="Transparent" x="0" y="0" width="239" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e097f25c-60a4-4c4d-bdb7-4ec0ce5e2446" mode="Transparent" x="484" y="0" width="276" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

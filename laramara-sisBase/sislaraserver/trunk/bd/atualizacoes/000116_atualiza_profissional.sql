@@ -1,0 +1,1 @@
+﻿update profissional set nome = 'ROSA MARIA BASKAUSKAS BOCCATO' where id  = 83;

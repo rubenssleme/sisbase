@@ -1,0 +1,1 @@
+﻿update atendimento_grupo set status = 'NORMAL' where id in (25201, 25202);

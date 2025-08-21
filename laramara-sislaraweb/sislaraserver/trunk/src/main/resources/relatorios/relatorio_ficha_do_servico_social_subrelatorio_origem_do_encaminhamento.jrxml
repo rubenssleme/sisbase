@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_ficha_do_servico_social_subrelatorio_doencas" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a284fd54-afdc-4411-bef0-dbb7e533397f">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_id_usuario" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select usu.outros_apoios_servicos, array_to_string(array_agg(distinct ser.descricao),', ') as servicos, array_to_string(array_agg(distinct (orienc.descricao, oriencdet.profissional_liberal)),', ') as origem_encaminhamento from usuario usu
+	left join usuario_servico ususer
+		on usu.id = ususer.id_usuario
+	left join servico ser
+		on ser.id = ususer.id_servico
+	left join usuario_origem_encaminhamento_detalhado usuoriencdet
+		on usuoriencdet.id_usuario = usu.id
+	left join origem_encaminhamento_detalhado oriencdet
+		on oriencdet.id = usuoriencdet.id_origem_encaminhamento_detalhado
+	left join origem_encaminhamento orienc
+		on orienc.id = oriencdet.id_origem_encaminhamento
+where usu.id = $P{param_id_usuario}
+group by 1]]>
+	</queryString>
+	<field name="outros_apoios_servicos" class="java.lang.String"/>
+	<field name="servicos" class="java.lang.String"/>
+	<field name="origem_encaminhamento" class="java.lang.String"/>
+	<group name="id">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="18" width="184" height="16" forecolor="#C13F00" uuid="34b0de05-a400-4967-bd1d-71bf59545cbb"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Verdana" size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Origem de encaminhamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="529" height="18" forecolor="#FFFFFF" backcolor="#0066BD" uuid="2efd63c2-c8c2-469c-a879-2005af15c504"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="11" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[5 - ORIGEM DO ENCAMINHAMENTO E TIPOS DE ATENDIMENTO/SERVIÇO (POSSUI)]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="34" width="555" height="13" uuid="73aae706-e10c-4e34-9971-21abc3421c8c"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{origem_encaminhamento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="47" width="205" height="16" forecolor="#C13F00" uuid="d81a600a-f9df-4fbe-a10b-7cf940d7f89f"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Verdana" size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Tipo de atendimentos/serviços]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="63" width="555" height="13" uuid="1746e4c3-56d6-4d1a-affb-0b94156c7e2a"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{servicos}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="92" width="555" height="13" uuid="7bb63449-c069-4133-8838-bc4ecdf9044f"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{outros_apoios_servicos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="76" width="158" height="16" forecolor="#C13F00" uuid="bb26a0d1-e478-44b7-aa52-316dbf6ba36a"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Verdana" size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Outros apoios/serviços]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

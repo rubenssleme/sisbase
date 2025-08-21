@@ -1,0 +1,1 @@
+﻿delete from tipo_vinculo where id in(5);

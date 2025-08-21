@@ -1,0 +1,1 @@
+﻿insert into profissional(nome, habilitado)values('ALINE ALVES', true);

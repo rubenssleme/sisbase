@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_quantidades_de_avaliacoes_funcionais" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="30987b44-9e64-4fc0-897c-ba02338d0b07">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_data_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select total_geral.nome,  sum(total_geral.total_at_menor_6_anos+total_geral.total_at_maior_6_anos+total_geral.total_fufj) as total_geral, sum(total_geral.total_at_menor_6_anos+total_geral.total_at_maior_6_anos) as total_at, sum(total_geral.total_at_menor_6_anos) as total_at_menor_6_anos, sum(total_geral.total_at_maior_6_anos) as total_at_maior_6_anos, sum(total_geral.total_fufj) as total_fufj, sum(total_geral.total_cn) as total_cn, sum(total_geral.total_at_menor_6_anos+total_geral.total_at_maior_6_anos)-sum(total_geral.total_cn) as total_rt from (
+	------Dados todos com AT por idade
+	select pro.nome, count(ateind.id) as total_at_menor_6_anos, 0 as total_at_maior_6_anos, 0 as total_fufj, 0 as total_cn
+	from atendimento_individual ateind
+			inner join usuario usu
+				on usu.id = ateind.id_usuario
+			inner join informacao_essencial infess
+				on (infess.id = usu.id_informacao_essencial)
+			inner join informacao_atendimento infate
+				on infate.id = ateind.id_informacao_atendimento
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = ateind.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner join modulo mod
+				on (mod.id = ateind.id_modulo)
+			inner join atendimento_individual_atendimento_profissional ateindatepro
+				on ateindatepro.id_atendimento_individual = ateind.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ateindatepro.id_atendimento_profissional
+			inner join profissional pro
+				on pro.id = atepro.id_profissional
+	where ateind.status = 'NORMAL'
+	and infate.frequencia = 'AT'
+	and ateind.data between $P{param_data_inicio} and $P{param_data_termino} and destipate.id = 17 and mod.id = 1 and extract(year from age(infess.data_nascimento)) between 0 and 5
+	group by pro.nome
+	union all
+	------Dados todos com AT por idade
+	select pro.nome, 0 as total_at_menor_6_anos, count(ateind.id) as total_at_maior_6_anos, 0 as total_fufj, 0 as total_cn
+	from atendimento_individual ateind
+			inner join usuario usu
+				on usu.id = ateind.id_usuario
+			inner join informacao_essencial infess
+				on (infess.id = usu.id_informacao_essencial)
+			inner join informacao_atendimento infate
+				on infate.id = ateind.id_informacao_atendimento
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = ateind.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner join modulo mod
+				on (mod.id = ateind.id_modulo)
+			inner join atendimento_individual_atendimento_profissional ateindatepro
+				on ateindatepro.id_atendimento_individual = ateind.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ateindatepro.id_atendimento_profissional
+			inner join profissional pro
+				on pro.id = atepro.id_profissional
+	where ateind.status = 'NORMAL'
+	and infate.frequencia = 'AT'
+	and ateind.data between $P{param_data_inicio} and $P{param_data_termino} and destipate.id = 17 and mod.id = 1 and extract(year from age(infess.data_nascimento)) between 6 and 9999
+	group by pro.nome
+	union all
+	------Dados somente com FUFJ
+	select pro.nome, 0 as total_at_menor_6_anos, 0 as total_at_maior_6_anos, count(ateind.id) as total_fjfu, 0 as total_cn
+	from atendimento_individual ateind
+			inner join usuario usu
+				on usu.id = ateind.id_usuario
+			inner join informacao_essencial infess
+				on (infess.id = usu.id_informacao_essencial)
+			inner join informacao_atendimento infate
+				on infate.id = ateind.id_informacao_atendimento
+			inner join descricao_tipo_atendimento destipate
+				on (destipate.id = ateind.id_descricao_tipo_atendimento)
+			inner join tipo_atendimento tip
+				on (tip.id = destipate.id_tipo_atendimento)
+			inner join modulo mod
+				on (mod.id = ateind.id_modulo)
+			inner join atendimento_individual_atendimento_profissional ateindatepro
+				on ateindatepro.id_atendimento_individual = ateind.id
+			inner join atendimento_profissional atepro
+				on atepro.id = ateindatepro.id_atendimento_profissional
+			inner join profissional pro
+				on pro.id = atepro.id_profissional
+	where ateind.status = 'NORMAL'
+	and (infate.frequencia = 'FU' or infate.frequencia = 'FJ')
+	and ateind.data between  $P{param_data_inicio} and $P{param_data_termino} and destipate.id = 17 and mod.id = 1
+	group by pro.nome
+	union all
+	------Dados somente com CN por idade
+	select pro.nome, 0 as total_at_menor_6_anos, 0 as total_at_maior_6_anos, 0 as total_fufj, count(ateind.id) as total_cn
+	from atendimento_individual ateind
+		inner join usuario usu
+			on usu.id = ateind.id_usuario
+		inner join informacao_essencial infess
+			on (infess.id = usu.id_informacao_essencial)
+		inner join informacao_atendimento infate
+			on infate.id = ateind.id_informacao_atendimento
+		inner join descricao_tipo_atendimento destipate
+			on (destipate.id = ateind.id_descricao_tipo_atendimento)
+		inner join tipo_atendimento tip
+			on (tip.id = destipate.id_tipo_atendimento)
+		inner join modulo mod
+			on (mod.id = ateind.id_modulo)
+		inner join atendimento_individual_atendimento_profissional ateindatepro
+			on ateindatepro.id_atendimento_individual = ateind.id
+		inner join atendimento_profissional atepro
+			on atepro.id = ateindatepro.id_atendimento_profissional
+		inner join profissional pro
+			on pro.id = atepro.id_profissional
+		inner join (
+			select usu.id as prontuario, min(ateind.data) as data
+				from atendimento_individual ateind
+					inner join usuario usu
+						on usu.id = ateind.id_usuario
+					inner join informacao_essencial infess
+						on (infess.id = usu.id_informacao_essencial)
+					inner join informacao_atendimento infate
+						on infate.id = ateind.id_informacao_atendimento
+					inner join descricao_tipo_atendimento destipate
+						on (destipate.id = ateind.id_descricao_tipo_atendimento)
+					inner join tipo_atendimento tip
+						on (tip.id = destipate.id_tipo_atendimento)
+					inner join modulo mod
+						on (mod.id = ateind.id_modulo)
+					inner join atendimento_individual_atendimento_profissional ateindatepro
+						on ateindatepro.id_atendimento_individual = ateind.id
+					inner join atendimento_profissional atepro
+							on atepro.id = ateindatepro.id_atendimento_profissional
+					inner join profissional pro
+						on pro.id = atepro.id_profissional
+				where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and ateind.data between $P{param_data_inicio} and $P{param_data_termino} and destipate.id = 17 and mod.id = 1 and usu.id not in (
+					select usu.id
+						from atendimento_individual ateind
+							inner join usuario usu
+								on usu.id = ateind.id_usuario
+							inner join informacao_essencial infess
+								on (infess.id = usu.id_informacao_essencial)
+							inner join informacao_atendimento infate
+								on infate.id = ateind.id_informacao_atendimento
+							inner join descricao_tipo_atendimento destipate
+								on (destipate.id = ateind.id_descricao_tipo_atendimento)
+							inner join tipo_atendimento tip
+								on (tip.id = destipate.id_tipo_atendimento)
+							inner join modulo mod
+								on (mod.id = ateind.id_modulo)
+					where ateind.status = 'NORMAL' and infate.frequencia = 'AT' and ateind.data between '01/01/0001' and $P{param_data_inicio} and destipate.id = 17 and mod.id = 1)
+				group by usu.id
+				order by usu.id)aux
+			on aux.prontuario = usu.id and aux.data = ateind.data and ateind.status = 'NORMAL' and infate.frequencia = 'AT' and ateind.data between $P{param_data_inicio} and $P{param_data_termino} and destipate.id = 17 and mod.id = 1
+	group by pro.nome
+)total_geral
+group by total_geral.nome
+order by total_geral.nome]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="total_geral" class="java.math.BigDecimal"/>
+	<field name="total_at" class="java.math.BigDecimal"/>
+	<field name="total_at_menor_6_anos" class="java.math.BigDecimal"/>
+	<field name="total_at_maior_6_anos" class="java.math.BigDecimal"/>
+	<field name="total_fufj" class="java.math.BigDecimal"/>
+	<field name="total_cn" class="java.math.BigDecimal"/>
+	<field name="total_rt" class="java.math.BigDecimal"/>
+	<variable name="tot_geral" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_geral}]]></variableExpression>
+	</variable>
+	<variable name="tot_at" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_at}]]></variableExpression>
+	</variable>
+	<variable name="tot_at_me_6_anos" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_at_menor_6_anos}]]></variableExpression>
+	</variable>
+	<variable name="tot_at_ma_6_anos" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_at_maior_6_anos}]]></variableExpression>
+	</variable>
+	<variable name="tot_cn" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_cn}]]></variableExpression>
+	</variable>
+	<variable name="tot_rt" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_rt}]]></variableExpression>
+	</variable>
+	<variable name="tot_fufj" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_fufj}]]></variableExpression>
+	</variable>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="75">
+			<image>
+				<reportElement uuid="45f40c60-41db-4070-ad3e-510318422898" mode="Opaque" x="0" y="0" width="100" height="75"/>
+				<imageExpression><![CDATA["Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="0b155c4a-7301-4543-9651-64fd57c6463a" x="100" y="0" width="701" height="51"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[QUANTIDADE DE ATENDIMENTOS DE AVALIAÇÃO FUNCIONAL]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="9193234d-a1f7-473f-9047-95606b85f873" x="126" y="53" width="71" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_data_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="14f488bc-d776-4dbb-b148-696413acd88b" x="212" y="53" width="72" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_data_termino}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="59d94a85-d291-4446-91e9-f57714a01598" x="197" y="53" width="15" height="15"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement uuid="7edc87c6-29fe-42f6-ab6d-dfe51de0af65" mode="Opaque" x="250" y="0" width="43" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Geral]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="903cb809-985b-4cdc-920b-95ac9ef63223" mode="Opaque" x="293" y="0" width="40" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AT	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b16d969b-fb85-4bc5-9eca-b5c1eb2a144a" mode="Opaque" x="333" y="0" width="71" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AT < 6 anos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ab930f96-09ff-4777-a580-8248b981425d" mode="Opaque" x="411" y="0" width="79" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AT > 6 anos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5cead671-a27f-493b-ae7a-6b46b2f4f511" mode="Opaque" x="493" y="0" width="29" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a1fed4d7-b1f7-4c58-9947-323b07ee054e" mode="Opaque" x="522" y="0" width="24" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="84fecf0e-f122-4dca-a2c3-346ec00af5c5" mode="Opaque" x="546" y="0" width="40" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FU/FJ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="443d8b94-60d1-4725-a486-5ebd657dbeae" x="411" y="0" width="79" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_at_maior_6_anos}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a27085a6-5db4-4658-b02a-7590df5fad14" x="522" y="0" width="24" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_rt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="708b971b-5d74-4c9f-958b-178ca266cbeb" mode="Opaque" x="0" y="0" width="239" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="f67e55a3-db41-4d33-b3d5-2cafe1d6f52f" x="0" y="14" width="802" height="1" forecolor="#666666"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="0aae0271-c8ea-4184-96b0-cb079daa60c0" x="250" y="0" width="43" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_geral}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="bc8ccf7b-d54d-4e66-b0f3-fe3345e49a03" x="293" y="0" width="40" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_at}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="9c1e2b92-c5f5-4566-a0cd-61d405f88ec1" x="333" y="0" width="71" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_at_menor_6_anos}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="68009e13-5a5f-4d7c-bc3d-2fcda586b753" x="493" y="0" width="29" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_cn}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="06515379-a17b-4bdb-97f9-19ecfad14f41" x="546" y="0" width="40" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_fufj}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="13">
+			<textField pattern="d/M/yyyy">
+				<reportElement uuid="abb4fd80-94af-4ebc-ad8c-14a891a9a548" x="0" y="0" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d2991980-f9a5-452a-8f10-8cccb528e63c" mode="Opaque" x="675" y="0" width="86" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="9abdd5a8-27e4-4b56-bfef-4901d1b2f664" mode="Opaque" x="761" y="0" width="40" height="13"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="15">
+			<textField>
+				<reportElement uuid="a1aa3d6d-d747-42e8-8626-ac5b2fff6b3a" x="250" y="0" width="43" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_geral}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d681fc34-c9a6-440d-b624-bc72f95d075c" x="207" y="0" width="43" height="15"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totais:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="3eb07c86-cd2e-4143-ae0c-1acc4ae16f75" x="293" y="0" width="40" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_at}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="03af2ae8-df89-4e62-9fbd-fa6b11c8f1da" x="333" y="0" width="71" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_at_me_6_anos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="08fa5055-7749-4e90-af80-3750f3720edd" x="411" y="0" width="79" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_at_ma_6_anos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="242b55b5-6019-4643-99e5-19b89f0ad580" x="490" y="0" width="32" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_cn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dd1ae72d-d319-4ea4-842c-5d5992803c7e" x="522" y="0" width="24" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_rt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b02d3b98-13aa-4a0d-81ef-c52f2b439875" x="546" y="0" width="40" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_fufj}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

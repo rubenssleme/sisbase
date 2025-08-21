@@ -1,0 +1,2 @@
+﻿insert into profissional(nome, habilitado, voluntario, profissional)values('José Lourenço Braga', true, true, true);	
+insert into profissional(nome, habilitado, voluntario, profissional)values('Heishin Gandra', true, true, true);	

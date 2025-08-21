@@ -1,0 +1,21 @@
+<Configuration status="INFO">
+	<properties>
+		<property name="nomeArquivo">logs/sislaraserver.log</property>
+		<property name="pattern">%d %-5p [%c{1}] %m%n</property>
+		<property name="charset">UTF-8</property>
+	</properties>
+	<Appenders>
+		<RollingFile name="Arquivo" fileName="${nomeArquivo}"
+			append="true" filePattern="${nomeArquivo}.%d{yyyy-MM}">
+			<PatternLayout pattern="${pattern}" charset="${charset}"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy/>
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO">
+			<AppenderRef ref="Arquivo" />
+		</Root>
+	</Loggers>
+</Configuration>

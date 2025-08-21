@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_ficha_do_servico_social_subrelatorio_situacoes_educacionais" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isTitleNewPage="true" uuid="3e8c7b75-574d-409e-b4e8-90ce5abb9e9a">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_id_usuario" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[select distinct infess.nome, par.descricao as parentesco, fam.data_nascimento, est.descricao as estado_civil, inftra.funcao, esc.descricao as escolaridade, array_to_string(array_agg(distinct vul.descricao),', ') as vulnerabilidades
+from usuario usu
+	inner join usuario_familiar usufam
+		on usufam.id_usuario = usu.id
+	inner join familiar fam
+		on fam.id = usufam.id_familiar
+	inner join informacao_essencial infess
+		on infess.id = fam.id_informacao_essencial
+	inner join parentesco par
+		on par.id = fam.id_parentesco
+	left join estado_civil est
+		on est.id = fam.id_estado_civil
+	left join informacao_trabalho inftra
+		on inftra.id = fam.id_informacao_trabalho
+	left join usuario_informacao_educacional usuinfedu
+		on usuinfedu.id_usuario = usu.id
+	left join (
+			select distinct faminfedu.id_familiar, max(infedu.data_referencia) as data_referencia from informacao_educacional infedu
+				left join familiar_informacao_educacional faminfedu
+					on faminfedu.id_informacao_educacional = infedu.id
+			where infedu.data_final_vigencia is null and infedu.excluido is false and infedu.excluido is false
+			group by 1
+			order by 1) infedumax
+		on fam.id = infedumax.id_familiar
+	left join informacao_educacional infedu
+		on infedu.data_referencia = infedumax.data_referencia
+	left join escolaridade esc
+		on esc.id = infedu.id_escolaridade
+	left join familiar_vulnerabilidade famvul
+		on famvul.id_familiar = fam.id
+	left join vulnerabilidade vul
+		on vul.id = famvul.id_vulnerabilidade
+where usu.id = $P{param_id_usuario}
+group by 1, 2, 3, 4, 5, 6]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="parentesco" class="java.lang.String"/>
+	<field name="data_nascimento" class="java.sql.Date"/>
+	<field name="estado_civil" class="java.lang.String"/>
+	<field name="funcao" class="java.lang.String"/>
+	<field name="escolaridade" class="java.lang.String"/>
+	<field name="vulnerabilidades" class="java.lang.String"/>
+	<group name="id">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+		<groupFooter>
+			<band height="1">
+				<line>
+					<reportElement x="0" y="0" width="552" height="1" uuid="ea282398-ee10-4c43-bbe9-da0d61ad2149"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="18" width="63" height="20" uuid="d6e00333-ba69-4b32-acfb-59dc761deabb"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Parentesco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="18" width="137" height="11" uuid="2159a54b-7152-490c-b9d6-320608da8d82"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="18" width="63" height="20" uuid="41f9ea9a-fef7-4daf-9519-47d173be38f7"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Data de Nascimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="18" width="59" height="11" uuid="87eda4a5-d0d9-4b81-b4d7-ba870964f532"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Estado civil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="18" width="80" height="11" uuid="9cfb985a-1157-4e6c-bcb9-b3dee6f748c6"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Função]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="217" height="18" forecolor="#FFFFFF" backcolor="#0066BD" uuid="da6db398-7ad1-4329-8dce-77464502447c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="11" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[3 - INFORMAÇÕES FAMILIARES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="18" width="64" height="11" uuid="c3b69771-b32c-4148-992d-741ed6e9f489"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Escolaridade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="466" y="18" width="86" height="11" uuid="b0139986-0313-417f-b0fe-de15fea95aca"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Vulnerabilidades]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="63" height="11" uuid="d7b82703-fe10-4bb6-a7ad-d0f97e76d58a"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parentesco}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="63" y="0" width="137" height="11" uuid="a82a349d-3a6a-4e12-a219-2143d2278d7f"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="200" y="0" width="63" height="11" uuid="3a8a56a7-3ff2-4ed3-a149-8fa4770eaec8"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="263" y="0" width="59" height="11" uuid="d79a66b0-cdb4-4f25-bb37-867b2b68df9c"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_civil}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="322" y="0" width="80" height="11" uuid="59dc508b-5778-4039-8753-764bf20d9264"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="402" y="0" width="64" height="11" uuid="6a5036cb-2d0f-4c9d-9621-08347c1a2159"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{escolaridade}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="466" y="0" width="86" height="11" uuid="b091ad57-1219-48b7-957b-8b651c29b12b"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vulnerabilidades}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

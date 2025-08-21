@@ -1,0 +1,1747 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.7">
+  <NonVisualComponents>
+    <Container class="javax.swing.JPanel" name="mainPanel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" resourceKey="mainPanel.background"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" value="mainPanel" noResource="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jlaLogo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jlaLogo.font"/>
+            <Property name="foreground" type="java.awt.Color" resourceKey="jlaLogo.foreground"/>
+            <Property name="text" type="java.lang.String" resourceKey="jlaLogo.text"/>
+            <Property name="name" type="java.lang.String" value="jlaLogo" noResource="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="2" y="10" width="8" height="10"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfLogo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" resourceKey="jtfLogo.background"/>
+            <Property name="font" type="java.awt.Font" resourceKey="jtfLogo.font"/>
+            <Property name="foreground" type="java.awt.Color" resourceKey="jtfLogo.foreground"/>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="jtfLogo.toolTipText"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="caretColor" type="java.awt.Color" resourceKey="jtfLogo.caretColor"/>
+            <Property name="name" type="java.lang.String" value="jtfLogo" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="1" y="500" width="20" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuResolver">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuResolver.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuResolver.icon"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Resolver&lt;br&gt;pend&#xea;ncia&lt;br&gt;selecionada&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="iconTextGap" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 0, 0, 0]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuResolver" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuResolverActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="850" y="10" width="110" height="110"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jcpPendencias">
+          <Properties>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Lista de pend&#xea;ncias (atualizada a cada 10 segundos)">
+                  <Property name="titleX" resourceKey="jcpPendencias.viewportBorder.title"/>
+                  <Property name="font" resourceKey="jcpPendencias.viewportBorder.titleFont"/>
+                </TitledBorder>
+              </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" resourceKey="jcpPendencias.font"/>
+            <Property name="name" type="java.lang.String" value="jcpPendencias" noResource="true"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jcpPendencias.AccessibleContext.accessibleName"/>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jcpPendencias.AccessibleContext.accessibleDescription"/>
+          </AccessibilityProperties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="10" width="830" height="140"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JList" name="jliPendencias">
+              <Properties>
+                <Property name="background" type="java.awt.Color" resourceKey="jliPendencias.background"/>
+                <Property name="font" type="java.awt.Font" resourceKey="jliPendencias.font"/>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new DefaultListModel()" type="code"/>
+                </Property>
+                <Property name="selectionMode" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="jliPendencias" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jliPendencias.AccessibleContext.accessibleName"/>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jliPendencias.AccessibleContext.accessibleDescription"/>
+              </AccessibilityProperties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="jbuPreCadastro">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuPreCadastro.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuPreCadastro.icon"/>
+            <Property name="mnemonic" type="int" value="80"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Pr&#xe9;&lt;br&gt;Cadastro&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuPreCadastro" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuPreCadastro.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuPreCadastroActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="160" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuListaEspera">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuListaEspera.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuListaEspera.icon"/>
+            <Property name="mnemonic" type="int" value="76"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Lista de Espera&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="jbuListaEspera" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuListaEspera.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuListaEsperaActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="130" y="160" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuAgenda">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuAgenda.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuAgenda.icon"/>
+            <Property name="mnemonic" type="int" value="65"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Agenda&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="jbuAgenda.toolTipText"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuAgenda" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuEntrevistaInicial.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAgendaActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="250" y="160" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuUsuario">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuUsuario.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuUsuario.icon"/>
+            <Property name="mnemonic" type="int" value="85"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Usu&#xe1;rio&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuUsuario" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuServicoSocial.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuUsuarioActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="370" y="160" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuGrupos">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuGrupos.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuGrupos.icon"/>
+            <Property name="mnemonic" type="int" value="71"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Grupos&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuGrupos" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuGrupos.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuGruposActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="490" y="160" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuIntegrantesGrupo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuIntegrantesGrupo.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuIntegrantesGrupo.icon"/>
+            <Property name="mnemonic" type="int" value="84"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Integrantes&lt;br&gt; de Grupos&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuIntegrantesGrupo" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuIntegrantesGrupo.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuIntegrantesGrupoActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="610" y="160" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuAtendimentoGrupos">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuAtendimentoGrupos.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuAtendimentoGrupos.icon"/>
+            <Property name="mnemonic" type="int" value="79"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Atendimento&lt;br&gt;em Grupo&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuAtendimentoGrupos" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuAtendimentoGrupos.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAtendimentoGruposActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="730" y="160" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuAtendimentoIndividual">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuAtendimentoIndividual.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuAtendimentoIndividual.icon"/>
+            <Property name="mnemonic" type="int" value="68"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Atendimento&lt;br&gt;Individual&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuAtendimentoIndividual" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuAtendimentoIndividual.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuAtendimentoIndividualActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="850" y="160" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuInstituicoes">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuInstituicoes.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuInstituicoes.icon"/>
+            <Property name="mnemonic" type="int" value="73"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Institui&#xe7;&#xe3;o&lt;br&gt;de Ensino&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuInstituicoes" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuInstituicoes.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuInstituicoesActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="270" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuDemanda">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuDemanda.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuDemanda.icon"/>
+            <Property name="mnemonic" type="int" value="77"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Demandas&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuDemanda" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuDemanda.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuDemandaActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="130" y="270" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuProjeto">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuProjeto.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuProjeto.icon"/>
+            <Property name="mnemonic" type="int" value="74"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Projetos&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuProjeto" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuProjeto.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuProjetoActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="250" y="270" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuSolicitacaoRelatorio">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuSolicitacaoRelatorio.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuSolicitacaoRelatorio.icon"/>
+            <Property name="mnemonic" type="int" value="82"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Solicita&#xe7;&#xe3;o&lt;br&gt;Relat&#xf3;rio&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuSolicitacaoRelatorio" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuSolicitacaoRelatorio.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuSolicitacaoRelatorioActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="370" y="270" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuContribuintes">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuContribuintes.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuContribuintes.icon"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Contribuintes&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[3, 3, 3, 3]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jbuContribuintes" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuContribuintes.AccessibleContext.accessibleName"/>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jbuContribuintes.AccessibleContext.accessibleDescription"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuContribuintesActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="490" y="270" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbuRecibos">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jbuRecibos.font"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jbuRecibos.icon"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;&lt;center&gt;Recibo&lt;/center&gt;&lt;/html&gt;&quot;" type="code"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="jbuRecibos" noResource="true"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jbuRecibos.AccessibleContext.accessibleName"/>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="jbuRecibos.AccessibleContext.accessibleDescription"/>
+          </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbuRecibosActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="610" y="270" width="110" height="100"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlaImagemFunda">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jlaImagemFunda.font"/>
+            <Property name="foreground" type="java.awt.Color" resourceKey="jlaImagemFunda.foreground"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jlaImagemFunda.icon"/>
+            <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor Padr&#xe3;o"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="jlaImagemFunda" noResource="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="2" y="2" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JMenuBar" name="barraMenu">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="barraMenu" noResource="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jmSistema">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jmSistema.text"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" resourceKey="jmSistema.font"/>
+            <Property name="name" type="java.lang.String" value="jmSistema" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiPreCadastro">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+P"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiPreCadastro.font"/>
+                <Property name="mnemonic" type="int" value="80"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiPreCadastro.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jmiPreCadastro" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiPreCadastroActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiListaEspera">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+L"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiListaEspera.font"/>
+                <Property name="mnemonic" type="int" value="76"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiListaEspera.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jmiListaEspera" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiListaEsperaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiAgenda">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+A"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiAgenda.font"/>
+                <Property name="mnemonic" type="int" value="65"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiAgenda.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jmiAgenda" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAgendaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiUsuario">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+U"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiUsuario.font"/>
+                <Property name="mnemonic" type="int" value="85"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiUsuario.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jmiUsuario" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiUsuarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="jmGrupos">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmGrupos.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmGrupos.font"/>
+                <Property name="name" type="java.lang.String" value="jmGrupos" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmGruposActionPerformed"/>
+              </Events>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiGrupos">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Alt+G"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiGrupos.font"/>
+                    <Property name="mnemonic" type="int" value="71"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiGrupos.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiGrupos" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiGruposActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiIntegrantes">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Alt+T"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiIntegrantes.font"/>
+                    <Property name="mnemonic" type="int" value="84"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiIntegrantes.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiIntegrantes" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jmiIntegrantes.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiIntegrantesActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmAtendimentos">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmAtendimentos.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmAtendimentos.font"/>
+                <Property name="name" type="java.lang.String" value="jmAtendimentos" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendimentoGrupo">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Alt+O"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendimentoGrupo.font"/>
+                    <Property name="mnemonic" type="int" value="111"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendimentoGrupo.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiAtendimentoGrupo" noResource="true"/>
+                  </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jmiAtendimentoGrupo.AccessibleContext.accessibleName"/>
+                  </AccessibilityProperties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendimentoGrupoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendimentoIndividual">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Alt+D"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendimentoIndividual.font"/>
+                    <Property name="mnemonic" type="int" value="100"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendimentoIndividual.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiAtendimentoIndividual" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendimentoIndividualActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiInstituicoesEnsino">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+I"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiInstituicoesEnsino.font"/>
+                <Property name="mnemonic" type="int" value="73"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiInstituicoesEnsino.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jmiInstituicoesEnsino" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiInstituicoesEnsinoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="jmProjetos">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmProjetos.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmProjetos.font"/>
+                <Property name="name" type="java.lang.String" value="jmProjetos" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiDemanda">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Alt+D"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiDemanda.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiDemanda.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiDemanda" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiDemandaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiProjeto">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Alt+P"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiProjeto.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiProjeto.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiProjeto" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiProjetoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmRetirada">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmRetirada.text"/>
+                <Property name="font" type="java.awt.Font" resourceKey="jmRetirada.font"/>
+                <Property name="name" type="java.lang.String" value="jmRetirada" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiEfetuarRetirada">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Ctrl+Alt+R"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiEfetuarRetirada.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiEfetuarRetirada.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiEfetuarRetirada" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiEfetuarRetiradaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiEfetuarBaixa">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Ctrl+Alt+B"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiEfetuarBaixa.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiEfetuarBaixa.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiEfetuarBaixa" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiEfetuarBaixaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmContribuintes">
+              <Properties>
+                <Property name="mnemonic" type="int" value="67"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmContribuintes.text"/>
+                <Property name="font" type="java.awt.Font" resourceKey="jmContribuintes.font"/>
+                <Property name="name" type="java.lang.String" value="jmContribuintes" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiGerarReceberArquivoCobranca">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiGerarReceberArquivoCobranca.font"/>
+                    <Property name="mnemonic" type="int" value="99"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiGerarReceberArquivoCobranca.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="jmiGerarReceberArquivoCobranca.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="jmiGerarReceberArquivoCobranca" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiGerarReceberArquivoCobrancaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmRecibo">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmRecibo.text"/>
+                <Property name="font" type="java.awt.Font" resourceKey="jmRecibo.font"/>
+                <Property name="name" type="java.lang.String" value="jmRecibo" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiCancelarRecibo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiCancelarRecibo.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiCancelarRecibo.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiCancelarRecibo" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiCancelarReciboActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiSair">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiSair.font"/>
+                <Property name="mnemonic" type="int" value="83"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiSair.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jmiSair" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiSairActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jmRelatorios">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jmRelatorios.text"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" resourceKey="jmRelatorios.font"/>
+            <Property name="name" type="java.lang.String" value="jmRelatorios" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="Arquivos">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="Arquivos.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="Arquivos.text"/>
+                <Property name="name" type="java.lang.String" value="Arquivos" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ArquivosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="jmAgenda">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmAgenda.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmAgenda.font"/>
+                <Property name="name" type="java.lang.String" value="jmAgenda" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiRetiradaProntuario">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiRetiradaProntuario.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiRetiradaProntuario.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiRetiradaProntuario" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiRetiradaProntuarioActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiConferenciaAgendamentoEAtendimentosIndividuais">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiConferenciaAgendamentoEAtendimentosIndividuais.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiConferenciaAgendamentoEAtendimentosIndividuais.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiConferenciaAgendamentoEAtendimentosIndividuais" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiConferenciaAgendamentoEAtendimentosIndividuaisActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmAtendimentosGruposRelatorios">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmAtendimentosGruposRelatorios.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmAtendimentosGruposRelatorios.font"/>
+                <Property name="name" type="java.lang.String" value="jmAtendimentosGruposRelatorios" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAcompanhamentoProgramacao">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAcompanhamentoProgramacao.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAcompanhamentoProgramacao.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiAcompanhamentoProgramacao" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAcompanhamentoProgramacaoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiDetalhadoPorUsuario">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiDetalhadoPorUsuario.font"/>
+                    <Property name="mnemonic" type="int" value="100"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiDetalhadoPorUsuario.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiDetalhadoPorUsuario" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiDetalhadoPorUsuarioActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiSimplesPorUsuario">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiSimplesPorUsuario.font"/>
+                    <Property name="mnemonic" type="int" value="70"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiSimplesPorUsuario.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiSimplesPorUsuario" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiSimplesPorUsuarioActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosPorTipoVinculo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosPorTipoVinculo.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosPorTipoVinculo.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosPorTipoVinculo" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosPorTipoVinculoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosPorTipoVinculoGrupo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosPorTipoVinculoGrupo.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosPorTipoVinculoGrupo.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosPorTipoVinculoGrupo" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosPorTipoVinculoGrupoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendimentoParaPrefeitura">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendimentoParaPrefeitura.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendimentoParaPrefeitura.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendimentoParaPrefeitura" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendimentoParaPrefeituraActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiTodosAtendimentoOrdenadoPorDataLancamento">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiTodosAtendimentoOrdenadoPorDataLancamento.font"/>
+                    <Property name="mnemonic" type="int" value="111"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiTodosAtendimentoOrdenadoPorDataLancamento.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiTodosAtendimentoOrdenadoPorDataLancamento" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiTodosAtendimentoOrdenadoPorDataLancamentoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiTodosAtendimentoOrdenadosPorDataLancamentoAntigo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiTodosAtendimentoOrdenadosPorDataLancamentoAntigo.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiTodosAtendimentoOrdenadosPorDataLancamentoAntigo.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiTodosAtendimentoOrdenadosPorDataLancamentoAntigo" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiTodosAtendimentoOrdenadosPorDataLancamentoAntigoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiTodosAtendimentoOrdenadosPorGrupo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiTodosAtendimentoOrdenadosPorGrupo.font"/>
+                    <Property name="mnemonic" type="int" value="116"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiTodosAtendimentoOrdenadosPorGrupo.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiTodosAtendimentoOrdenadosPorGrupo" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiTodosAtendimentoOrdenadosPorGrupoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmAtendimentosIndividuaisRelatorios">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmAtendimentosIndividuaisRelatorios.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jmAtendimentosIndividuaisRelatorios.toolTipText"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmAtendimentosIndividuaisRelatorios.font"/>
+                <Property name="name" type="java.lang.String" value="jmAtendimentosIndividuaisRelatorios" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiQuantidadeAtendimentosIndividuais">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiQuantidadeAtendimentosIndividuais.font"/>
+                    <Property name="mnemonic" type="int" value="113"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiQuantidadeAtendimentosIndividuais.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiQuantidadeAtendimentosIndividuais" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiQuantidadeAtendimentosIndividuaisActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiQuantidadeGeracaoAtendimentosIndividuaisEGrupos">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiQuantidadeGeracaoAtendimentosIndividuaisEGrupos.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiQuantidadeGeracaoAtendimentosIndividuaisEGrupos.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiQuantidadeGeracaoAtendimentosIndividuaisEGrupos" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiQuantidadeGeracaoAtendimentosIndividuaisEGruposActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiTodosIndividuaisOrdenadoPorDataLancamento">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiTodosIndividuaisOrdenadoPorDataLancamento.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiTodosIndividuaisOrdenadoPorDataLancamento.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiTodosIndividuaisOrdenadoPorDataLancamento" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiTodosIndividuaisOrdenadoPorDataLancamentoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiQuantidadesAtendimentosAvaliacoesFuncionais">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiQuantidadesAtendimentosAvaliacoesFuncionais.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiQuantidadesAtendimentosAvaliacoesFuncionais.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiQuantidadesAtendimentosAvaliacoesFuncionais" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiQuantidadesAtendimentosAvaliacoesFuncionaisActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmGruposRelatorios">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmGruposRelatorios.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmGruposRelatorios.font"/>
+                <Property name="name" type="java.lang.String" value="jmGruposRelatorios" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiVagasEmGruposAtivos">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiVagasEmGruposAtivos.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiVagasEmGruposAtivos.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiVagasEmGruposAtivos" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiVagasEmGruposAtivosActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiContatosIntegrantesGrupo">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Ctrl+Alt+C"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiContatosIntegrantesGrupo.font"/>
+                    <Property name="mnemonic" type="int" value="67"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiContatosIntegrantesGrupo.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiContatosIntegrantesGrupo" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiContatosIntegrantesGrupoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiProgramacaoFamilia">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiProgramacaoFamilia.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiProgramacaoFamilia.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiProgramacaoFamilia" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiProgramacaoFamiliaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiFrequenciaPorGrupoPaisagem">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiFrequenciaPorGrupoPaisagem.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiFrequenciaPorGrupoPaisagem.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiFrequenciaPorGrupoPaisagem" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiFrequenciaPorGrupoPaisagemActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiCargaHorariaGrupo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiCargaHorariaGrupo.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiCargaHorariaGrupo.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiCargaHorariaGrupo" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiCargaHorariaGrupoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiQuantidadeAtendidosPorVisitaMonitorada">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiQuantidadeAtendidosPorVisitaMonitorada.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiQuantidadeAtendidosPorVisitaMonitorada.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiQuantidadeAtendidosPorVisitaMonitorada" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiQuantidadeAtendidosPorVisitaMonitoradaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmListaEspera">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmListaEspera.text"/>
+                <Property name="font" type="java.awt.Font" resourceKey="jmListaEspera.font"/>
+                <Property name="name" type="java.lang.String" value="jmListaEspera" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiQuantidadesPessoasAguardando">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiQuantidadesPessoasAguardando.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiQuantidadesPessoasAguardando.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiQuantidadesPessoasAguardando" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiQuantidadesPessoasAguardandoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiQuantidadePessoasPorFaixaIdade">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiQuantidadePessoasPorFaixaIdade.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiQuantidadePessoasPorFaixaIdade.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiQuantidadePessoasPorFaixaIdade" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiQuantidadePessoasPorFaixaIdadeActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmRetiradas">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmRetiradas.text"/>
+                <Property name="font" type="java.awt.Font" resourceKey="jmRetiradas.font"/>
+                <Property name="name" type="java.lang.String" value="jmRetiradas" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jmRetiradas.AccessibleContext.accessibleName"/>
+              </AccessibilityProperties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiTodasRetiradasPendentes">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiTodasRetiradasPendentes.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiTodasRetiradasPendentes.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiTodasRetiradasPendentes" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiTodasRetiradasPendentesActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiHistoricoRetiradasPorProntuario">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiHistoricoRetiradasPorProntuario.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiHistoricoRetiradasPorProntuario.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiHistoricoRetiradasPorProntuario" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiHistoricoRetiradasPorProntuarioActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmUsuariosRelatorios">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmUsuariosRelatorios.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmUsuariosRelatorios.font"/>
+                <Property name="name" type="java.lang.String" value="jmUsuariosRelatorios" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiParticipacaoUsuarioEmGrupo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiParticipacaoUsuarioEmGrupo.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiParticipacaoUsuarioEmGrupo.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiParticipacaoUsuarioEmGrupo" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiParticipacaoUsuarioEmGrupoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiQuatidadesPorIdade">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiQuatidadesPorIdade.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiQuatidadesPorIdade.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="jmiQuatidadesPorIdade.toolTipText"/>
+                    <Property name="actionCommand" type="java.lang.String" resourceKey="jmiQuatidadesPorIdade.actionCommand"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiQuatidadesPorIdade" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiQuatidadesPorIdadeActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiFolhaDeRosto">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiFolhaDeRosto.font"/>
+                    <Property name="mnemonic" type="int" value="102"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiFolhaDeRosto.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiFolhaDeRosto" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiFolhaDeRostoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiUsuariosSemInformacaoDeficiencia">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiUsuariosSemInformacaoDeficiencia.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiUsuariosSemInformacaoDeficiencia.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiUsuariosSemInformacaoDeficiencia" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiUsuariosSemInformacaoDeficienciaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiTodasFrequencias">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiTodasFrequencias.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiTodasFrequencias.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiTodasFrequencias" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiTodasFrequenciasActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiTodosComStatusProvisorioOuAcessoEmGrupos">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiTodosComStatusProvisorioOuAcessoEmGrupos.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiTodosComStatusProvisorioOuAcessoEmGrupos.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiTodosComStatusProvisorioOuAcessoEmGrupos" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiTodosComStatusProvisorioOuAcessoEmGruposActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiFluxoAtendimentoAvaliacaoFuncionalCasosNovos">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiFluxoAtendimentoAvaliacaoFuncionalCasosNovos.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiFluxoAtendimentoAvaliacaoFuncionalCasosNovos.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiFluxoAtendimentoAvaliacaoFuncionalCasosNovos" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiFluxoAtendimentoAvaliacaoFuncionalCasosNovosActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiFluxoAtendimentoAvalialcaoFuncionalRetornos">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiFluxoAtendimentoAvalialcaoFuncionalRetornos.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiFluxoAtendimentoAvalialcaoFuncionalRetornos.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiFluxoAtendimentoAvalialcaoFuncionalRetornos" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiFluxoAtendimentoAvalialcaoFuncionalRetornosActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmComas">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmComas.text"/>
+                <Property name="font" type="java.awt.Font" resourceKey="jmComas.font"/>
+                <Property name="name" type="java.lang.String" value="jmComas" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosPorIdadeEGenero">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosPorIdadeEGenero.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosPorIdadeEGenero.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosPorIdadeEGenero" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosPorIdadeEGeneroActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorBeneficio">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorBeneficio.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorBeneficio.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorBeneficio" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorBeneficioActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorClassificacaoInstituicao">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorClassificacaoInstituicao.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorClassificacaoInstituicao.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorClassificacaoInstituicao" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorClassificacaoInstituicaoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorDeficiencia">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorDeficiencia.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorDeficiencia.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorDeficiencia" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorDeficienciaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorEscolaridade">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorEscolaridade.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorEscolaridade.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorEscolaridade" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorEscolaridadeActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorMunicipioSP">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorMunicipioSP.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorMunicipioSP.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorMunicipioSP" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorMunicipioSPActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorRegiaoSP">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorRegiaoSP.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorRegiaoSP.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorRegiaoSP" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorRegiaoSPActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorRenda">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorRenda.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorRenda.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorRenda" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorRendaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorTipoAtendimento">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorTipoAtendimento.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorTipoAtendimento.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorTipoAtendimento" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorTipoAtendimentoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAtendidosAtendimentosPorUF">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAtendidosAtendimentosPorUF.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAtendidosAtendimentosPorUF.text"/>
+                    <Property name="name" type="java.lang.String" value="jmiAtendidosAtendimentosPorUF" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtendidosAtendimentosPorUFActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmMailing">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmMailing.text"/>
+                <Property name="font" type="java.awt.Font" resourceKey="jmMailing.font"/>
+                <Property name="name" type="java.lang.String" value="jmMailing" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmuMailingVisitaMonitorada">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmuMailingVisitaMonitorada.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmuMailingVisitaMonitorada.text"/>
+                    <Property name="name" type="java.lang.String" value="jmuMailingVisitaMonitorada" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmuMailingVisitaMonitoradaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="Recibo">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="Recibo.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="Recibo.text"/>
+                <Property name="name" type="java.lang.String" value="Recibo" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReciboActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jmUtilitarios">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jmUtilitarios.text"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" resourceKey="jmUtilitarios.font"/>
+            <Property name="name" type="java.lang.String" value="jmUtilitarios" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="jmFiltros">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmFiltros.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmFiltros.font"/>
+                <Property name="name" type="java.lang.String" value="jmFiltros" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmFiltroAtivar">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmFiltroAtivar.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmFiltroAtivar.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="jmFiltroAtivar.toolTipText"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmFiltroAtivar" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmFiltroAtivarActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmFiltroDesativar">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmFiltroDesativar.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmFiltroDesativar.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="jmFiltroDesativar.toolTipText"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmFiltroDesativar" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmFiltroDesativarActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiFinalizarServico">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiFinalizarServico.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiFinalizarServico.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="jmiFinalizarServico" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiFinalizarServicoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="jmFormatoRelatorio">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmFormatoRelatorio.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmFormatoRelatorio.font"/>
+                <Property name="name" type="java.lang.String" value="jmFormatoRelatorio" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAlterarPadraoRelatorioXLS">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAlterarPadraoRelatorioXLS.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAlterarPadraoRelatorioXLS.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiAlterarPadraoRelatorioXLS" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAlterarPadraoRelatorioXLSActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAlterarPadraoRelatorioPDF">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAlterarPadraoRelatorioPDF.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAlterarPadraoRelatorioPDF.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiAlterarPadraoRelatorioPDF" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAlterarPadraoRelatorioPDFActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmUsuarioPerfil">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jmUsuarioPerfil.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" resourceKey="jmUsuarioPerfil.font"/>
+                <Property name="name" type="java.lang.String" value="jmUsuarioPerfil" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiAlterarSenha">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiAlterarSenha.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiAlterarSenha.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiAlterarSenha" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAlterarSenhaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiDesbloqueioUsuario">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiDesbloqueioUsuario.font"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jmiDesbloqueioUsuario.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiDesbloqueioUsuario.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiDesbloqueioUsuario" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiDesbloqueioUsuarioActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiGerenContasAcesso">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiGerenContasAcesso.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiGerenContasAcesso.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiGerenContasAcesso" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiGerenContasAcessoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiGerenPerfil">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jmiGerenPerfil.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jmiGerenPerfil.text"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor em Forma de M&#xe3;o"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jmiGerenPerfil" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiGerenPerfilActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiAtivarDesativarAviso">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiAtivarDesativarAviso.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiAtivarDesativarAviso.text"/>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="jmiAtivarDesativarAviso" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAtivarDesativarAvisoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jmSobre">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jmSobre.text"/>
+            <Property name="font" type="java.awt.Font" resourceKey="jmSobre.font"/>
+            <Property name="name" type="java.lang.String" value="jmSobre" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiInformacoes">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jmiInformacoes.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jmiInformacoes.text"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jmiInformacoes" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiInformacoesActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="component" type="javax.swing.JComponent" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="mainPanel"/>
+    </Property>
+    <Property name="menuBar" type="javax.swing.JMenuBar" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="barraMenu"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-53,0,0,4,0"/>
+  </AuxValues>
+</Form>

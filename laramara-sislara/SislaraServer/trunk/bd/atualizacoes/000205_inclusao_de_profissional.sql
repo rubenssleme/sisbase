@@ -1,0 +1,2 @@
+﻿insert into profissional(nome, habilitado, voluntario, profissional)values('CLAUDIENE MORTIMER', true, false, true); 
+insert into profissional(nome, habilitado, voluntario, profissional)values('DANIEL MENEZES COSTA', true, false, true); 

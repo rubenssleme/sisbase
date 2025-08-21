@@ -1,0 +1,1 @@
+﻿insert into descricao_tipo_atendimento_modulo(id_descricao_tipo_atendimento, id_modulo)values(3, 105);

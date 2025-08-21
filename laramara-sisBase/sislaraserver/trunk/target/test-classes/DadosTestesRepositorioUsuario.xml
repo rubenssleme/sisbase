@@ -1,0 +1,169 @@
+<dataset>
+	<setor id="PROCEJA" descricao="PROCEJA"/>
+	<setor id="CTO" descricao="CTO"/>
+	<setor id="NENHUM" descricao="NENHUM"/>
+		
+	<pais id="1" nome="Brasil"/>
+	
+	<estado_civil id="1" descricao="Casado"/>
+	<estado_civil id="2" descricao="Solteiro"/>
+	
+	<municipio id="4850" nome="São Paulo" uf="SP"/>
+	
+	<endereco id="55555" data_inicial_vigencia ="0001-01-01" uf="SP" id_municipio="4850" bairro="Barra Funda" endereco="Rua das Andradas" numero="348" zona="LESTE" id_pais="1"/>
+	<endereco id="44444" data_inicial_vigencia ="0001-01-01" uf="SP" id_municipio="4850" bairro="Barra Funda" endereco="Rua das Andradas" numero="348" zona="LESTE" id_pais="1"/>
+	
+	<contato id="799999" ramal="2323" nome_contato="Josep Meaza" email="paulo@yahoo.com.br" />
+	<contato id="88888" ramal="2323" nome_contato="Josep Meaza" email="paulo2@yahoo.com.br"/>
+	
+	<telefone id_contato="799999" tipo="RESIDENCIAL" ddd="11" telefone="23232323"/>
+	<telefone id_contato="799999" tipo="CELULAR" ddd="11" telefone="11112222"/>
+	<telefone id_contato="799999" tipo="CONTATO" ddd="11" telefone="22221111"/>
+	<telefone id_contato="88888" tipo="RESIDENCIAL" ddd="11" telefone="11111111"/>
+	<telefone id_contato="88888" tipo="CELULAR" ddd="11" telefone="11112222"/>
+	<telefone id_contato="88888" tipo="CONTATO" ddd="11" telefone="22221111"/>
+	
+	<instituicao id="122222" id_endereco="55555" id_contato="799999" tipo="EE" nome="EE Ministro de Godoi" nome_coordenador_responsavel="Paulo Augusto" classificacao="ESTADUAL" OBS="Texto de obs." tipo_apoio="SALA_DE_RECURSO_DO_ESTADO"/>
+	<instituicao id="222222" id_endereco="55555" id_contato="88888" tipo="EE" nome="EE Ministro de Godoi" nome_coordenador_responsavel="Paulo Augusto" classificacao="ESTADUAL" OBS="Texto de obs." tipo_apoio="SRMs"/>
+	<instituicao id="133333" id_endereco="55555" id_contato="88888" tipo="FACULDADE" nome="Faculdade Ministro de Godoi" nome_coordenador_responsavel="Paulo Augusto" classificacao="ESTADUAL" OBS="Texto de obs." tipo_apoio="SRMs"/>
+	
+	<instituicao_tipo_especialidade id_instituicao="122222" tipo_especialidade="DV"/>
+	
+	<informacao_essencial id="44444" nome="Usuario com instituições" id_contato="799999" data_nascimento="1982-07-27"/> 
+	<informacao_essencial id="55555" nome="José Augusto Siqueira" id_contato="88888" data_nascimento="1982-07-27"/>  
+	<informacao_essencial id="66666" nome="Paulo Augusto Moraes" id_contato="799999" data_nascimento="1982-07-27"/>
+	
+	<historico_rg id="11111" data_inicial_vigencia="0001-01-01" rg="123456" />
+	<historico_rg id="22222" data_inicial_vigencia="0001-01-01" rg="384744" />
+	<historico_rg id="33333" data_inicial_vigencia="0001-01-01" rg="384744" />
+	
+	<informacao_essencial_historico_rg id_informacao_essencial="44444" id_historico_rg="11111"/>
+	<informacao_essencial_historico_rg id_informacao_essencial="55555" id_historico_rg="22222"/>
+	<informacao_essencial_historico_rg id_informacao_essencial="66666" id_historico_rg="33333"/>
+		
+	<situacao_guarda id="1" descricao="Adotado"/>
+	<situacao_guarda id="2" descricao="Tutela"/>
+	
+	<beneficio id="1" descricao="Aposentadoria por Invalidez"/>
+	
+	<deficiencia id="1" descricao="Visual"/>
+	
+	<cid10 cid="A001" cat="N" subcat="S" descricao="A00.1 Colera dev Vibrio cholerae 01 biot El Tor" restrsexo="5"/>
+	<cid10 cid="AA1" cat="N" subcat="S" descricao="TESTE" restrsexo="5"/>
+ 	 	
+ 	<doenca id="1" descricao="HIV"/>
+	
+	<convenio id="1" descricao="SESC"/>
+	
+	<historico_setor id="11111" data_inicial_vigencia="0001-01-01" id_setor="CTO"/>
+	<historico_setor id="22222" data_inicial_vigencia="0001-01-01" id_setor="CTO"/>
+	<historico_setor id="33333" data_inicial_vigencia="0001-01-01" id_setor="CTO"/>
+	
+	<historico_status id="11111" data_inicial_vigencia="0001-01-01" status="INTEGRADO"/>
+	<historico_status id="22222" data_inicial_vigencia="0001-01-01" status="INTEGRADO"/>
+	<historico_status id="33333" data_inicial_vigencia="0001-01-01" status="INTEGRADO"/>
+	
+	<historico_classificacao_social id="11111" data_inicial_vigencia="0001-01-01" classificacao_social="W4"/>
+	<historico_classificacao_social id="22222" data_inicial_vigencia="0001-01-01" classificacao_social="W4"/>
+	<historico_classificacao_social id="33333" data_inicial_vigencia="0001-01-01" classificacao_social="W4"/>
+	
+	<condicao_moradia id="1000" descricao="Alugada"/>
+	<condicao_moradia id="2000" descricao="Favor"/>
+	<situacao_habitacional id="1000" descricao="Pensão"/>
+	<situacao_habitacional id="2000" descricao="Cortiço"/>
+	<habitacao id="1000" descricao="Sobrado"/>
+	<habitacao id="2000" descricao="Terrea"/>
+	<tipo_construcao id="1000" descricao="Madeira"/>
+	<tipo_construcao id="2000" descricao="Alvenaria"/>
+	<infraestrutura_basica id="1000" descricao="Agua"/>
+	<infraestrutura_basica id="2000" descricao="Asfalto"/>
+	
+	<usuario id="92222" versao="1" data_cadastro="1999-12-31" id_informacao_essencial="44444" genero="MASCULINO" naturalidade="Belém" rg_uf="PA" rg_data_expedicao="1998-12-31" rg_orgao_emissor="SEGUP" id_estado_civil="1" nacionalidade="Brasileiro" nao_alfabetizado="true" nao_esta_na_escola="true" tipo_leitura="AMPLIADO"/>
+	<usuario id="12222" versao="1" data_cadastro="1999-12-31" id_informacao_essencial="55555" genero="MASCULINO" naturalidade="Belém" rg_uf="PA" rg_data_expedicao="1998-12-31" rg_orgao_emissor="SEGUP" id_estado_civil="1" nacionalidade="Brasileiro" nao_alfabetizado="true" nao_esta_na_escola="true" tipo_leitura="AMPLIADO"/>
+	<usuario id="72222" versao="1" data_cadastro="1999-12-31" id_informacao_essencial="66666" genero="MASCULINO" naturalidade="Belém" rg_uf="PA" rg_data_expedicao="1998-12-31" rg_orgao_emissor="SEGUP" id_estado_civil="1" nacionalidade="Brasileiro" nao_alfabetizado="true" nao_esta_na_escola="true" tipo_leitura="AMPLIADO"/>
+	
+	<usuario_historico_status id_usuario="92222" id_historico_status="11111"/>
+	<usuario_historico_status id_usuario="12222" id_historico_status="22222"/>
+	<usuario_historico_status id_usuario="72222" id_historico_status="33333"/>
+	
+	<usuario_historico_classificacao_social id_usuario="12222" id_historico_classificacao_social="11111"/>
+	<usuario_historico_classificacao_social id_usuario="72222" id_historico_classificacao_social="22222"/>
+	<usuario_historico_classificacao_social id_usuario="92222" id_historico_classificacao_social="33333"/>
+	
+	<usuario_historico_setor id_usuario="92222" id_historico_setor="11111"/>
+	<usuario_historico_setor id_usuario="12222" id_historico_setor="22222"/>
+	<usuario_historico_setor id_usuario="72222" id_historico_setor="33333"/>
+	
+	<usuario_situacao_guarda id_usuario="92222" id_situacao_guarda="1"/>
+	<usuario_situacao_guarda id_usuario="12222" id_situacao_guarda="1"/>
+	<usuario_situacao_guarda id_usuario="72222" id_situacao_guarda="2"/>
+	
+	<periodo_beneficio id="12222" id_beneficio="1" data_inicial_vigencia="2011-01-01" data_final_vigencia="2011-12-01" status="SIM"/>
+	
+	<periodo_deficiencia id="12222" id_deficiencia="1" data_inicial_vigencia="2011-01-01" data_final_vigencia="2011-12-01"/>
+	
+	<usuario_periodo_beneficio id_usuario="92222" id_periodo_beneficio="12222"/>
+	<usuario_periodo_beneficio id_usuario="12222" id_periodo_beneficio="12222"/>
+	<usuario_periodo_beneficio id_usuario="72222" id_periodo_beneficio="12222"/>
+	
+	<usuario_periodo_deficiencia id_usuario="72222" id_periodo_deficiencia="12222"/>
+	
+	<usuario_convenio id_usuario="92222" id_convenio="1"/>
+	<usuario_convenio id_usuario="12222" id_convenio="1"/>
+	<usuario_convenio id_usuario="72222" id_convenio="1"/>
+	
+	<informacao_essencial_endereco id_informacao_essencial="55555" id_endereco="55555"/>
+	<informacao_essencial_endereco id_informacao_essencial="44444" id_endereco="44444"/>
+	
+	<serie id="1" descricao="1º Série"/>
+	
+	<escolaridade id="1" descricao="SUPERIOR"/>
+	
+	<area_formacao id="1" nome="Direitoro"/>
+		
+	<informacao_educacional id="88888" data_inicial_vigencia="0001-01-01" id_instituicao="122222" id_escolaridade="1" id_serie="1" situacao="CURSANDO" periodo="MANHA" data_referencia="2001-01-01" excluido="false"/> 
+	
+	<usuario_informacao_educacional id_usuario="12222" id_informacao_educacional="88888"/>
+	
+	<parentesco id="1" descricao="Pai"/>
+	
+	<cargo id="1" nome="Programador"/>
+	<informacao_trabalho id="22222" empresa="CTIS" funcao="Analista de Sistemas" id_cargo="1"/>
+		
+	<familiar id="44444" id_parentesco="1" id_estado_civil="2" id_informacao_trabalho="22222" id_informacao_essencial="44444" principal_responsavel="true"/>
+	
+	<usuario_familiar id_usuario="12222" id_familiar="44444"/>
+	
+	<familiar_informacao_educacional/>
+	<historico_instituicao/>
+	<usuario_historico_instituicao_srms/>
+	<usuario_historico_instituicao_sala_recurso/>
+	<usuario_historico_instituicao_outros_aee/>
+	<certidao/>
+	<usuario_certidao/>
+	<usuario_recurso/>
+	<local_trabalho id="1" nome="CTIS"/> 
+	<informacao_trabalho_completa/>
+	<usuario_informacao_trabalho_completa/>
+	<periodo_doenca/>
+	<usuario_periodo_doenca/>
+	<etiologia/>
+	<periodo_deficiencia_etiologia/>
+	<recurso_moradia id="1000" descricao="Hospital"/>
+	<usuario_recurso_moradia/>
+	<necessidade id="1000" descricao="Texto da necessidade" />
+	<expectativa id="1000" descricao="Texto da expectativa" />
+	<usuario_expectativa/>
+	<usuario_necessidade/>
+	<servico id='11111' descricao="Hospital"/>
+	<usuario_servico/>	
+	<usuario_infraestrutura_basica/>
+	<origem_encaminhamento id="1" descricao="Hospital"/>
+	<rede_encaminhamento id="1" descricao="SUAS"/>
+	<encaminhamento/>
+	<usuario_encaminhamento/>
+	<comprometimento id="1" descricao="TESTE"/>
+	<periodo_comprometimento/>
+	<usuario_periodo_comprometimento/>
+	<familiar_periodo_beneficio/>
+</dataset>

@@ -1,0 +1,6 @@
+<dataset>
+	<perfil id="3" descricao="Administrador"/>
+	<perfil_permissoes id_perfil="3" permissao="USUARIO_EDICAO" />
+	<conta_acesso id="3" id_perfil="3" login="Paulo" senha="81dc9bdb52d04dc20036dbd8313ed055" bloqueado="false" extensao_relatorios="pdf" filtro_grupo="false"/>
+	<conta_acesso id="4" id_perfil="3" login="Jose" senha="81dc9bdb52d04dc20036dbd8313ed055" bloqueado="false" extensao_relatorios="xls" filtro_grupo="false"/>
+</dataset>  

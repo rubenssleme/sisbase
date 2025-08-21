@@ -1,0 +1,1 @@
+﻿delete from grupo_modulo_periodo where id_modulo_periodo in (288, 296);

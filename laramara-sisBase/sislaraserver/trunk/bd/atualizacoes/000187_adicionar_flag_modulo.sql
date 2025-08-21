@@ -1,0 +1,2 @@
+﻿ALTER TABLE modulo ADD COLUMN BLOQUEADO_LISTA_ESPERA BOOLEAN DEFAULT FALSE;
+UPDATE modulo SET bloqueado_lista_espera = true WHERE id = 38;

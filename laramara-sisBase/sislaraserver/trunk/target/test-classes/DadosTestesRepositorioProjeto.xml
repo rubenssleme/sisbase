@@ -1,0 +1,4 @@
+<dataset>
+	<projeto id="12222" nome="Projeto Alcoa 1" data_inicial_vigencia="2012-01-01" data_final_vigencia="2012-01-21" valor="35000,00" ativo="false" valor_produtos="75000" valor_outros="25000"/>
+	<projeto id="14444" nome="Projeto Alcoa 2" data_inicial_vigencia="2012-01-01" data_final_vigencia="2012-01-21" valor="35000,00" ativo="true" valor_produtos="75000" valor_outros="25000"/>
+</dataset>

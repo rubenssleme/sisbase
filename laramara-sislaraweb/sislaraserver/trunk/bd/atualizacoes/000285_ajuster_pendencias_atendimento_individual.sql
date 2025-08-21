@@ -1,0 +1,1 @@
+﻿update pendencia set tipo = 'ATENDIMENTO_INDIVIDUAL_USUARIO' where id in (select id from pendencia where tipo = 'ATENDIMENTO_INDIVIDUAL');

@@ -1,0 +1,1 @@
+﻿update telefone set ddd = '00' where id_contato >= 33475;
